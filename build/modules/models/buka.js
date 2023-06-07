@@ -8,4 +8,6 @@ class Buka {
 }
 exports.Buka = Buka;
 Buka.linklyEndpoint = "https://app.linklyhq.com/api/v1/link";
+Buka.linklyWorkspace = 111178;
+Buka.checkoutDomain = "checkout.buka.direct";
 //# sourceMappingURL=buka.js.map

@@ -26,6 +26,7 @@ __exportStar(require("./models/conversation"), exports);
 __exportStar(require("./models/support_model"), exports);
 __exportStar(require("./models/twilo_data"), exports);
 __exportStar(require("./models/buka"), exports);
+__exportStar(require("./interfaces/miscellenous"), exports);
 __exportStar(require("./models/sms_campaign"), exports);
 __exportStar(require("./models/review_request_model"), exports);
 //# sourceMappingURL=index.js.map

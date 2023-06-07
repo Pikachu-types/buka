@@ -13,9 +13,9 @@ export declare class ServerApiClient {
      */
     static cloudMessage(body: CustomFCM, key: string): Promise<number>;
     /**
-     * cancel request from consumer
+     * create custom link
      * @param {LinklyAPIRequest} request model
      * @return {Promise<LinklyAPIResponse>} returns response.
      */
-    static cancelRequest(request: LinklyAPIRequest): Promise<LinklyAPIResponse>;
+    static linklyLinkGenerator(request: LinklyAPIRequest): Promise<LinklyAPIResponse>;
 }

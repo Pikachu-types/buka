@@ -10,5 +10,6 @@ export * from "./models/conversation";
 export * from "./models/support_model";
 export * from "./models/twilo_data";
 export * from "./models/buka";
+export * from "./interfaces/miscellenous";
 export * from "./models/sms_campaign";
 export * from "./models/review_request_model";

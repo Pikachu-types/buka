@@ -1,1 +1,1 @@
-{"version":3,"file":"buka.js","sourceRoot":"","sources":["../../../src/modules/models/buka.ts"],"names":[],"mappings":";;;AAAA;;GAEG;AACH,MAAa,IAAI;;AAAjB,oBAEC;AADiB,mBAAc,GAAG,sCAAsC,CAAC"}
+{"version":3,"file":"buka.js","sourceRoot":"","sources":["../../../src/modules/models/buka.ts"],"names":[],"mappings":";;;AAAA;;GAEG;AACH,MAAa,IAAI;;AAAjB,oBAIC;AAHiB,mBAAc,GAAG,sCAAsC,CAAC;AACxD,oBAAe,GAAG,MAAM,CAAC;AACzB,mBAAc,GAAG,sBAAsB,CAAC"}

@@ -54,11 +54,11 @@ export class ServerApiClient {
   }
 
   /**
-   * cancel request from consumer
+   * create custom link
    * @param {LinklyAPIRequest} request model
    * @return {Promise<LinklyAPIResponse>} returns response.
    */
-  public static async cancelRequest(request: LinklyAPIRequest)
+  public static async linklyLinkGenerator(request: LinklyAPIRequest)
     : Promise<LinklyAPIResponse> {
     try {
       const { data, status } = await axios.post<LinklyAPIResponse>(

@@ -66,11 +66,11 @@ class ServerApiClient {
         });
     }
     /**
-     * cancel request from consumer
+     * create custom link
      * @param {LinklyAPIRequest} request model
      * @return {Promise<LinklyAPIResponse>} returns response.
      */
-    static cancelRequest(request) {
+    static linklyLinkGenerator(request) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
             try {

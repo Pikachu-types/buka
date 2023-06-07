@@ -3,4 +3,6 @@
  */
 export declare class Buka {
     static linklyEndpoint: string;
+    static linklyWorkspace: number;
+    static checkoutDomain: string;
 }
