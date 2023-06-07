@@ -1,6 +1,6 @@
 {
   "name": "@bukadirect/buka",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Backend helpers and functions for Buka Direct server end services",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -23,9 +23,8 @@
   "homepage": "https://github.com/Buka-Drect-AB/buka#readme",
   "dependencies": {
     "class-transformer": "^0.5.1",
-    "crypto": "^1.0.1",
     "axios": "^1.4.0",
-    "labs-sharable": "^1.4.3",
+    "labs-sharable": "^1.4.4",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2"
   },
