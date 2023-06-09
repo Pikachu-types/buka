@@ -73,6 +73,14 @@ class OrganisationData {
         return (0, labs_sharable_1.equalToIgnoreCase)(documents_1.AccountPrivileges.owner, (_b = (_a = user.login) === null || _a === void 0 ? void 0 : _a.role) !== null && _b !== void 0 ? _b : "");
     }
     /**
+     * Check if of this class type
+     * @param {Object} error the object
+     * @returns {boolean} returns true or false
+     */
+    static isOfInstance(error) {
+        return error instanceof OrganisationData;
+    }
+    /**
      * resolve maps for certain attributes
      * @return {void} text
      */

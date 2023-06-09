@@ -78,6 +78,15 @@ export class OrganisationData {
   }
 
   /**
+   * Check if of this class type
+   * @param {Object} error the object
+   * @returns {boolean} returns true or false
+   */
+  public static isOfInstance(error: Object): boolean {
+    return error instanceof OrganisationData;
+  }
+
+  /**
    * resolve maps for certain attributes
    * @return {void} text
    */

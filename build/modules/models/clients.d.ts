@@ -54,6 +54,12 @@ export declare class OrganisationData {
      */
     static findSpaceOwners(user: UserModel): boolean;
     /**
+     * Check if of this class type
+     * @param {Object} error the object
+     * @returns {boolean} returns true or false
+     */
+    static isOfInstance(error: Object): boolean;
+    /**
      * resolve maps for certain attributes
      * @return {void} text
      */

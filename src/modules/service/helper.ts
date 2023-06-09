@@ -1,4 +1,4 @@
-import {CipherType, CustomError, LabsCipher} from "labs-sharable";
+import { CipherType, CustomError, LabsCipher } from "labs-sharable";
 import { ApprovedClients } from "../models/approvedClients";
 
 /**
@@ -12,10 +12,10 @@ export class FunctionHelpers {
    * @return {Buffer} returns value.
    */
   public static decipherRSAKey(source: string,
-      secret: string): Buffer {
+    secret: string): Buffer {
     const data = FunctionHelpers.changeCipherStringToModel(source);
     return Buffer.from(
-        LabsCipher.decrypt(data, secret), "utf-8"
+      LabsCipher.decrypt(data, secret), "utf-8"
     );
   }
 
@@ -26,10 +26,10 @@ export class FunctionHelpers {
    * @return {Buffer} buffer value
    */
   public static bcryptToRSAKey(cipherKey: string,
-      encoded: string): Buffer | undefined {
+    encoded: string): Buffer | undefined {
     try {
       const pV = FunctionHelpers.
-          changeCipherStringToModel(encoded);
+        changeCipherStringToModel(encoded);
       const publicKey = LabsCipher.decrypt(pV, cipherKey);
       return Buffer.from(publicKey, "utf-8");
     } catch (_) {
@@ -54,9 +54,9 @@ export class FunctionHelpers {
    * @return {string} returns value.
    */
   public static bukaCipherString(secret: string,
-      source: string): string {
+    source: string): string {
     return FunctionHelpers.
-        createCipherString(LabsCipher.encrypt(source, secret));
+      createCipherString(LabsCipher.encrypt(source, secret));
   }
 
   /**
@@ -66,13 +66,13 @@ export class FunctionHelpers {
    * @return {string} returns value.
    */
   public static verifyAppAuthorization(secretKey: string,
-      source?: string): boolean {
+    source?: string): boolean {
     if (source === undefined) return false;
 
     let appID;
     try {
       const signature = FunctionHelpers.
-          changeCipherStringToModel(source);
+        changeCipherStringToModel(source);
       appID = LabsCipher.decrypt(signature, secretKey);
       return ApprovedClients.applications.includes(appID);
     } catch (_) {
@@ -111,7 +111,7 @@ export class FunctionHelpers {
     let appID;
     try {
       const signature = FunctionHelpers.
-          changeCipherStringToModel(source);
+        changeCipherStringToModel(source);
       appID = LabsCipher.decrypt(signature, secretKey);
       return ApprovedClients.requesters.includes(appID);
     } catch (err) {

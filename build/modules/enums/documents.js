@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Status = exports.NotificationChannelGroups = exports.PaymentTypes = exports.AppMode = exports.PaymentOption = exports.NotificationChannels = exports.GeographyType = exports.NotificationType = exports.BukaCustomDomain = exports.AccountPrivileges = exports.DocumentReference = void 0;
+exports.SendgridTemplates = exports.Status = exports.NotificationChannelGroups = exports.PaymentTypes = exports.AppMode = exports.BookingSource = exports.PaymentOption = exports.NotificationChannels = exports.GeographyType = exports.NotificationType = exports.BukaCustomDomain = exports.AccountPrivileges = exports.DocumentReference = void 0;
 /**
  * Default database document references
  */
@@ -59,10 +59,16 @@ var DocumentReference;
      * Message sub collection under conversations
      */
     DocumentReference["messages"] = "messages";
+    DocumentReference["products"] = "products";
+    DocumentReference["items"] = "items";
     /**
      * On message collection listener path
      */
     DocumentReference["onmessage"] = "conversations/{conversation}/messages/{message}";
+    /**
+     * New booking created
+     */
+    DocumentReference["onbooked"] = "reservations/{reservation}/bookings/{booking}";
 })(DocumentReference = exports.DocumentReference || (exports.DocumentReference = {}));
 /**
  * Buka spaces' account privileges
@@ -126,6 +132,16 @@ var PaymentOption;
     PaymentOption["onsite"] = "onsite";
 })(PaymentOption = exports.PaymentOption || (exports.PaymentOption = {}));
 /**
+ * Booking source
+ */
+var BookingSource;
+(function (BookingSource) {
+    BookingSource["ios"] = "bukaIos";
+    BookingSource["web"] = "bukaWeb";
+    BookingSource["business"] = "bukaBusiness";
+    BookingSource["android"] = "bukaAndroid";
+})(BookingSource = exports.BookingSource || (exports.BookingSource = {}));
+/**
  * Modes enum
  */
 var AppMode;
@@ -179,4 +195,24 @@ var Status;
     Status["Completed"] = "completed";
     Status["Rescheduled"] = "rescheduled";
 })(Status = exports.Status || (exports.Status = {}));
+/**
+ * Buka Sendgrid api codes
+ */
+var SendgridTemplates;
+(function (SendgridTemplates) {
+    SendgridTemplates["NotifyOfSupportCard"] = "d-aa217c61305a4672b6919d219553352d";
+    SendgridTemplates["SupportCreation"] = "d-dd4bbf3462924c2e87d0a1daacf00be6";
+    SendgridTemplates["ReviewRequest"] = "d-f611af1c61c7471c9da787a05517af5a";
+    SendgridTemplates["ReviewNotification"] = "d-8cfc434d4cc1484dbaf85902f0d30246";
+    SendgridTemplates["BookingReminder"] = "d-08fe0b1b99d74f858ac007e57d81a7e2";
+    SendgridTemplates["EmailBookingConfirmationToUser"] = "d-71c32fff30474d13b2766d8b235793e1";
+    SendgridTemplates["NotifyClientOfBooking"] = "d-d9aedafb7f2d40a5a9330cd337e90e24";
+    SendgridTemplates["WelcomeMail"] = "d-59db9fcf9e6b41fc898cf06ab0412531 ";
+    SendgridTemplates["ConsoleInvitation"] = "d-524a3bce1958494f9b78c0909b6c0f93";
+    SendgridTemplates["NewBusinessNotification"] = "d-ef5a392429154e61af28b4fef78a0f43";
+    SendgridTemplates["BusinessSubmission"] = "d-1f2548dba638495581e9500c723ed36b";
+    SendgridTemplates["BusinessApproved"] = "d-d9053183c42443ba805cb24bf690bf04";
+    SendgridTemplates["UserBookingNotification"] = "d-2236a2bf067a4620b826c8ff0e5ac94e";
+    SendgridTemplates["BookingCreatedByBusiness"] = "d-99c9b203bc2d4e5780783b1b1d408ca5";
+})(SendgridTemplates = exports.SendgridTemplates || (exports.SendgridTemplates = {}));
 //# sourceMappingURL=documents.js.map

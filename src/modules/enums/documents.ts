@@ -58,16 +58,25 @@ export enum DocumentReference {
    */
   messages = "messages",
 
+  products = "products",
+
+  items = "items",
+
   /**
    * On message collection listener path 
    */
-  onmessage = "conversations/{conversation}/messages/{message}"
+  onmessage = "conversations/{conversation}/messages/{message}",
+
+  /**
+   * New booking created
+   */
+  onbooked = "reservations/{reservation}/bookings/{booking}",
 }
 
 /**
  * Buka spaces' account privileges
  */
-export enum AccountPrivileges{
+export enum AccountPrivileges {
   owner = "owner",
   member = "member",
   admin = "admin",
@@ -77,7 +86,7 @@ export enum AccountPrivileges{
 /**
  * Buka custom domains
  */
-export enum BukaCustomDomain{
+export enum BukaCustomDomain {
   checkout = "checkout.buka.direct",
 }
 
@@ -122,6 +131,16 @@ export enum PaymentOption {
   now = "now",
   reserve = "reserve",
   onsite = "onsite"
+}
+
+/**
+ * Booking source
+ */
+export enum BookingSource {
+  ios = "bukaIos",
+  web = "bukaWeb",
+  business = "bukaBusiness",
+  android = "bukaAndroid",
 }
 
 /**
@@ -176,4 +195,24 @@ export enum Status {
   Cancelled = "cancelled",
   Completed = "completed",
   Rescheduled = "rescheduled",
+}
+
+/**
+ * Buka Sendgrid api codes
+ */
+export enum SendgridTemplates {
+  NotifyOfSupportCard = "d-aa217c61305a4672b6919d219553352d",
+  SupportCreation = "d-dd4bbf3462924c2e87d0a1daacf00be6",
+  ReviewRequest = "d-f611af1c61c7471c9da787a05517af5a",
+  ReviewNotification = "d-8cfc434d4cc1484dbaf85902f0d30246",
+  BookingReminder = "d-08fe0b1b99d74f858ac007e57d81a7e2",
+  EmailBookingConfirmationToUser = "d-71c32fff30474d13b2766d8b235793e1",
+  NotifyClientOfBooking = "d-d9aedafb7f2d40a5a9330cd337e90e24",
+  WelcomeMail = "d-59db9fcf9e6b41fc898cf06ab0412531 ",
+  ConsoleInvitation = "d-524a3bce1958494f9b78c0909b6c0f93",
+  NewBusinessNotification = "d-ef5a392429154e61af28b4fef78a0f43",
+  BusinessSubmission = "d-1f2548dba638495581e9500c723ed36b",
+  BusinessApproved = "d-d9053183c42443ba805cb24bf690bf04",
+  UserBookingNotification = "d-2236a2bf067a4620b826c8ff0e5ac94e",
+  BookingCreatedByBusiness = "d-99c9b203bc2d4e5780783b1b1d408ca5",
 }
