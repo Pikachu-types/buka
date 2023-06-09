@@ -44,3 +44,47 @@ export type LinklyAPIResponse = {
   og_image: string,
   full_url: string
 };
+
+/**
+ * Dynamic linking 
+*/
+export type DynamicLinkParam = {
+  link?: string,
+  prefix: string,
+  apiKey: string,
+  header: string,
+  param: string,
+  androidPackageName: string,
+  iosBundleID: string,
+  iosAppStoreID: string,
+  iosIpadBundleID?: string,
+  social?: {
+    title: string,
+    description: string,
+    image: string,
+  }
+}
+
+/**
+ * Dynamic link body params 
+*/
+export type DynamicLinkBodyParam = {
+  dynamicLinkInfo: {
+    domainUriPrefix: string,
+    link: string,
+    androidInfo: {
+      androidPackageName: string,
+      androidMinPackageVersionCode: string,
+    },
+    iosInfo: {
+      iosBundleId: string,
+      iosAppStoreId: string,
+      iosIpadBundleId: string,
+    },
+    socialMetaTagInfo?: {
+      socialTitle: string,
+      socialDescription: string,
+      socialImageLink: string,
+    } 
+  }
+}

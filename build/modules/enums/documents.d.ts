@@ -116,7 +116,7 @@ export declare enum NotificationChannels {
 /**
  * Payment types enum
  */
-export declare enum PaymentOption {
+export declare enum PaymentMethod {
     now = "now",
     reserve = "reserve",
     onsite = "onsite"
@@ -196,6 +196,7 @@ export declare enum SendgridTemplates {
     NewBusinessNotification = "d-ef5a392429154e61af28b4fef78a0f43",
     BusinessSubmission = "d-1f2548dba638495581e9500c723ed36b",
     BusinessApproved = "d-d9053183c42443ba805cb24bf690bf04",
+    BookingConfirmed = "d-aac4a4db091b4a599509158a60fd02f0",
     UserBookingNotification = "d-2236a2bf067a4620b826c8ff0e5ac94e",
     BookingCreatedByBusiness = "d-99c9b203bc2d4e5780783b1b1d408ca5"
 }

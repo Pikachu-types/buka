@@ -1,7 +1,7 @@
 import axios from "axios";
 import { isAxiosError } from 'axios';
 import { CustomError, CustomFCM, FCMResponse } from "labs-sharable";
-import { LinklyAPIRequest, LinklyAPIResponse } from "../interfaces/miscellenous";
+import { DynamicLinkBodyParam, DynamicLinkParam, LinklyAPIRequest, LinklyAPIResponse } from "../interfaces/miscellenous";
 import { Buka } from "../models/buka";
 
 /**
@@ -99,6 +99,61 @@ export class ServerApiClient {
       }
     }
 
+  }
+
+  /**
+   * Create dynamic link with http calls
+   * @param {DynamicLinkCreation} data payload
+   * @return {Promise<string>} returns f
+   */
+  public static async generateDynamicLink(
+    data: DynamicLinkParam): Promise<string> {
+    const body: DynamicLinkBodyParam = {
+      dynamicLinkInfo: {
+        domainUriPrefix: data.prefix,
+        link: data.link ?? Buka.linkBuilder(data.header, data.param),
+        androidInfo: {
+          androidMinPackageVersionCode: "1",
+          androidPackageName: data.androidPackageName,
+        },
+        iosInfo: {
+          iosAppStoreId: data.iosAppStoreID,
+          iosIpadBundleId: data.iosIpadBundleID ?? data.iosBundleID,
+          iosBundleId: data.iosBundleID,
+        },
+        socialMetaTagInfo: data.social ? {
+          socialDescription: data.social.description,
+          socialImageLink: data.social.image,
+          socialTitle: data.social.title,
+        } : undefined
+      }
+    };
+
+    try {
+      const response = await
+        fetch("https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=" +
+          data.apiKey,
+          {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "key=" + data.apiKey,
+            },
+          });
+      if (!response.ok) {
+        throw new CustomError(`Error! status: ${response.status}`);
+      } else {
+        const result = (await response.json());
+        if (result.shortLink !== undefined) {
+          return result.shortLink;
+        } else {
+          return "";
+        }
+      }
+    } catch (error) {
+      throw new CustomError(`Creation of dynamic link error: ${error}`);
+    }
   }
 
 }

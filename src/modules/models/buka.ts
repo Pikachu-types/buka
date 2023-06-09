@@ -12,6 +12,12 @@ export class Buka {
   public static founderEmail = "confidence@jackmay.org";
   public static appUniLink = "buka.direct/app";
   public static defaultEmailSender = "Jackmay from Buka<hello@buka.direct>";
+  public static appDescription = "Apply Buka Direct to easily make free beauty" +
+    " reservations and make real-time payments to thousands of service " +
+    "providers in the health and beauty sector. Create an account right" +
+    " away to receive a free reservation.";
+  public static appShareTitle = "Buka Direct: Simple Safe Reservations " +
+    "- Apps on Google and Apple Play Store";
 
   /**
   * generate email sender
@@ -22,5 +28,32 @@ export class Buka {
   public static createEmailSender(name: string,
     email?: string): string {
     return `${name}<${email ?? "hello@buka.direct"}>`;
+  }
+
+  /**
+   * build dynamic long link
+   * @param {string} head link header
+   * @param {string} param link parameters
+   * @param {boolean} console if we should use console link
+   * @return {string} returns link
+   */
+  public static linkBuilder(head: string,
+    param: string, console: boolean = false): string {
+    return `https://${console ?
+      "app." : ""}buka.direct/${head}?${param}`;
+  }
+}
+
+export namespace Buka {
+  export enum AppIdentifier{
+    android = "org.jackmay.afikana",
+    ios = "app.rebat.afroSalong",
+    iosID = "1593979273",
+    businessAndroid = "business.buka.direct",
+    businessIOS = "business.buka.direct",
+    businessIosID = "",
+  }
+  export enum Links{
+    mePrefix = "https://me.buka.direct",
   }
 }

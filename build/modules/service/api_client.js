@@ -112,6 +112,62 @@ class ServerApiClient {
             }
         });
     }
+    /**
+     * Create dynamic link with http calls
+     * @param {DynamicLinkCreation} data payload
+     * @return {Promise<string>} returns f
+     */
+    static generateDynamicLink(data) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const body = {
+                dynamicLinkInfo: {
+                    domainUriPrefix: data.prefix,
+                    link: (_a = data.link) !== null && _a !== void 0 ? _a : buka_1.Buka.linkBuilder(data.header, data.param),
+                    androidInfo: {
+                        androidMinPackageVersionCode: "1",
+                        androidPackageName: data.androidPackageName,
+                    },
+                    iosInfo: {
+                        iosAppStoreId: data.iosAppStoreID,
+                        iosIpadBundleId: (_b = data.iosIpadBundleID) !== null && _b !== void 0 ? _b : data.iosBundleID,
+                        iosBundleId: data.iosBundleID,
+                    },
+                    socialMetaTagInfo: data.social ? {
+                        socialDescription: data.social.description,
+                        socialImageLink: data.social.image,
+                        socialTitle: data.social.title,
+                    } : undefined
+                }
+            };
+            try {
+                const response = yield fetch("https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=" +
+                    data.apiKey, {
+                    method: "POST",
+                    body: JSON.stringify(body),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "key=" + data.apiKey,
+                    },
+                });
+                if (!response.ok) {
+                    throw new labs_sharable_1.CustomError(`Error! status: ${response.status}`);
+                }
+                else {
+                    const result = (yield response.json());
+                    if (result.shortLink !== undefined) {
+                        return result.shortLink;
+                    }
+                    else {
+                        return "";
+                    }
+                }
+            }
+            catch (error) {
+                throw new labs_sharable_1.CustomError(`Creation of dynamic link error: ${error}`);
+            }
+        });
+    }
 }
 exports.ServerApiClient = ServerApiClient;
 //# sourceMappingURL=api_client.js.map

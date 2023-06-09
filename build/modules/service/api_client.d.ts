@@ -1,5 +1,5 @@
 import { CustomFCM } from "labs-sharable";
-import { LinklyAPIRequest, LinklyAPIResponse } from "../interfaces/miscellenous";
+import { DynamicLinkParam, LinklyAPIRequest, LinklyAPIResponse } from "../interfaces/miscellenous";
 /**
  * Api client helper
  */
@@ -18,4 +18,10 @@ export declare class ServerApiClient {
      * @return {Promise<LinklyAPIResponse>} returns response.
      */
     static linklyLinkGenerator(request: LinklyAPIRequest): Promise<LinklyAPIResponse>;
+    /**
+     * Create dynamic link with http calls
+     * @param {DynamicLinkCreation} data payload
+     * @return {Promise<string>} returns f
+     */
+    static generateDynamicLink(data: DynamicLinkParam): Promise<string>;
 }

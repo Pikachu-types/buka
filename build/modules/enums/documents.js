@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendgridTemplates = exports.Status = exports.NotificationChannelGroups = exports.PaymentTypes = exports.AppMode = exports.BookingSource = exports.PaymentOption = exports.NotificationChannels = exports.GeographyType = exports.NotificationType = exports.BukaCustomDomain = exports.AccountPrivileges = exports.DocumentReference = void 0;
+exports.SendgridTemplates = exports.Status = exports.NotificationChannelGroups = exports.PaymentTypes = exports.AppMode = exports.BookingSource = exports.PaymentMethod = exports.NotificationChannels = exports.GeographyType = exports.NotificationType = exports.BukaCustomDomain = exports.AccountPrivileges = exports.DocumentReference = void 0;
 /**
  * Default database document references
  */
@@ -125,12 +125,12 @@ var NotificationChannels;
 /**
  * Payment types enum
  */
-var PaymentOption;
-(function (PaymentOption) {
-    PaymentOption["now"] = "now";
-    PaymentOption["reserve"] = "reserve";
-    PaymentOption["onsite"] = "onsite";
-})(PaymentOption = exports.PaymentOption || (exports.PaymentOption = {}));
+var PaymentMethod;
+(function (PaymentMethod) {
+    PaymentMethod["now"] = "now";
+    PaymentMethod["reserve"] = "reserve";
+    PaymentMethod["onsite"] = "onsite";
+})(PaymentMethod = exports.PaymentMethod || (exports.PaymentMethod = {}));
 /**
  * Booking source
  */
@@ -212,6 +212,7 @@ var SendgridTemplates;
     SendgridTemplates["NewBusinessNotification"] = "d-ef5a392429154e61af28b4fef78a0f43";
     SendgridTemplates["BusinessSubmission"] = "d-1f2548dba638495581e9500c723ed36b";
     SendgridTemplates["BusinessApproved"] = "d-d9053183c42443ba805cb24bf690bf04";
+    SendgridTemplates["BookingConfirmed"] = "d-aac4a4db091b4a599509158a60fd02f0";
     SendgridTemplates["UserBookingNotification"] = "d-2236a2bf067a4620b826c8ff0e5ac94e";
     SendgridTemplates["BookingCreatedByBusiness"] = "d-99c9b203bc2d4e5780783b1b1d408ca5";
 })(SendgridTemplates = exports.SendgridTemplates || (exports.SendgridTemplates = {}));
