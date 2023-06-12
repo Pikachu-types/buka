@@ -38,7 +38,7 @@ export class Buka {
    * @return {string} returns link
    */
   public static linkBuilder(head: string,
-    param: string, console: boolean = false): string {
+    param: string, console = false): string {
     return `https://${console ?
       "app." : ""}buka.direct/${head}?${param}`;
   }

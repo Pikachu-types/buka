@@ -215,5 +215,6 @@ var SendgridTemplates;
     SendgridTemplates["BookingConfirmed"] = "d-aac4a4db091b4a599509158a60fd02f0";
     SendgridTemplates["UserBookingNotification"] = "d-2236a2bf067a4620b826c8ff0e5ac94e";
     SendgridTemplates["BookingCreatedByBusiness"] = "d-99c9b203bc2d4e5780783b1b1d408ca5";
+    SendgridTemplates["BookingUpdated"] = "d-01dd3e6f928949de95b3ca76351eded4";
 })(SendgridTemplates = exports.SendgridTemplates || (exports.SendgridTemplates = {}));
 //# sourceMappingURL=documents.js.map

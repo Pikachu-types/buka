@@ -96,6 +96,27 @@ export declare class TimeData {
      */
     toJsonString(): string;
     /**
+     * Compare this time data to another
+     * check if they are similar or not
+     * @param {TimeData} other time data of other booking
+     * @return {boolean} result
+     */
+    compareTimeDataStart(other: TimeData): boolean;
+    /**
+     * Compare this time data to another
+     * check if they are similar or not
+     * @param {TimeData} other time data of other booking
+     * @return {boolean} result
+     */
+    compareTimeDataEnd(other: TimeData): boolean;
+    /**
+     * Tell if there has been a date
+     * change between this and other
+     * @param {TimeData} other time data of other booking
+     * @return {boolean} result
+     */
+    isThereADateChange(other: TimeData): boolean;
+    /**
     * get document in map format
     * @return { Record<string, unknown>} returns doc map .
     */

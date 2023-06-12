@@ -74,7 +74,7 @@ export class OrganisationData {
    * @return {boolean} value
    */
   public static findSpaceOwners(user: UserModel): boolean {
-    return equalToIgnoreCase(AccountPrivileges.owner, user.login?.role ?? "");
+    return equalToIgnoreCase(AccountPrivileges.owner.toString(), user.login?.role ?? "");
   }
 
   /**

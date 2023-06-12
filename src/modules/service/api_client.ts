@@ -1,5 +1,4 @@
-import axios from "axios";
-import { isAxiosError } from 'axios';
+import axios, { isAxiosError } from "axios";
 import { CustomError, CustomFCM, FCMResponse } from "labs-sharable";
 import { DynamicLinkBodyParam, DynamicLinkParam, LinklyAPIRequest, LinklyAPIResponse } from "../interfaces/miscellenous";
 import { Buka } from "../models/buka";

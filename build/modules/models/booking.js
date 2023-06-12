@@ -51,14 +51,14 @@ class ReservationData {
      * @return {string} time data
      */
     paymentCase() {
-        if ((0, labs_sharable_1.equalToIgnoreCase)(this.payCase, 'quarter')) {
-            return 'Pay in parts';
+        if ((0, labs_sharable_1.equalToIgnoreCase)(this.payCase, "quarter")) {
+            return "Pay in parts";
         }
-        else if ((0, labs_sharable_1.equalToIgnoreCase)(this.payCase, 'full')) {
-            return 'Pay in full';
+        else if ((0, labs_sharable_1.equalToIgnoreCase)(this.payCase, "full")) {
+            return "Pay in full";
         }
         else {
-            return 'Currently unknown';
+            return "Currently unknown";
         }
     }
     /**
@@ -221,6 +221,34 @@ class TimeData {
      */
     toJsonString() {
         return JSON.stringify(this);
+    }
+    /**
+     * Compare this time data to another
+     * check if they are similar or not
+     * @param {TimeData} other time data of other booking
+     * @return {boolean} result
+     */
+    compareTimeDataStart(other) {
+        return (this.start === other.start);
+    }
+    /**
+     * Compare this time data to another
+     * check if they are similar or not
+     * @param {TimeData} other time data of other booking
+     * @return {boolean} result
+     */
+    compareTimeDataEnd(other) {
+        return (this.end === other.end);
+    }
+    /**
+     * Tell if there has been a date
+     * change between this and other
+     * @param {TimeData} other time data of other booking
+     * @return {boolean} result
+     */
+    isThereADateChange(other) {
+        return this.compareTimeDataStart(other) ||
+            (this.compareTimeDataEnd(other));
     }
     /**
     * get document in map format

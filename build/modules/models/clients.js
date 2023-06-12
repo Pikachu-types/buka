@@ -70,7 +70,7 @@ class OrganisationData {
      */
     static findSpaceOwners(user) {
         var _a, _b;
-        return (0, labs_sharable_1.equalToIgnoreCase)(documents_1.AccountPrivileges.owner, (_b = (_a = user.login) === null || _a === void 0 ? void 0 : _a.role) !== null && _b !== void 0 ? _b : "");
+        return (0, labs_sharable_1.equalToIgnoreCase)(documents_1.AccountPrivileges.owner.toString(), (_b = (_a = user.login) === null || _a === void 0 ? void 0 : _a.role) !== null && _b !== void 0 ? _b : "");
     }
     /**
      * Check if of this class type

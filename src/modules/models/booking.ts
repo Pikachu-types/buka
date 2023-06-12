@@ -45,12 +45,12 @@ export class ReservationData {
    * @return {string} time data
    */
   paymentCase(): string {
-    if (equalToIgnoreCase(this.payCase, 'quarter')) {
-      return 'Pay in parts';
-    } else if (equalToIgnoreCase(this.payCase, 'full')) {
-      return 'Pay in full';
+    if (equalToIgnoreCase(this.payCase, "quarter")) {
+      return "Pay in parts";
+    } else if (equalToIgnoreCase(this.payCase, "full")) {
+      return "Pay in full";
     } else {
-      return 'Currently unknown';
+      return "Currently unknown";
     }
   }
 
@@ -158,6 +158,37 @@ export class TimeData {
    */
   public toJsonString(): string {
     return JSON.stringify(this);
+  }
+  
+  /**
+   * Compare this time data to another
+   * check if they are similar or not
+   * @param {TimeData} other time data of other booking
+   * @return {boolean} result
+   */
+  public compareTimeDataStart(other:TimeData): boolean {
+    return (this.start === other.start);
+  }
+
+  /**
+   * Compare this time data to another
+   * check if they are similar or not
+   * @param {TimeData} other time data of other booking
+   * @return {boolean} result
+   */
+  public compareTimeDataEnd(other:TimeData): boolean {
+    return (this.end === other.end);
+  }
+  
+  /**
+   * Tell if there has been a date
+   * change between this and other
+   * @param {TimeData} other time data of other booking
+   * @return {boolean} result
+   */
+  public isThereADateChange(other:TimeData): boolean {
+    return this.compareTimeDataStart(other) ||
+      (this.compareTimeDataEnd(other));
   }
 
   /**

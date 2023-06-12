@@ -216,4 +216,5 @@ export enum SendgridTemplates {
   BookingConfirmed = "d-aac4a4db091b4a599509158a60fd02f0",
   UserBookingNotification = "d-2236a2bf067a4620b826c8ff0e5ac94e",
   BookingCreatedByBusiness = "d-99c9b203bc2d4e5780783b1b1d408ca5",
+  BookingUpdated = "d-01dd3e6f928949de95b3ca76351eded4",
 }
