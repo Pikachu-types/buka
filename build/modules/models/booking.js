@@ -21,8 +21,10 @@ class ReservationData {
         this.expectedGems = 0;
         this.earned = 0;
         this.created = 0;
+        this.lut = 0;
         this.productID = "";
         this.uid = "";
+        this.updatedBy = "";
         this.currency = "";
         this.id = "";
         this.text = "";
@@ -143,10 +145,16 @@ __decorate([
 ], ReservationData.prototype, "created", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
+], ReservationData.prototype, "lut", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
 ], ReservationData.prototype, "productID", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
 ], ReservationData.prototype, "uid", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], ReservationData.prototype, "updatedBy", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
 ], ReservationData.prototype, "currency", void 0);

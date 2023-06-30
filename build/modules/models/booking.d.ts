@@ -9,8 +9,10 @@ export declare class ReservationData {
     expectedGems: number;
     earned: number;
     created: number;
+    lut: number;
     productID: string;
     uid: string;
+    updatedBy: string;
     currency: string;
     id: string;
     text: string;

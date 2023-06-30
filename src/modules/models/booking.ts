@@ -11,8 +11,10 @@ export class ReservationData {
   @Expose() expectedGems = 0;
   @Expose() earned = 0;
   @Expose() created = 0;
+  @Expose() lut = 0;
   @Expose() productID = "";
   @Expose() uid = "";
+  @Expose() updatedBy = "";
   @Expose() currency = "";
   @Expose() id = "";
   @Expose() text = "";
