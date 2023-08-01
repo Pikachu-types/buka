@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ScheduleData = exports.AddressData = exports.ContactData = exports.OrganisationData = void 0;
+exports.ScheduleData = exports.AddressData = exports.SMSData = exports.ContactData = exports.OrganisationData = void 0;
 const class_transformer_1 = require("class-transformer");
 const onboarding_1 = require("./onboarding");
 const documents_1 = require("../enums/documents");
@@ -248,6 +248,53 @@ __decorate([
     (0, class_transformer_1.Expose)()
 ], ContactData.prototype, "address", void 0);
 exports.ContactData = ContactData;
+/**
+ * Buka SMSData class
+*/
+class SMSData {
+    constructor() {
+        /* eslint new-cap: ["error", { "capIsNew": false }]*/
+        this.active = false;
+        this.mobile = "";
+    }
+    /**
+     * Change record to SMSData class
+     *
+     * @param {Record<string, unknown>} obj  json object from db
+     * @return {SMSData} this class
+     */
+    static fromJson(obj) {
+        const result = (0, class_transformer_1.plainToInstance)(SMSData, obj, { excludeExtraneousValues: true });
+        return result;
+    }
+    /**
+     * This class handler to json
+     * @return {string} text
+     */
+    toJsonString() {
+        return JSON.stringify(this);
+    }
+    /**
+    * get document in map format
+    * @return { Record<string, unknown>} returns doc map .
+    */
+    toMap() {
+        return JSON.parse(this.toJsonString());
+    }
+}
+__decorate([
+    (0, class_transformer_1.Expose)()
+], SMSData.prototype, "active", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], SMSData.prototype, "lut", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], SMSData.prototype, "expires", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], SMSData.prototype, "mobile", void 0);
+exports.SMSData = SMSData;
 /**
  * Buka AddressData class
 */

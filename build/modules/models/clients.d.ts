@@ -115,6 +115,32 @@ export declare class ContactData {
     toMap(): Record<string, unknown>;
 }
 /**
+ * Buka SMSData class
+*/
+export declare class SMSData {
+    active: boolean;
+    lut: undefined | number;
+    expires: undefined | number;
+    mobile: string;
+    /**
+     * Change record to SMSData class
+     *
+     * @param {Record<string, unknown>} obj  json object from db
+     * @return {SMSData} this class
+     */
+    static fromJson(obj: Record<string, unknown>): SMSData;
+    /**
+     * This class handler to json
+     * @return {string} text
+     */
+    toJsonString(): string;
+    /**
+    * get document in map format
+    * @return { Record<string, unknown>} returns doc map .
+    */
+    toMap(): Record<string, unknown>;
+}
+/**
  * Buka AddressData class
 */
 export declare class AddressData {
