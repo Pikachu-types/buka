@@ -179,6 +179,48 @@ export class ContactData {
 }
 
 /**
+ * Buka SMSData class
+*/
+export class SMSData {
+  /* eslint new-cap: ["error", { "capIsNew": false }]*/
+  @Expose() active = false;
+  @Expose() lut: undefined | number;
+  @Expose() expires: undefined | number;
+  @Expose() mobile = "";
+
+  /**
+   * Change record to SMSData class
+   *
+   * @param {Record<string, unknown>} obj  json object from db
+   * @return {SMSData} this class
+   */
+  public static fromJson(obj: Record<string, unknown>)
+    : SMSData {
+    const result: SMSData = plainToInstance(SMSData, obj,
+      { excludeExtraneousValues: true });
+    return result;
+  }
+
+
+  /**
+   * This class handler to json
+   * @return {string} text
+   */
+  public toJsonString(): string {
+    return JSON.stringify(this);
+  }
+
+  /**
+  * get document in map format
+  * @return { Record<string, unknown>} returns doc map .
+  */
+  public toMap()
+    : Record<string, unknown> {
+    return JSON.parse(this.toJsonString());
+  }
+}
+
+/**
  * Buka AddressData class
 */
 export class AddressData {
