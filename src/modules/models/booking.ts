@@ -13,6 +13,7 @@ export class ReservationData {
   @Expose() created = 0;
   @Expose() lut = 0;
   @Expose() productID = "";
+  @Expose() conversationID: string | undefined;
   @Expose() uid = "";
   @Expose() updatedBy = "";
   @Expose() currency = "";

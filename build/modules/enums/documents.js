@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendgridTemplates = exports.Status = exports.NotificationChannelGroups = exports.PaymentTypes = exports.AppMode = exports.BookingSource = exports.PaymentMethod = exports.NotificationChannels = exports.GeographyType = exports.NotificationType = exports.BukaCustomDomain = exports.AccountPrivileges = exports.DocumentReference = void 0;
+exports.SendgridTemplates = exports.Status = exports.NotificationChannelGroups = exports.PaymentTypes = exports.AppMode = exports.BookingSource = exports.PaymentMethod = exports.NotificationChannels = exports.Locales = exports.GeographyType = exports.NotificationType = exports.BukaCustomDomain = exports.AccountPrivileges = exports.DocumentReference = void 0;
 /**
  * Default database document references
  */
@@ -112,6 +112,14 @@ var GeographyType;
     GeographyType["ISO2"] = "iso3";
     GeographyType["ISO3"] = "ios2";
 })(GeographyType = exports.GeographyType || (exports.GeographyType = {}));
+/**
+ * locale
+ */
+var Locales;
+(function (Locales) {
+    Locales[Locales["en"] = 0] = "en";
+    Locales[Locales["sv"] = 1] = "sv";
+})(Locales = exports.Locales || (exports.Locales = {}));
 /**
  * Channels enum keys
  */

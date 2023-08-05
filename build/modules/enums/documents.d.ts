@@ -105,6 +105,13 @@ export declare enum GeographyType {
     ISO3 = "ios2"
 }
 /**
+ * locale
+ */
+export declare enum Locales {
+    en = 0,
+    sv = 1
+}
+/**
  * Channels enum keys
  */
 export declare enum NotificationChannels {

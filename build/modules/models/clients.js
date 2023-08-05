@@ -21,10 +21,12 @@ class OrganisationData {
         this.logo = "";
         this.currency = "";
         this.domain = "";
+        this.locale = "";
         this.id = "";
         this.memberID = "";
         this.regSource = "";
         this.stripeID = "";
+        this.sms = {};
         this.contact = {};
         this.referral = {};
         this.schedule = {};
@@ -87,6 +89,7 @@ class OrganisationData {
     resolveMaps() {
         this.contactData = ContactData.fromJson(this.contact);
         this.scheduleData = ScheduleData.fromJson(this.schedule);
+        this.smsData = SMSData.fromJson(this.sms);
         this.onboardingData = onboarding_1.OnboardingData.fromJson(this.onboarding);
     }
     /**
@@ -126,6 +129,9 @@ __decorate([
 ], OrganisationData.prototype, "domain", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
+], OrganisationData.prototype, "locale", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
 ], OrganisationData.prototype, "id", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
@@ -142,6 +148,9 @@ __decorate([
 __decorate([
     (0, class_transformer_1.Expose)()
 ], OrganisationData.prototype, "rating", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], OrganisationData.prototype, "sms", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
 ], OrganisationData.prototype, "contact", void 0);
@@ -294,6 +303,9 @@ __decorate([
 __decorate([
     (0, class_transformer_1.Expose)()
 ], SMSData.prototype, "mobile", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], SMSData.prototype, "trial", void 0);
 exports.SMSData = SMSData;
 /**
  * Buka AddressData class

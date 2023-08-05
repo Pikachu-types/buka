@@ -115,6 +115,14 @@ export enum GeographyType {
 }
 
 /**
+ * locale
+ */
+export enum Locales {
+  en,
+  sv
+}
+
+/**
  * Channels enum keys
  */
 export enum NotificationChannels {

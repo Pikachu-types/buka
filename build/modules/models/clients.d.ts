@@ -8,12 +8,14 @@ export declare class OrganisationData {
     logo: string;
     currency: string;
     domain: string;
+    locale: string;
     id: string;
     memberID: string;
     regSource: string;
     stripeID: string;
     category: string | undefined;
     rating: number | undefined;
+    sms: Record<string, unknown>;
     contact: Record<string, unknown>;
     referral: Record<string, unknown>;
     schedule: Record<string, unknown>;
@@ -29,6 +31,7 @@ export declare class OrganisationData {
     contactData: ContactData | undefined;
     scheduleData: ScheduleData | undefined;
     onboardingData: OnboardingData | undefined;
+    smsData: SMSData | undefined;
     /**
      * Change record to Reservation class
      *
@@ -115,6 +118,13 @@ export declare class ContactData {
     toMap(): Record<string, unknown>;
 }
 /**
+ * BookingEmailNotify
+*/
+export interface SMSTrial {
+    active: boolean;
+    ends: number;
+}
+/**
  * Buka SMSData class
 */
 export declare class SMSData {
@@ -122,6 +132,7 @@ export declare class SMSData {
     lut: undefined | number;
     expires: undefined | number;
     mobile: string;
+    trial: SMSTrial | undefined;
     /**
      * Change record to SMSData class
      *

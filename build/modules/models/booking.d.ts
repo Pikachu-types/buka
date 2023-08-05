@@ -11,6 +11,7 @@ export declare class ReservationData {
     created: number;
     lut: number;
     productID: string;
+    conversationID: string | undefined;
     uid: string;
     updatedBy: string;
     currency: string;

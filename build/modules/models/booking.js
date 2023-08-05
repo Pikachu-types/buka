@@ -151,6 +151,9 @@ __decorate([
 ], ReservationData.prototype, "productID", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
+], ReservationData.prototype, "conversationID", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
 ], ReservationData.prototype, "uid", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()

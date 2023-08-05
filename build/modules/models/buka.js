@@ -51,11 +51,12 @@ Buka.appShareTitle = "Buka Direct: Simple Safe Reservations " +
         AppIdentifier["iosID"] = "1593979273";
         AppIdentifier["businessAndroid"] = "business.buka.direct";
         AppIdentifier["businessIOS"] = "business.buka.direct";
-        AppIdentifier["businessIosID"] = "";
+        AppIdentifier["businessIosID"] = "6450372812";
     })(AppIdentifier = Buka.AppIdentifier || (Buka.AppIdentifier = {}));
     let Links;
     (function (Links) {
         Links["mePrefix"] = "https://me.buka.direct";
+        Links["mPrefix"] = "https://m.buka.direct";
     })(Links = Buka.Links || (Buka.Links = {}));
 })(Buka = exports.Buka || (exports.Buka = {}));
 //# sourceMappingURL=buka.js.map

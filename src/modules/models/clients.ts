@@ -12,12 +12,14 @@ export class OrganisationData {
   @Expose() logo = "";
   @Expose() currency = "";
   @Expose() domain = "";
+  @Expose() locale = "";
   @Expose() id = "";
   @Expose() memberID = "";
   @Expose() regSource = "";
   @Expose() stripeID = "";
   @Expose() category: string | undefined;
   @Expose() rating: number | undefined;
+  @Expose() sms: Record<string, unknown> = {};
   @Expose() contact: Record<string, unknown> = {};
   @Expose() referral: Record<string, unknown> = {};
   @Expose() schedule: Record<string, unknown> = {};
@@ -34,6 +36,7 @@ export class OrganisationData {
   contactData: ContactData | undefined;
   scheduleData: ScheduleData | undefined;
   onboardingData: OnboardingData | undefined;
+  smsData: SMSData | undefined;
 
   /**
    * Change record to Reservation class
@@ -93,6 +96,7 @@ export class OrganisationData {
   public resolveMaps(): void {
     this.contactData = ContactData.fromJson(this.contact);
     this.scheduleData = ScheduleData.fromJson(this.schedule);
+    this.smsData = SMSData.fromJson(this.sms);
     this.onboardingData = OnboardingData.fromJson(this.onboarding);
   }
 
@@ -179,6 +183,13 @@ export class ContactData {
 }
 
 /**
+ * BookingEmailNotify
+*/
+export interface SMSTrial {
+  active: boolean,
+  ends: number,
+}
+/**
  * Buka SMSData class
 */
 export class SMSData {
@@ -187,6 +198,7 @@ export class SMSData {
   @Expose() lut: undefined | number;
   @Expose() expires: undefined | number;
   @Expose() mobile = "";
+  @Expose() trial: SMSTrial | undefined;
 
   /**
    * Change record to SMSData class

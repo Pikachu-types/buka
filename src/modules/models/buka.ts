@@ -51,9 +51,10 @@ export namespace Buka {
     iosID = "1593979273",
     businessAndroid = "business.buka.direct",
     businessIOS = "business.buka.direct",
-    businessIosID = "",
+    businessIosID = "6450372812",
   }
   export enum Links{
     mePrefix = "https://me.buka.direct",
+    mPrefix = "https://m.buka.direct",
   }
 }

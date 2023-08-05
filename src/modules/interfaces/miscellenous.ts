@@ -1,3 +1,5 @@
+import { Locales } from "../enums/documents";
+
 /**
  * Linkly API Request 
  */
@@ -87,4 +89,16 @@ export type DynamicLinkBodyParam = {
       socialImageLink: string,
     } 
   }
+}
+
+
+/**
+ * new reservation notify
+*/
+export type NewReservationNotify = {
+  business: string;
+  locale: Locales;
+  date: string;
+  chatLink: string | undefined;
+  link: string;
 }
