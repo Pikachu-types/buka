@@ -118,8 +118,8 @@ export enum GeographyType {
  * locale
  */
 export enum Locales {
-  en,
-  sv
+  en = "en",
+  sv= "sv"
 }
 
 /**
