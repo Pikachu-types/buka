@@ -32,7 +32,7 @@ export class OrganisationData {
   @Expose() whyUseBuka: string[] | undefined;
   @Expose() gallery: string[] | undefined;
   @Expose() methods: string[] | undefined;
-
+s
   contactData: ContactData | undefined;
   scheduleData: ScheduleData | undefined;
   onboardingData: OnboardingData | undefined;
