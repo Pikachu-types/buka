@@ -137,19 +137,19 @@ class ServerApiClient {
      * @return {Promise<string>} returns f
      */
     static generateDynamicLink(data) {
-        var _a, _b;
+        var _a, _b, _c;
         return __awaiter(this, void 0, void 0, function* () {
             const body = {
                 dynamicLinkInfo: {
                     domainUriPrefix: data.prefix,
-                    link: (_a = data.link) !== null && _a !== void 0 ? _a : buka_1.Buka.linkBuilder(data.header, data.param),
+                    link: (_a = data.link) !== null && _a !== void 0 ? _a : buka_1.Buka.linkBuilder(data.header, data.param, (_b = data.console) !== null && _b !== void 0 ? _b : false),
                     androidInfo: {
                         androidMinPackageVersionCode: "1",
                         androidPackageName: data.androidPackageName,
                     },
                     iosInfo: {
                         iosAppStoreId: data.iosAppStoreID,
-                        iosIpadBundleId: (_b = data.iosIpadBundleID) !== null && _b !== void 0 ? _b : data.iosBundleID,
+                        iosIpadBundleId: (_c = data.iosIpadBundleID) !== null && _c !== void 0 ? _c : data.iosBundleID,
                         iosBundleId: data.iosBundleID,
                     },
                     socialMetaTagInfo: data.social ? {

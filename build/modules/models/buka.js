@@ -49,8 +49,8 @@ Buka.appShareTitle = "Buka Direct: Simple Safe Reservations " +
         AppIdentifier["android"] = "org.jackmay.afikana";
         AppIdentifier["ios"] = "app.rebat.afroSalong";
         AppIdentifier["iosID"] = "1593979273";
-        AppIdentifier["businessAndroid"] = "business.buka.direct";
-        AppIdentifier["businessIOS"] = "business.buka.direct";
+        AppIdentifier["businessAndroid"] = "direct.buka.business";
+        AppIdentifier["businessIOS"] = "direct.buka.business";
         AppIdentifier["businessIosID"] = "6450372812";
     })(AppIdentifier = Buka.AppIdentifier || (Buka.AppIdentifier = {}));
     let Links;

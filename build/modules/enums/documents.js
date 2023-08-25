@@ -117,8 +117,8 @@ var GeographyType;
  */
 var Locales;
 (function (Locales) {
-    Locales[Locales["en"] = 0] = "en";
-    Locales[Locales["sv"] = 1] = "sv";
+    Locales["en"] = "en";
+    Locales["sv"] = "sv";
 })(Locales = exports.Locales || (exports.Locales = {}));
 /**
  * Channels enum keys
@@ -162,15 +162,15 @@ var AppMode;
  */
 var PaymentTypes;
 (function (PaymentTypes) {
-    PaymentTypes["card"] = "card";
-    PaymentTypes["klarna"] = "klarna";
-    PaymentTypes["link"] = "link";
-    PaymentTypes["wechat"] = "wechat_pay";
-    PaymentTypes["aliPay"] = "alipay";
-    PaymentTypes["sepa"] = "sepa_debit";
-    PaymentTypes["giropay"] = "giropay";
-    PaymentTypes["swish"] = "swish";
-    PaymentTypes["tink"] = "tink";
+    PaymentTypes["Card"] = "card";
+    PaymentTypes["Klarna"] = "klarna";
+    PaymentTypes["Link"] = "link";
+    PaymentTypes["Wechat"] = "wechat_pay";
+    PaymentTypes["AliPay"] = "alipay";
+    PaymentTypes["Sepa"] = "sepa_debit";
+    PaymentTypes["Giropay"] = "giropay";
+    PaymentTypes["Swish"] = "swish";
+    PaymentTypes["Tink"] = "tink";
 })(PaymentTypes = exports.PaymentTypes || (exports.PaymentTypes = {}));
 /**
  * Channels enum group keys

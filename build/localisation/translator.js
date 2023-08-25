@@ -25,7 +25,7 @@ Date: ${notify.date}
 View reservation here: ${notify.link}`;
                 if (notify.chatLink !== undefined) {
                     message = message + `
-Start a conversation: ${notify.chatLink}`;
+\nStart a conversation: ${notify.chatLink}`;
                 }
             }
             else if (notify.locale === modules_1.Locales.sv) {
@@ -36,7 +36,7 @@ Datum: ${notify.date}
 Se bokning här: ${notify.link}`;
                 if (notify.chatLink !== undefined) {
                     message = message + `
-Starta en konversation: ${notify.chatLink}`;
+\nStarta en konversation: ${notify.chatLink}`;
                 }
             }
             return message;

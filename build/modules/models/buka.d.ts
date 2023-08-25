@@ -35,8 +35,8 @@ export declare namespace Buka {
         android = "org.jackmay.afikana",
         ios = "app.rebat.afroSalong",
         iosID = "1593979273",
-        businessAndroid = "business.buka.direct",
-        businessIOS = "business.buka.direct",
+        businessAndroid = "direct.buka.business",
+        businessIOS = "direct.buka.business",
         businessIosID = "6450372812"
     }
     enum Links {

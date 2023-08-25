@@ -108,8 +108,8 @@ export declare enum GeographyType {
  * locale
  */
 export declare enum Locales {
-    en = 0,
-    sv = 1
+    en = "en",
+    sv = "sv"
 }
 /**
  * Channels enum keys
@@ -148,15 +148,15 @@ export declare enum AppMode {
  * Stripe payment enums
  */
 export declare enum PaymentTypes {
-    card = "card",
-    klarna = "klarna",
-    link = "link",
-    wechat = "wechat_pay",
-    aliPay = "alipay",
-    sepa = "sepa_debit",
-    giropay = "giropay",
-    swish = "swish",
-    tink = "tink"
+    Card = "card",
+    Klarna = "klarna",
+    Link = "link",
+    Wechat = "wechat_pay",
+    AliPay = "alipay",
+    Sepa = "sepa_debit",
+    Giropay = "giropay",
+    Swish = "swish",
+    Tink = "tink"
 }
 /**
  * Channels enum group keys

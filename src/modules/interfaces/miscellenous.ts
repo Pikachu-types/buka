@@ -52,6 +52,7 @@ export type LinklyAPIResponse = {
 */
 export type DynamicLinkParam = {
   link?: string,
+  console?: boolean,
   prefix: string,
   apiKey: string,
   header: string,

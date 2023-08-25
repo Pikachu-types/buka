@@ -110,7 +110,8 @@ export class ServerApiClient {
     const body: DynamicLinkBodyParam = {
       dynamicLinkInfo: {
         domainUriPrefix: data.prefix,
-        link: data.link ?? Buka.linkBuilder(data.header, data.param),
+        link: data.link ?? Buka.linkBuilder(data.header,
+          data.param, data.console ?? false),
         androidInfo: {
           androidMinPackageVersionCode: "1",
           androidPackageName: data.androidPackageName,
