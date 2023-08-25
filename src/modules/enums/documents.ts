@@ -163,15 +163,15 @@ export enum AppMode {
  * Stripe payment enums
  */
 export enum PaymentTypes {
-  card = "card",
-  klarna = "klarna",
-  link = "link",
-  wechat = "wechat_pay",
-  aliPay = "alipay",
-  sepa = "sepa_debit",
-  giropay = "giropay",
-  swish = "swish",
-  tink = "tink",
+  Card = "card",
+  Klarna = "klarna",
+  Link = "link",
+  Wechat = "wechat_pay",
+  AliPay = "alipay",
+  Sepa = "sepa_debit",
+  Giropay = "giropay",
+  Swish = "swish",
+  Tink = "tink",
 }
 
 /**
