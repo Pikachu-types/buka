@@ -345,6 +345,9 @@ __decorate([
 __decorate([
     (0, class_transformer_1.Expose)()
 ], BukaCheckoutData.prototype, "promoCode", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], BukaCheckoutData.prototype, "reference", void 0);
 exports.BukaCheckoutData = BukaCheckoutData;
 /**
  * Buka BookingData class

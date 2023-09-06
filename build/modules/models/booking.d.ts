@@ -136,6 +136,7 @@ export declare class BukaCheckoutData {
     previousPayment: number;
     price: number;
     promoCode: string;
+    reference: undefined | string;
     /**
      * Change Firebase record to BukaCheckoutData class
      *

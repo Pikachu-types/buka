@@ -216,6 +216,7 @@ export class BukaCheckoutData {
   @Expose() previousPayment = 0;
   @Expose() price = 0;
   @Expose() promoCode = "";
+  @Expose() reference: undefined | string;
 
   /**
    * Change Firebase record to BukaCheckoutData class
