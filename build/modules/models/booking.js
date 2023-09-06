@@ -391,6 +391,20 @@ class BookingData {
         return JSON.stringify(this);
     }
     /**
+     * Helper class function to find one specific object based on id
+     *
+     * @param {BookingData[]} list an array to sort from and find given
+     * @param {string} id provide the needed id to match for
+     * @return {BookingData | undefined} found object else undefined
+     */
+    static findOne(list, id) {
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].id === id)
+                return list[i];
+        }
+        return;
+    }
+    /**
      * resolves certain maps from original json
      * @return {void} text
      */

@@ -200,6 +200,14 @@ export declare class BookingData {
      */
     toJsonString(): string;
     /**
+     * Helper class function to find one specific object based on id
+     *
+     * @param {BookingData[]} list an array to sort from and find given
+     * @param {string} id provide the needed id to match for
+     * @return {BookingData | undefined} found object else undefined
+     */
+    static findOne(list: BookingData[], id: string): BookingData | undefined;
+    /**
      * resolves certain maps from original json
      * @return {void} text
      */
