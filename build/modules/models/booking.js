@@ -370,6 +370,7 @@ class BookingData {
         this.price = 0;
         this.lut = 0;
         this.created = 0;
+        this.paid = 0;
         this.fee = 0;
         // if payment had been triggered previously and waiting confirmation
         this.pending = false;
@@ -473,6 +474,9 @@ __decorate([
 __decorate([
     (0, class_transformer_1.Expose)()
 ], BookingData.prototype, "created", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], BookingData.prototype, "paid", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
 ], BookingData.prototype, "fee", void 0);

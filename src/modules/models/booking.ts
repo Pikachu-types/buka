@@ -270,6 +270,7 @@ export class BookingData {
   @Expose() price = 0;
   @Expose() lut = 0;
   @Expose() created = 0;
+  @Expose() paid = 0;
   @Expose() fee = 0;
   // if payment had been triggered previously and waiting confirmation
   @Expose() pending = false;
@@ -277,6 +278,7 @@ export class BookingData {
   @Expose() reviewed = false;
   @Expose() time: Record<string, unknown> = {};
   @Expose() stripe: Record<string, unknown> | undefined;
+  @Expose() finishedInCash: boolean | undefined;
   @Expose() checkout: Record<string, unknown> | undefined;
   @Expose() earned: number | undefined;
   @Expose() expectedGems: number | undefined;
