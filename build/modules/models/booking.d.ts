@@ -170,7 +170,8 @@ export declare class BookingData {
     itemID: string;
     link: string;
     price: number;
-    paid: number;
+    lut: number;
+    created: number;
     fee: number;
     pending: boolean;
     cleared: boolean;

@@ -98,7 +98,9 @@ class ReviewRequest {
     * @return { Record<string, unknown>} returns doc map .
     */
     toMap() {
-        return JSON.parse(this.toJsonString());
+        const res = JSON.parse(this.toJsonString());
+        delete res["items"];
+        return res;
     }
 }
 __decorate([

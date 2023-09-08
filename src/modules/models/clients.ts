@@ -121,7 +121,12 @@ export class OrganisationData {
   */
   public toMap()
     : Record<string, unknown> {
-    return JSON.parse(this.toJsonString());
+    const res = JSON.parse(this.toJsonString());
+    delete res["onboardingData"];
+    delete res["contactData"];
+    delete res["smsData"];
+    delete res["scheduleData"];
+    return res;
   }
 }
 

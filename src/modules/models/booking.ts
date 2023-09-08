@@ -125,7 +125,9 @@ export class ReservationData {
   */
   public toMap()
     : Record<string, unknown> {
-    return JSON.parse(this.toJsonString());
+    const res = JSON.parse(this.toJsonString());
+    delete res["timeModel"];
+    return res;
   }
 }
 
@@ -266,7 +268,8 @@ export class BookingData {
   @Expose() itemID = "";
   @Expose() link = "";
   @Expose() price = 0;
-  @Expose() paid = 0;
+  @Expose() lut = 0;
+  @Expose() created = 0;
   @Expose() fee = 0;
   // if payment had been triggered previously and waiting confirmation
   @Expose() pending = false;
@@ -344,6 +347,10 @@ export class BookingData {
   */
   public toMap()
     : Record<string, unknown> {
-    return JSON.parse(this.toJsonString());
+    const res = JSON.parse(this.toJsonString());
+    delete res["timeData"];
+    delete res["stripeData"];
+    delete res["checkoutData"];
+    return res;
   }
 }

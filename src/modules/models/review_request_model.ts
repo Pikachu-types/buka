@@ -104,7 +104,9 @@ export class ReviewRequest {
   */
   public toMap()
     : Record<string, unknown> {
-    return JSON.parse(this.toJsonString());
+    const res = JSON.parse(this.toJsonString());
+    delete res["items"];
+    return res;
   }
 }
 

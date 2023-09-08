@@ -122,7 +122,9 @@ class ReservationData {
     * @return { Record<string, unknown>} returns doc map .
     */
     toMap() {
-        return JSON.parse(this.toJsonString());
+        const res = JSON.parse(this.toJsonString());
+        delete res["timeModel"];
+        return res;
     }
 }
 __decorate([
@@ -366,7 +368,8 @@ class BookingData {
         this.itemID = "";
         this.link = "";
         this.price = 0;
-        this.paid = 0;
+        this.lut = 0;
+        this.created = 0;
         this.fee = 0;
         // if payment had been triggered previously and waiting confirmation
         this.pending = false;
@@ -424,7 +427,11 @@ class BookingData {
     * @return { Record<string, unknown>} returns doc map .
     */
     toMap() {
-        return JSON.parse(this.toJsonString());
+        const res = JSON.parse(this.toJsonString());
+        delete res["timeData"];
+        delete res["stripeData"];
+        delete res["checkoutData"];
+        return res;
     }
 }
 __decorate([
@@ -462,7 +469,10 @@ __decorate([
 ], BookingData.prototype, "price", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], BookingData.prototype, "paid", void 0);
+], BookingData.prototype, "lut", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], BookingData.prototype, "created", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
 ], BookingData.prototype, "fee", void 0);
