@@ -156,7 +156,8 @@ export declare enum PaymentTypes {
     Sepa = "sepa_debit",
     Giropay = "giropay",
     Swish = "swish",
-    Tink = "tink"
+    Tink = "tink",
+    Stripe = "stripe"
 }
 /**
  * Channels enum group keys

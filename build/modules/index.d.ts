@@ -7,6 +7,8 @@ export * from "./interfaces/account";
 export * from "./models/onboarding";
 export * from "./enums/documents";
 export * from "./models/conversation";
+export * from "./models/stripe";
+export * from "./models/requests-models";
 export * from "./models/support_model";
 export * from "./models/twilo_data";
 export * from "./models/buka";

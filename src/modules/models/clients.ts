@@ -20,6 +20,7 @@ export class OrganisationData {
   @Expose() category: string | undefined;
   @Expose() rating: number | undefined;
   @Expose() sms: Record<string, unknown> = {};
+  @Expose() provider?: PaymentConnectors;
   @Expose() contact: Record<string, unknown> = {};
   @Expose() referral: Record<string, unknown> = {};
   @Expose() schedule: Record<string, unknown> = {};
@@ -192,6 +193,23 @@ export class ContactData {
 export interface SMSTrial {
   active: boolean,
   ends: number,
+}
+/**
+ * BookingEmailNotify
+*/
+export interface PaymentConnectors {
+  stripe?: PayProviderData,
+  tink?: PayProviderData,
+}
+
+/**
+ * BookingEmailNotify
+*/
+export interface PayProviderData {
+  id: string,
+  testID?: string,
+  created?: number,
+  completed: boolean,
 }
 /**
  * Buka SMSData class

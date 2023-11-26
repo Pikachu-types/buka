@@ -16,6 +16,7 @@ export declare class OrganisationData {
     category: string | undefined;
     rating: number | undefined;
     sms: Record<string, unknown>;
+    provider?: PaymentConnectors;
     contact: Record<string, unknown>;
     referral: Record<string, unknown>;
     schedule: Record<string, unknown>;
@@ -123,6 +124,22 @@ export declare class ContactData {
 export interface SMSTrial {
     active: boolean;
     ends: number;
+}
+/**
+ * BookingEmailNotify
+*/
+export interface PaymentConnectors {
+    stripe?: PayProviderData;
+    tink?: PayProviderData;
+}
+/**
+ * BookingEmailNotify
+*/
+export interface PayProviderData {
+    id: string;
+    testID?: string;
+    created?: number;
+    completed: boolean;
 }
 /**
  * Buka SMSData class

@@ -179,6 +179,7 @@ export declare class BookingData {
     reviewed: boolean;
     time: Record<string, unknown>;
     stripe: Record<string, unknown> | undefined;
+    finishedInCash: boolean | undefined;
     checkout: Record<string, unknown> | undefined;
     earned: number | undefined;
     expectedGems: number | undefined;

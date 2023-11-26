@@ -97,3 +97,11 @@ export type NewReservationNotify = {
     chatLink: string | undefined;
     link: string;
 };
+/**
+ * Default response interface
+ */
+export interface DefaultResponse {
+    status: string;
+    reason?: string;
+    data?: Record<string, unknown>;
+}

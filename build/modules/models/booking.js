@@ -497,6 +497,9 @@ __decorate([
 ], BookingData.prototype, "stripe", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
+], BookingData.prototype, "finishedInCash", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
 ], BookingData.prototype, "checkout", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()

@@ -158,6 +158,9 @@ __decorate([
 ], OrganisationData.prototype, "sms", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
+], OrganisationData.prototype, "provider", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
 ], OrganisationData.prototype, "contact", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()

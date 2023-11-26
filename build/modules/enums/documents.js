@@ -171,6 +171,7 @@ var PaymentTypes;
     PaymentTypes["Giropay"] = "giropay";
     PaymentTypes["Swish"] = "swish";
     PaymentTypes["Tink"] = "tink";
+    PaymentTypes["Stripe"] = "stripe";
 })(PaymentTypes = exports.PaymentTypes || (exports.PaymentTypes = {}));
 /**
  * Channels enum group keys

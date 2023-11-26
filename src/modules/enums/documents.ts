@@ -172,6 +172,7 @@ export enum PaymentTypes {
   Giropay = "giropay",
   Swish = "swish",
   Tink = "tink",
+  Stripe = "stripe",
 }
 
 /**
