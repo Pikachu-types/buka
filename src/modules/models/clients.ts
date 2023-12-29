@@ -1,7 +1,8 @@
 import { plainToInstance, Expose } from "class-transformer";
 import { OnboardingData } from "./onboarding";
 import { AccountPrivileges } from "../enums/documents";
-import { UserModel, equalToIgnoreCase } from "labs-sharable";
+import { equalToIgnoreCase } from "labs-sharable";
+import { UserModel } from "./user";
 
 /**
  * Buka OrganisationData class

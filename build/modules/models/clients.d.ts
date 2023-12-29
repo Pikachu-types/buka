@@ -1,5 +1,5 @@
 import { OnboardingData } from "./onboarding";
-import { UserModel } from "labs-sharable";
+import { UserModel } from "./user";
 /**
  * Buka OrganisationData class
 */

@@ -1,7 +1,8 @@
-import { TaxBehavior, UserModel } from "labs-sharable";
+import { TaxBehavior } from "labs-sharable";
 import { BookingData, ReservationData } from "../models/booking";
 import { OrganisationData } from "../models/clients";
 import { ReviewRequest } from "../models/review_request_model";
+import { UserModel } from "../models/user";
 /**
  * Invoice item data
  */
