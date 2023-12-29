@@ -4,8 +4,11 @@
 export class Buka {
   public static linklyEndpoint = "https://app.linklyhq.com/api/v1/link";
   public static linklyWorkspace = 111178;
+  public static charge: number = 0.1;
   public static checkoutDomain = "checkout.buka.direct";
   public static console = "console.buka.direct";
+  public static paysuccessUrl = "https://app.buka.direct/payments/successful";
+  public static payfailureUrl = "https://app.buka.direct/payments/failed";
   public static businessUniLink = "app.buka.direct/business";
   public static website = "buka.direct";
   public static groupEmail = "team@boka.direct";

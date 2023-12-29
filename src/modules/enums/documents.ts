@@ -74,6 +74,22 @@ export enum DocumentReference {
 }
 
 /**
+ * Document types
+ */
+export enum DocumentTypes {
+  /**
+   * Registered users
+   */
+  user = "user_",
+  client = "client_",
+  clientUser = "ba_",
+  notifications = "noti_",
+  payments = "payment_",
+  reservations = "reservations_",
+  bookings = "bookings_",
+}
+
+/**
  * Buka spaces' account privileges
  */
 export enum AccountPrivileges {

@@ -1,7 +1,8 @@
-import { NotificationRestriction, UserModel } from "labs-sharable";
+import { NotificationRestriction } from "labs-sharable";
 import { OrganisationData } from "../models/clients";
 import { FCMArgs } from "labs-sharable/dist/modules/fcm_models";
 import { ExtraNotificationTrayData } from "labs-sharable/dist/modules/notifications";
+import { UserModel } from "../models/user";
 
 /**
  * Account type

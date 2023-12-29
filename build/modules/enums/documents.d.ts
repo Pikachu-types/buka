@@ -67,6 +67,21 @@ export declare enum DocumentReference {
     onbooked = "reservations/{reservation}/bookings/{booking}"
 }
 /**
+ * Document types
+ */
+export declare enum DocumentTypes {
+    /**
+     * Registered users
+     */
+    user = "user_",
+    client = "client_",
+    clientUser = "ba_",
+    notifications = "noti_",
+    payments = "payment_",
+    reservations = "reservations_",
+    bookings = "bookings_"
+}
+/**
  * Buka spaces' account privileges
  */
 export declare enum AccountPrivileges {

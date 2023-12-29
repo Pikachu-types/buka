@@ -29,8 +29,11 @@ class Buka {
 exports.Buka = Buka;
 Buka.linklyEndpoint = "https://app.linklyhq.com/api/v1/link";
 Buka.linklyWorkspace = 111178;
+Buka.charge = 0.1;
 Buka.checkoutDomain = "checkout.buka.direct";
 Buka.console = "console.buka.direct";
+Buka.paysuccessUrl = "https://app.buka.direct/payments/successful";
+Buka.payfailureUrl = "https://app.buka.direct/payments/failed";
 Buka.businessUniLink = "app.buka.direct/business";
 Buka.website = "buka.direct";
 Buka.groupEmail = "team@boka.direct";

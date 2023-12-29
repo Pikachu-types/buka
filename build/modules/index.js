@@ -24,6 +24,7 @@ __exportStar(require("./models/onboarding"), exports);
 __exportStar(require("./enums/documents"), exports);
 __exportStar(require("./models/conversation"), exports);
 __exportStar(require("./models/stripe"), exports);
+__exportStar(require("./models/user"), exports);
 __exportStar(require("./models/requests-models"), exports);
 __exportStar(require("./models/support_model"), exports);
 __exportStar(require("./models/twilo_data"), exports);

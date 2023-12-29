@@ -133,7 +133,7 @@ export interface PaymentConnectors {
     tink?: PayProviderData;
 }
 /**
- * BookingEmailNotify
+ * Data
 */
 export interface PayProviderData {
     id: string;

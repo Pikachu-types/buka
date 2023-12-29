@@ -203,7 +203,7 @@ export interface PaymentConnectors {
 }
 
 /**
- * BookingEmailNotify
+ * Data
 */
 export interface PayProviderData {
   id: string,

@@ -4,8 +4,11 @@
 export declare class Buka {
     static linklyEndpoint: string;
     static linklyWorkspace: number;
+    static charge: number;
     static checkoutDomain: string;
     static console: string;
+    static paysuccessUrl: string;
+    static payfailureUrl: string;
     static businessUniLink: string;
     static website: string;
     static groupEmail: string;

@@ -3,6 +3,8 @@
         "Linkly",
         "miscellenous",
         "onbooked",
+        "payfailure",
+        "paysuccess",
         "tink"
     ]
 }

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SendgridTemplates = exports.Status = exports.NotificationChannelGroups = exports.PaymentTypes = exports.AppMode = exports.BookingSource = exports.PaymentMethod = exports.NotificationChannels = exports.Locales = exports.GeographyType = exports.NotificationType = exports.BukaCustomDomain = exports.AccountPrivileges = exports.DocumentReference = void 0;
+exports.SendgridTemplates = exports.Status = exports.NotificationChannelGroups = exports.PaymentTypes = exports.AppMode = exports.BookingSource = exports.PaymentMethod = exports.NotificationChannels = exports.Locales = exports.GeographyType = exports.NotificationType = exports.BukaCustomDomain = exports.AccountPrivileges = exports.DocumentTypes = exports.DocumentReference = void 0;
 /**
  * Default database document references
  */
@@ -70,6 +70,22 @@ var DocumentReference;
      */
     DocumentReference["onbooked"] = "reservations/{reservation}/bookings/{booking}";
 })(DocumentReference = exports.DocumentReference || (exports.DocumentReference = {}));
+/**
+ * Document types
+ */
+var DocumentTypes;
+(function (DocumentTypes) {
+    /**
+     * Registered users
+     */
+    DocumentTypes["user"] = "user_";
+    DocumentTypes["client"] = "client_";
+    DocumentTypes["clientUser"] = "ba_";
+    DocumentTypes["notifications"] = "noti_";
+    DocumentTypes["payments"] = "payment_";
+    DocumentTypes["reservations"] = "reservations_";
+    DocumentTypes["bookings"] = "bookings_";
+})(DocumentTypes = exports.DocumentTypes || (exports.DocumentTypes = {}));
 /**
  * Buka spaces' account privileges
  */
