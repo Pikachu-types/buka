@@ -67,6 +67,7 @@ var AkubSpace;
         Links["download"] = "https://getakub.com";
         Links["domain"] = "https://akub.co";
         Links["debugApiUri"] = "http://127.0.0.1:5001/afikanna-f2aa1/us-central1";
+        Links["debugPayApiUri"] = "http://127.0.0.1:5001/afikanna-f2aa1/us-central1/pay-api";
         Links["debugPayUI"] = "http://localhost:5100";
         Links["payments"] = "https://pay.withakub.com";
         Links["paymentApiUri"] = "https://payments.withakub.com";
@@ -105,7 +106,7 @@ var AkubSpace;
          * @return {string} returns value.
          */
         static buildPaymentRedirect(token, status, debug = false) {
-            return `${debug ? Links.debugApiUri :
+            return `${debug ? Links.debugPayApiUri :
                 Links.paymentApiUri}/payment/v1/?identifier=${token}&action=${status}`;
         }
     }

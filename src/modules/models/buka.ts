@@ -68,6 +68,7 @@ export namespace AkubSpace {
     download = "https://getakub.com",
     domain = "https://akub.co",
     debugApiUri = "http://127.0.0.1:5001/afikanna-f2aa1/us-central1",
+    debugPayApiUri = "http://127.0.0.1:5001/afikanna-f2aa1/us-central1/pay-api",
     debugPayUI = "http://localhost:5100",
     payments = "https://pay.withakub.com",
     paymentApiUri = "https://payments.withakub.com",
@@ -109,7 +110,7 @@ export namespace AkubSpace {
      * @return {string} returns value.
      */
     public static buildPaymentRedirect(token: string, status: Status, debug:boolean = false): string {
-      return `${debug ? Links.debugApiUri :
+      return `${debug ? Links.debugPayApiUri :
         Links.paymentApiUri}/payment/v1/?identifier=${token}&action=${status}`;
     }
   }
