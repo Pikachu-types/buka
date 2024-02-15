@@ -43,6 +43,32 @@ class FunctionHelpers {
         return `${source.content}-bu(${source.iv})`;
     }
     /**
+     * Change JSON to cipher string
+     * @param {Record<string, unknown>} source json content
+     * @param {string} secret designated cipher secret code
+     * @return {string} returns aes value.
+     */
+    static encryptJSON(source, secret) {
+        return this.bukaCipherString(secret, JSON.stringify(source));
+    }
+    /**
+     * Revert CipherType model string to readable string
+     * long function
+     * @param {string} cipherKey secret key
+     * @param {string} source content
+     * @return {string} returns value.
+     */
+    static bukaCipherToString(cipherKey, source) {
+        try {
+            const signature = FunctionHelpers.
+                changeCipherStringToModel(source);
+            return labs_sharable_1.LabsCipher.decrypt(signature, cipherKey);
+        }
+        catch (e) {
+            throw new labs_sharable_1.CustomError(`${e}`);
+        }
+    }
+    /**
      * Create a proper string from the CipherType model
      * long function
      * @param {string} secret secret key

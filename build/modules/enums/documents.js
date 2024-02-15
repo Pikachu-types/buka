@@ -214,6 +214,7 @@ var Status;
     Status["Accepted"] = "accepted";
     Status["Pending"] = "pending";
     Status["Refunded"] = "refunded";
+    Status["Unpaid"] = "unpaid";
     Status["Confirmed"] = "confirmed";
     Status["Unconfirmed"] = "unconfirmed";
     Status["Cancelled"] = "cancelled";
@@ -243,5 +244,6 @@ var SendgridTemplates;
     SendgridTemplates["BookingUpdated"] = "d-01dd3e6f928949de95b3ca76351eded4";
     SendgridTemplates["SendInvoiceForPayment"] = "d-6289f9798e364a2eb0877ac4431abd18";
     SendgridTemplates["SendReceiptPayment"] = "d-459cad44141e4f4183020bb543c06244";
+    SendgridTemplates["JustGotPaid"] = "d-9af5b37b8f304e9fbdc8a5593f14e835";
 })(SendgridTemplates = exports.SendgridTemplates || (exports.SendgridTemplates = {}));
 //# sourceMappingURL=documents.js.map

@@ -1,3 +1,5 @@
+import { DocumentTypes, Status } from "../enums/documents";
+
 /**
  * Buka class for lot of standard strings and whatnot
  */
@@ -13,8 +15,7 @@ export class Buka {
   public static website = "buka.direct";
   public static groupEmail = "team@boka.direct";
   public static founderEmail = "confidence@jackmay.org";
-  public static appUniLink = "buka.direct/app";
-  public static defaultEmailSender = "Jackmay from Buka<hello@buka.direct>";
+  public static defaultEmailSender = "Alal from akub (previously Buka)<hello@buka.direct>";
   public static appDescription = "Apply Buka Direct to easily make free beauty" +
     " reservations and make real-time payments to thousands of service " +
     "providers in the health and beauty sector. Create an account right" +
@@ -47,7 +48,7 @@ export class Buka {
   }
 }
 
-export namespace Buka {
+export namespace AkubSpace {
   export enum AppIdentifier{
     android = "org.jackmay.afikana",
     ios = "app.rebat.afroSalong",
@@ -55,9 +56,66 @@ export namespace Buka {
     businessAndroid = "direct.buka.business",
     businessIOS = "direct.buka.business",
     businessIosID = "6450372812",
+    uniLink = "akub://",
+    uniDomain = "https://withakub.com"
   }
+
   export enum Links{
     mePrefix = "https://me.buka.direct",
     mPrefix = "https://m.buka.direct",
+    console = "https://partners.akub.co",
+    consoleDebug = "http://localhost:5000",
+    download = "https://getakub.com",
+    domain = "https://akub.co",
+    debugApiUri = "http://127.0.0.1:5001/afikanna-f2aa1/us-central1",
+    debugPayUI = "http://localhost:5100",
+    payments = "https://pay.withakub.com",
+    paymentApiUri = "https://payments.withakub.com",
+    apiUri = "https://api.akub.co",
   }
+
+  export enum PaymentProviders{
+    stripe = "stripe",
+    tink = "tink",
+    swish = "swish",
+  }
+
+  export class helpers {
+    /**
+     * Create a pay request identifier
+     * @param {string} token payment identifier ie. payment_uuid
+     * @param {boolean} debug is payment ran in debug mode
+     * @return {string} returns value.
+     */
+    public static buildPaymentLink(token: string, debug: boolean = false): string {
+      return `${debug ? Links.debugPayUI : Links.payments}/${token.split("_")[1].trim()}`;
+    }
+    
+    /**
+     * Create payment view link for console
+     * @param {string} id payment identifier ie. payment_uuid
+     * @param {boolean} debug is payment ran in debug mode
+     * @return {string} returns value.
+     */
+    public static buildConsolePayView(id: string, debug: boolean = false): string {
+      return `${debug ? Links.debugPayUI : Links.console}/app/payments/${id}`;
+    }
+    
+    /**
+     * Create a request identifier
+     * @param {string} token payment identifier ie. payment_uuid
+     * @param {Status} status payment status
+     * @param {boolean} debug is payment ran in debug mode
+     * @return {string} returns value.
+     */
+    public static buildPaymentRedirect(token: string, status: Status, debug:boolean = false): string {
+      return `${debug ? Links.debugApiUri :
+        Links.paymentApiUri}/payment/v1/?identifier=${token}&action=${status}`;
+    }
+  }
+}
+
+/* eslint-disable */
+export function parseInterface(data: any) {
+  return JSON.parse(JSON.stringify(data));
 }

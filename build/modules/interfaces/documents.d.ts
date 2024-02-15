@@ -7,24 +7,28 @@ import { UserModel } from "../models/user";
  * Invoice item data
  */
 export interface Invoice {
-    shipping: {
-        name: string;
-        address: string;
-        country: string;
-        phone: string;
-        bukaID?: string;
-        email: string;
-        vat: string;
-    };
-    due: number | undefined;
+    shipping: ShippingDetails;
+    due: number;
     items: InvoiceItems[];
     subtotal: number;
     paid: number;
-    vat?: number;
+    vat: number;
     date: number;
-    invoice_nr: string;
+    invoiceID: string;
+    currency: string;
     taxBehavior: TaxBehavior;
     footer?: string;
+}
+/**
+ * Compact Reservation Doc
+*/
+export interface ShippingDetails {
+    name: string;
+    address: string;
+    country: string;
+    phone: string;
+    email: string;
+    vat: string;
 }
 /**
  * Compact Reservation Doc
@@ -40,9 +44,13 @@ export type CompactReservationModel = {
  * Invoice address
  */
 export interface InvoiceAddress {
+    /**
+     * Connected business id
+     */
+    clientID?: string;
     name: string;
     phone?: string;
-    email?: string;
+    email: string;
     address: string;
     vat: string;
 }
@@ -50,6 +58,9 @@ export interface InvoiceAddress {
  * Item list
  */
 export interface InvoiceItems {
+    /**
+     * Item name/description
+     */
     item: string;
     quantity: number;
     amount: number;

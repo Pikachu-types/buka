@@ -25,6 +25,21 @@ export declare class FunctionHelpers {
      */
     static createCipherString(source: CipherType): string;
     /**
+     * Change JSON to cipher string
+     * @param {Record<string, unknown>} source json content
+     * @param {string} secret designated cipher secret code
+     * @return {string} returns aes value.
+     */
+    static encryptJSON(source: Record<string, unknown>, secret: string): string;
+    /**
+     * Revert CipherType model string to readable string
+     * long function
+     * @param {string} cipherKey secret key
+     * @param {string} source content
+     * @return {string} returns value.
+     */
+    static bukaCipherToString(cipherKey: string, source: string): string;
+    /**
      * Create a proper string from the CipherType model
      * long function
      * @param {string} secret secret key

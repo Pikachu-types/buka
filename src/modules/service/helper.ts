@@ -47,6 +47,36 @@ export class FunctionHelpers {
   }
 
   /**
+   * Change JSON to cipher string
+   * @param {Record<string, unknown>} source json content
+   * @param {string} secret designated cipher secret code
+   * @return {string} returns aes value.
+   */
+  public static encryptJSON(source: Record<string, unknown>,
+    secret: string): string {
+    return this.bukaCipherString(secret, JSON.stringify(source));
+  }
+
+
+  /**
+   * Revert CipherType model string to readable string
+   * long function
+   * @param {string} cipherKey secret key
+   * @param {string} source content
+   * @return {string} returns value.
+   */
+  public static bukaCipherToString(cipherKey: string,
+    source: string): string {
+    try {
+      const signature = FunctionHelpers.
+        changeCipherStringToModel(source);
+      return LabsCipher.decrypt(signature, cipherKey);
+    } catch (e) {
+      throw new CustomError(`${e}`);
+    }
+  }
+
+  /**
    * Create a proper string from the CipherType model
    * long function
    * @param {string} secret secret key

@@ -215,6 +215,7 @@ export enum Status {
   Accepted = "accepted",
   Pending = "pending",
   Refunded = "refunded",
+  Unpaid = "unpaid",
   Confirmed = "confirmed",
   Unconfirmed = "unconfirmed",
   Cancelled = "cancelled",
@@ -244,4 +245,5 @@ export enum SendgridTemplates {
   BookingUpdated = "d-01dd3e6f928949de95b3ca76351eded4",
   SendInvoiceForPayment = "d-6289f9798e364a2eb0877ac4431abd18",
   SendReceiptPayment = "d-459cad44141e4f4183020bb543c06244",
+  JustGotPaid = "d-9af5b37b8f304e9fbdc8a5593f14e835",
 }

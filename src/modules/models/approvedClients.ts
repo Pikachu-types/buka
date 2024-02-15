@@ -4,6 +4,6 @@
  */
 export class ApprovedClients {
   static applications = ["org.jackmay.afikana",
-    "direct.buka.business", "app.rebat.afroSalong"];
+    "direct.buka.business", "app.rebat.afroSalong", "partners.akub.co"];
   static requesters = ["api.buka.direct"];
 }

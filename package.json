@@ -1,6 +1,6 @@
 {
   "name": "@bukadirect/buka",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Backend helpers and functions for Buka Direct server end services",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -27,11 +27,13 @@
     "labs-sharable": "^1.4.9",
     "reflect-metadata": "^0.1.13",
     "stripe": "^10.15.0",
+    "uuid": "^9.0.0",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^20.1.2",
+    "@types/uuid": "^9.0.3",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
     "eslint": "^8.30.0",
