@@ -2,7 +2,7 @@ import { plainToInstance, Expose } from "class-transformer";
 import { TaxBehavior } from "labs-sharable";
 import {
   InvoiceAddress,
-  InvoiceItems, InvoiceType, ShippingDetails
+  InvoiceItems,
 } from "../../interfaces/documents";
 import { DocumentTypes, Status } from "../../enums/documents";
 import { OrganisationData } from "../clients";

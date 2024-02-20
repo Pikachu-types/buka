@@ -1,4 +1,5 @@
 export * from "./models/clients";
+export * from "./models/customers/contact";
 export * from "./service/helper";
 export * from "./models/approvedClients";
 export * from "./service/api_client";

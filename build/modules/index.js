@@ -15,6 +15,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./models/clients"), exports);
+__exportStar(require("./models/customers/contact"), exports);
 __exportStar(require("./service/helper"), exports);
 __exportStar(require("./models/approvedClients"), exports);
 __exportStar(require("./service/api_client"), exports);

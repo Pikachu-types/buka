@@ -6,6 +6,8 @@ export enum DocumentReference {
    * Collection reference for buka business
    */
   clients = "clients",
+
+  contacts = "contacts",
   /**
    * Collection reference for users could also be a sub-collection
    */
@@ -81,6 +83,7 @@ export enum DocumentTypes {
    * Registered users
    */
   user = "user_",
+  contact = "contact_",
   client = "client_",
   clientUser = "ba_",
   notifications = "noti_",
@@ -246,4 +249,5 @@ export enum SendgridTemplates {
   SendInvoiceForPayment = "d-6289f9798e364a2eb0877ac4431abd18",
   SendReceiptPayment = "d-459cad44141e4f4183020bb543c06244",
   JustGotPaid = "d-9af5b37b8f304e9fbdc8a5593f14e835",
+  Receipt = "d-9d5aabe3cd1f4259bd1b82370a3173f8",
 }

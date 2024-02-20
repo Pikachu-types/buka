@@ -10,6 +10,7 @@ var DocumentReference;
      * Collection reference for buka business
      */
     DocumentReference["clients"] = "clients";
+    DocumentReference["contacts"] = "contacts";
     /**
      * Collection reference for users could also be a sub-collection
      */
@@ -79,6 +80,7 @@ var DocumentTypes;
      * Registered users
      */
     DocumentTypes["user"] = "user_";
+    DocumentTypes["contact"] = "contact_";
     DocumentTypes["client"] = "client_";
     DocumentTypes["clientUser"] = "ba_";
     DocumentTypes["notifications"] = "noti_";
@@ -245,5 +247,6 @@ var SendgridTemplates;
     SendgridTemplates["SendInvoiceForPayment"] = "d-6289f9798e364a2eb0877ac4431abd18";
     SendgridTemplates["SendReceiptPayment"] = "d-459cad44141e4f4183020bb543c06244";
     SendgridTemplates["JustGotPaid"] = "d-9af5b37b8f304e9fbdc8a5593f14e835";
+    SendgridTemplates["Receipt"] = "d-9d5aabe3cd1f4259bd1b82370a3173f8";
 })(SendgridTemplates = exports.SendgridTemplates || (exports.SendgridTemplates = {}));
 //# sourceMappingURL=documents.js.map
