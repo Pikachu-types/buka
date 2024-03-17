@@ -19,4 +19,6 @@ export * from "./models/products";
 export * from "./interfaces/miscellenous";
 export * from "./models/sms_campaign";
 export * from "./models/booking";
+export * from "./models/console/business";
+export * from "./models/console/user";
 export * from "./models/review_request_model";

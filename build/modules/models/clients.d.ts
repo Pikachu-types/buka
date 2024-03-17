@@ -1,5 +1,6 @@
 import { OnboardingData } from "./onboarding";
 import { UserModel } from "./user";
+import { PaymentConnectors } from "./console/business";
 /**
  * Buka OrganisationData class
 */
@@ -124,22 +125,6 @@ export declare class ContactData {
 export interface SMSTrial {
     active: boolean;
     ends: number;
-}
-/**
- * BookingEmailNotify
-*/
-export interface PaymentConnectors {
-    stripe?: PayProviderData;
-    tink?: PayProviderData;
-}
-/**
- * Data
-*/
-export interface PayProviderData {
-    id: string;
-    testID?: string;
-    created?: number;
-    completed: boolean;
 }
 /**
  * Buka SMSData class

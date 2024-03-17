@@ -3,6 +3,7 @@ import { OnboardingData } from "./onboarding";
 import { AccountPrivileges } from "../enums/documents";
 import { equalToIgnoreCase } from "labs-sharable";
 import { UserModel } from "./user";
+import { PaymentConnectors } from "./console/business";
 
 /**
  * Buka OrganisationData class
@@ -195,23 +196,7 @@ export interface SMSTrial {
   active: boolean,
   ends: number,
 }
-/**
- * BookingEmailNotify
-*/
-export interface PaymentConnectors {
-  stripe?: PayProviderData,
-  tink?: PayProviderData,
-}
 
-/**
- * Data
-*/
-export interface PayProviderData {
-  id: string,
-  testID?: string,
-  created?: number,
-  completed: boolean,
-}
 /**
  * Buka SMSData class
 */

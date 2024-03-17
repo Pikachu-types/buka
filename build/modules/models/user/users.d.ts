@@ -1,7 +1,7 @@
 import { FCMDataModel } from "./fcm_model";
 import { EarningsHistoryModel, UserPictureModel } from "./picture";
 import { ProfileData, ReferralModel } from "./profile";
-import { PayProviderData } from "../clients";
+import { PayProviderData } from "../console/business";
 /**
 * General User class
 */

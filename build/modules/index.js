@@ -35,5 +35,7 @@ __exportStar(require("./models/products"), exports);
 __exportStar(require("./interfaces/miscellenous"), exports);
 __exportStar(require("./models/sms_campaign"), exports);
 __exportStar(require("./models/booking"), exports);
+__exportStar(require("./models/console/business"), exports);
+__exportStar(require("./models/console/user"), exports);
 __exportStar(require("./models/review_request_model"), exports);
 //# sourceMappingURL=index.js.map
