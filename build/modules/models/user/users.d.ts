@@ -1,7 +1,7 @@
 import { FCMDataModel } from "./fcm_model";
 import { EarningsHistoryModel, UserPictureModel } from "./picture";
 import { ProfileData, ReferralModel } from "./profile";
-import { PayProviderData } from "../console/business";
+import { IPayProviderData } from "../console/business";
 /**
 * General User class
 */
@@ -15,7 +15,7 @@ export declare class UserModel {
     login?: LoginData;
     profile?: ProfileData;
     referral?: ReferralModel;
-    stripe?: PayProviderData;
+    stripe?: IPayProviderData;
     fcm?: FCMDataModel;
     picture?: UserPictureModel;
     dob?: DOBModel;

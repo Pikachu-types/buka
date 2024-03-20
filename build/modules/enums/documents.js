@@ -10,6 +10,16 @@ var DocumentReference;
      * Collection reference for buka business
      */
     DocumentReference["clients"] = "clients";
+    /// new begins
+    /**
+     * Collection reference for akub businesses
+     */
+    DocumentReference["business"] = "businesses";
+    /**
+     * Collection reference for akub console users
+     */
+    DocumentReference["consoleUsers"] = "console";
+    // new end
     DocumentReference["contacts"] = "contacts";
     /**
      * Collection reference for users could also be a sub-collection

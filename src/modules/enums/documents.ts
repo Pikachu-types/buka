@@ -7,6 +7,20 @@ export enum DocumentReference {
    */
   clients = "clients",
 
+  /// new begins
+  
+  /**
+   * Collection reference for akub businesses
+   */
+  business = "businesses",
+
+  /**
+   * Collection reference for akub console users
+   */
+  consoleUsers = "console",
+
+  // new end
+
   contacts = "contacts",
   /**
    * Collection reference for users could also be a sub-collection

@@ -1,100 +1,158 @@
-import { TimeZone } from "./user";
-export interface Business {
+import { IReferral, TimeZone } from "../../interfaces/miscellenous";
+import { ConsoleUser } from "./user";
+/**
+ * akub business client model
+*/
+export declare class Business {
     id: string;
     iat: number;
-    lut?: number;
-    links: Links;
-    info: Info;
-    calendar: Calendar;
-    location: Location;
-    team: string[];
-    billing: BusinessBilling;
-    payments?: PaymentConnectors;
-    legal: Legal;
-    referral: Referral;
-    marketplace: Marketplace;
+    lut: number | undefined;
+    calendar: ICalendar | undefined;
+    marketplace: IMarketplace | undefined;
+    billing: IBusinessBilling | undefined;
+    legal: IBusinessLegal | undefined;
+    links: IBusinessLinks | undefined;
+    providers: IPaymentConnectors | undefined;
+    location: ILocation | undefined;
+    info: IBusinessInfo | undefined;
+    referral: IReferral | undefined;
+    team: Record<string, {
+        role: string;
+    }>;
+    /**
+     * Change record to this class
+     *
+     * @param {Record<string, unknown>} obj  json object from db
+     * @return {Business} this class
+     */
+    static fromJson(obj: Record<string, unknown>): Business;
+    /**
+     * This class handler to json
+     * @return {string} text
+     */
+    toJsonString(): string;
+    /**
+     * Check if of this class type
+     * @param {Object} error the object
+     * @returns {boolean} returns true or false
+     */
+    static isOfInstance(error: Object): boolean;
+    /**
+     * Helper class function to find one specific id
+     *
+     * @param {Business[]} list an array of bankids to
+     *  sort from and find given
+     * @param {string} id provide the needed id to match for
+     * @return {Business | undefined} found object else undefined
+     */
+    static findOne(list: Business[], id: string): Business | undefined;
+    /**
+    * get document in map format
+    * @return { Record<string, unknown>} returns doc map .
+    */
+    toMap(): Record<string, unknown>;
+    /**
+     * Check if user has read write privilege
+     * @param {ConsoleUser} user  the user in question
+     * @return {boolean} value
+     */
+    isaPrivilegedUser(user: ConsoleUser): boolean;
+    /**
+     * Find space owner
+     * @param {ConsoleUser} user the console user in question
+     * @return {boolean} value
+     */
+    findSpaceOwner(user: ConsoleUser): boolean;
 }
-export interface BusinessBilling {
-    name: string;
-    location: Location;
-    note: string;
-}
-export interface Location {
-    city: string;
-    country: string;
-    postCode: string;
-    place: string;
-    formatted: string;
-    longitude: number;
-    latitude: number;
-}
-export interface Calendar {
-    weekStart: string;
-    timeZone: TimeZone;
-}
-export interface Info {
-    mobile: string;
-    email: string;
-    teamSize: string;
-    services: Services;
-    logo: string;
-    description: string;
-    name: string;
-    country: string;
-}
-export interface Services {
-    primary: string;
-    others: string[];
-}
-export interface Legal {
+export interface IBusinessLegal {
     rcNumber: string;
     name: string;
     vat: string;
 }
-export interface Links {
+export interface IBusinessLinks {
     website: string;
     facebook: string;
     instagram: string;
 }
-export interface Marketplace {
+export interface IMarketplace {
+    schedule: ISchedule;
     accountType: string;
+    location: ILocation;
     availability: string;
-    billing: MarketplaceBilling;
-    location: Location;
-    schedule: Schedule;
     photos: string[];
+    billing: MarketplaceBilling;
 }
-export interface MarketplaceBilling {
-    stripe: string;
-}
-export interface Schedule {
-    sun: WeekDayDuration;
-    mon: WeekDayDuration;
-    tue: WeekDayDuration;
-    wed: WeekDayDuration;
-    thu: WeekDayDuration;
-    fri: WeekDayDuration;
-    sat: WeekDayDuration;
+export interface ISchedule {
+    thu?: IWeekDayDuration;
+    tue?: IWeekDayDuration;
     max: number;
+    wed?: IWeekDayDuration;
+    sat?: IWeekDayDuration;
+    fri?: IWeekDayDuration;
+    sun?: IWeekDayDuration;
+    mon?: IWeekDayDuration;
 }
-export interface WeekDayDuration {
+export interface IWeekDayDuration {
     begin: string;
     end: string;
 }
-export interface PaymentConnectors {
-    stripe?: PayProviderData;
-    tink?: PayProviderData;
+/**
+ * How the business get's paid
+ */
+export interface MarketplaceBilling {
+    stripe: string;
+}
+export interface IBusinessInfo {
+    country: string;
+    teamSize: string;
+    mobile: string;
+    name: string;
+    logo?: string;
+    description: string;
+    services: IBusinessServices;
+    email: string;
+    currency: string;
+}
+export interface IBusinessServices {
+    list: string[];
+    primary: string;
 }
 /**
- * Data
+ * Supported payment connectors
+ */
+export interface IPaymentConnectors {
+    stripe?: IPayProviderData;
+    tink?: IPayProviderData;
+}
+/**
+ * Payment provider interface
 */
-export interface PayProviderData {
+export interface IPayProviderData {
     id: string;
     testID?: string;
     created?: number;
     completed: boolean;
 }
-export interface Referral {
-    source: string;
+/**
+ * business billing interface
+*/
+export interface IBusinessBilling {
+    note: string;
+    name: string;
+    location: ILocation;
+}
+export interface ILocation {
+    country: string;
     code: string;
+    city: string;
+    address2: string;
+    formatted: string;
+    latitude: null;
+    postCode: string;
+    place: string;
+    longitude: null;
+}
+export interface ICalendar {
+    weekStart: string;
+    timeZone: TimeZone;
 }

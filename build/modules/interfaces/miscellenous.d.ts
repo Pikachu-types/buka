@@ -33,6 +33,10 @@ export type LinklyAPIRequest = {
      */
     name: string;
 };
+export interface IFCM {
+    token?: string;
+    device: string;
+}
 /**
  * Linkly API Response
  */
@@ -104,4 +108,16 @@ export interface DefaultResponse {
     status: string;
     reason?: string;
     data?: Record<string, unknown>;
+}
+export interface IReferral {
+    source: string;
+    code: string;
+}
+export interface TimeZone {
+    zone: string;
+    text: string;
+}
+export interface IImages {
+    images: string[];
+    wallpaper: string;
 }

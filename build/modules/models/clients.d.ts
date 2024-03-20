@@ -1,6 +1,7 @@
 import { OnboardingData } from "./onboarding";
 import { UserModel } from "./user";
-import { PaymentConnectors } from "./console/business";
+import { IPaymentConnectors } from "./console/business";
+import { IImages } from "../..";
 /**
  * Buka OrganisationData class
 */
@@ -14,10 +15,12 @@ export declare class OrganisationData {
     memberID: string;
     regSource: string;
     stripeID: string;
+    created: number;
     category: string | undefined;
     rating: number | undefined;
+    images: IImages | undefined;
     sms: Record<string, unknown>;
-    provider?: PaymentConnectors;
+    provider?: IPaymentConnectors;
     contact: Record<string, unknown>;
     referral: Record<string, unknown>;
     schedule: Record<string, unknown>;

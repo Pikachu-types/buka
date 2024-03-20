@@ -26,6 +26,7 @@ class OrganisationData {
         this.memberID = "";
         this.regSource = "";
         this.stripeID = "";
+        this.created = 0;
         this.sms = {};
         this.contact = {};
         this.referral = {};
@@ -149,10 +150,16 @@ __decorate([
 ], OrganisationData.prototype, "stripeID", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
+], OrganisationData.prototype, "created", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
 ], OrganisationData.prototype, "category", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
 ], OrganisationData.prototype, "rating", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], OrganisationData.prototype, "images", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
 ], OrganisationData.prototype, "sms", void 0);

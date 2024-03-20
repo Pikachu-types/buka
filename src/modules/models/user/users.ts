@@ -3,7 +3,7 @@ import { FCMDataModel } from "./fcm_model";
 import { EarningsHistoryModel, UserPictureModel } from "./picture";
 import { ProfileData, ReferralModel } from "./profile";
 import { equalToIgnoreCase } from "labs-sharable";
-import { PayProviderData } from "../console/business";
+import { IPayProviderData } from "../console/business";
 
 /**
 * General User class
@@ -20,7 +20,7 @@ export class UserModel {
   login?: LoginData;
   profile?: ProfileData;
   referral?: ReferralModel;
-  stripe?: PayProviderData;
+  stripe?: IPayProviderData;
   fcm?: FCMDataModel;
   picture?: UserPictureModel;
   dob?: DOBModel;
@@ -33,13 +33,12 @@ export class UserModel {
    * @return {void} this class
    */
    public fromJson(obj: Record<string, unknown>)
-
-   : void {
+: void {
     this.email = obj.email as string;
     this.gender = obj.gender as string;
     this.id = (obj.id ?? '') as string;
     this.testAccount = obj.testAccount as boolean;
-    this.stripe = obj.stripe as PayProviderData;
+    this.stripe = obj.stripe as IPayProviderData;
     this.credits = obj.credits as number | undefined;
     this.subscribed = obj.subscribed as boolean | undefined;
 

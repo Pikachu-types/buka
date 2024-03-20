@@ -3,7 +3,8 @@ import { OnboardingData } from "./onboarding";
 import { AccountPrivileges } from "../enums/documents";
 import { equalToIgnoreCase } from "labs-sharable";
 import { UserModel } from "./user";
-import { PaymentConnectors } from "./console/business";
+import { IPaymentConnectors } from "./console/business";
+import { IImages } from "../..";
 
 /**
  * Buka OrganisationData class
@@ -19,10 +20,12 @@ export class OrganisationData {
   @Expose() memberID = "";
   @Expose() regSource = "";
   @Expose() stripeID = "";
+  @Expose() created = 0;
   @Expose() category: string | undefined;
   @Expose() rating: number | undefined;
+  @Expose() images: IImages | undefined;
   @Expose() sms: Record<string, unknown> = {};
-  @Expose() provider?: PaymentConnectors;
+  @Expose() provider?: IPaymentConnectors;
   @Expose() contact: Record<string, unknown> = {};
   @Expose() referral: Record<string, unknown> = {};
   @Expose() schedule: Record<string, unknown> = {};
