@@ -98,7 +98,8 @@ export enum DocumentTypes {
    */
   user = "user_",
   contact = "contact_",
-  client = "client_",
+  client = "client_", // depreciate
+  business = "org_",
   clientUser = "ba_",
   notifications = "noti_",
   payments = "payment_",

@@ -99,6 +99,43 @@ export class Business {
   }
 
   /**
+   * get all privileged users
+   * @return {string[]} value
+   */
+  public allPrivilegedUsers(): string[] {
+    const res: string[] = [];
+    const parm = [AccountPrivileges.admin.toString(),
+    AccountPrivileges.owner.toString()];
+    for (let a in this.team) {
+      const role = ((this.team as Record<string,
+        unknown>)[a]) as Record<string, unknown>;
+      if (parm.includes(role['role'] as string)) {
+        res.push(a);
+      }
+    }
+    return res;
+  }
+
+  /**
+   * get owner
+   * @return {string | undefined } value
+   */
+  public getOwner(): string | undefined {
+    let res: string | undefined;
+    for (let a in this.team) {
+      const role = ((this.team as Record<string,
+        unknown>)[a]) as Record<string, unknown>;
+      if (equalToIgnoreCase(role['role'] as string,
+        AccountPrivileges.owner.toString())) {
+        res = (a);
+        break;
+      }
+    }
+    return res;
+  }
+  
+
+  /**
    * Find space owner
    * @param {ConsoleUser} user the console user in question
    * @return {boolean} value

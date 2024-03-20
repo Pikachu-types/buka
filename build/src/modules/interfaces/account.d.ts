@@ -5,12 +5,10 @@ import { ExtraNotificationTrayData } from "labs-sharable/dist/modules/notificati
 import { UserModel } from "../models/user";
 import { Business } from "../models/console/business";
 import { ConsoleUser } from "../models/console/user";
-
 /**
  * Account type
  */
-export type Account = UserModel | OrganisationData | Business | ConsoleUser |  undefined
-
+export type Account = UserModel | OrganisationData | Business | ConsoleUser | undefined;
 /**
  * Interface for BroadCastService compile function
  */
