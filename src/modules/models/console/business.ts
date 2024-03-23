@@ -11,6 +11,7 @@ export class Business {
   /* eslint new-cap: ["error", { "capIsNew": false }]*/
   @Expose() id = ""; // uses the format org_{id}
   @Expose() iat = 0;
+  @Expose() test = false;
   @Expose() lut: number | undefined;
   @Expose() calendar: ICalendar | undefined;
   @Expose() marketplace: IMarketplace  | undefined;
@@ -169,6 +170,7 @@ export interface IMarketplace {
   accountType: string;
   location: ILocation;
   availability: string;
+  published?: boolean;
   photos: string[];
   billing: MarketplaceBilling;
 }

@@ -9,7 +9,8 @@ var DocumentReference;
     /**
      * Collection reference for buka business
      */
-    DocumentReference["clients"] = "clients";
+    // clients = "clients",
+    DocumentReference["clients"] = "businesses";
     /// new begins
     /**
      * Collection reference for akub businesses
@@ -19,6 +20,9 @@ var DocumentReference;
      * Collection reference for akub console users
      */
     DocumentReference["consoleUsers"] = "console";
+    DocumentReference["catalogue"] = "catalogues";
+    DocumentReference["categories"] = "category";
+    DocumentReference["services"] = "services";
     // new end
     DocumentReference["contacts"] = "contacts";
     /**

@@ -6,6 +6,7 @@ import { ConsoleUser } from "./user";
 export declare class Business {
     id: string;
     iat: number;
+    test: boolean;
     lut: number | undefined;
     calendar: ICalendar | undefined;
     marketplace: IMarketplace | undefined;
@@ -89,6 +90,7 @@ export interface IMarketplace {
     accountType: string;
     location: ILocation;
     availability: string;
+    published?: boolean;
     photos: string[];
     billing: MarketplaceBilling;
 }

@@ -1,5 +1,5 @@
 import { CustomError } from "labs-sharable";
-import { Account, DocumentTypes } from "..";
+import { Account, Business, DocumentTypes, UserModel } from "..";
 import { DatabaseFunctions } from "./database";
 
 /**
@@ -27,11 +27,40 @@ export class AkubAccounts {
         accounts = await DatabaseFunctions.getters.retrieveConsoleUsers();
         break;
       default:
-        accounts = await DatabaseFunctions.getters.retrieveConsoleUsers();
+        accounts = await DatabaseFunctions.getters.retrieveUsers();
         break;
     }
     const res = accounts.find(account => account?.id === id);
     return res;
+  }
+
+  /**
+   * Get user data
+   * @param {string} id user id
+   * @return {Promise<OrganisationData> } value
+   */
+  public static async user(id: string): Promise<UserModel> {
+    const val = await this.retrieve(id);
+    if (val !== undefined && UserModel.isOfInstance(val)) {
+      return val as UserModel;
+    }
+    throw new CustomError("User does not exist");
+  }
+
+  /**
+   * Get Org data
+   * @param {string} id client id
+   * @return {Promise<Business> } value
+   */
+  public static async client(id: string): Promise<Business> {
+    if (!id.includes("_")) {
+      id = `${DocumentTypes.business}${id}`;
+    }
+    const client = await this.retrieve(id);
+    if (client !== undefined && Business.isOfInstance(client)) {
+      return client as Business;
+    }
+    throw new CustomError("No such business exists");
   }
 
 }

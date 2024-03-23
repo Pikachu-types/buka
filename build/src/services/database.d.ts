@@ -1,5 +1,5 @@
-import { LocalNotification, UserModel } from "labs-sharable";
-import { BookingData, Business, ConsoleUser, PaymentLinkRequest, ReservationData } from "..";
+import { LocalNotification } from "labs-sharable";
+import { BookingData, Business, ConsoleUser, ReservationData, UserModel, PaymentRequest } from "..";
 export declare namespace DatabaseFunctions {
     /**
      * Database helper class
@@ -35,11 +35,11 @@ export declare namespace DatabaseFunctions {
          */
         static retrieveReservationBookings(reference: string): Promise<BookingData[]>;
         /**
-         * Go to database payments collection and get all
-         * available documents
-         * @return {Promise<PaymentLinkRequest[]>} returns OrganisationData list.
-         */
-        static retrieveAllPayments(): Promise<PaymentLinkRequest[]>;
+          * Go to database payments collection and get all
+          * available payment documents
+          * @return {Promise<PaymentRequest.Model[]>} returns OrganisationData list.
+          */
+        static retrieveAllPayments(): Promise<PaymentRequest.Model[]>;
         /**
          * A power function used to check if firestore document exist
          * @param {string} docID reference id
@@ -53,6 +53,12 @@ export declare namespace DatabaseFunctions {
      * Database management setters, updates and deletes
      */
     class management {
+        /**
+       * update stripe information for users
+       * @param {UserModel} user user model
+       * @return {Promise<void>} returns na
+       */
+        static updateStripeInformation(user: UserModel): Promise<void>;
         /**
          * Update payment document
          * @param {string} id the payment document id

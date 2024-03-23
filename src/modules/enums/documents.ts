@@ -5,7 +5,8 @@ export enum DocumentReference {
   /**
    * Collection reference for buka business
    */
-  clients = "clients",
+  // clients = "clients",
+  clients = "businesses",
 
   /// new begins
   
@@ -18,6 +19,10 @@ export enum DocumentReference {
    * Collection reference for akub console users
    */
   consoleUsers = "console",
+
+  catalogue = "catalogues",
+  categories = "category",
+  services = "services",
 
   // new end
 

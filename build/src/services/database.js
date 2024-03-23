@@ -64,7 +64,7 @@ var DatabaseFunctions;
             return __awaiter(this, void 0, void 0, function* () {
                 const source = yield db.collection(__1.DocumentReference.users).get();
                 return source.docs.map((e) => {
-                    const user = new labs_sharable_1.UserModel();
+                    const user = new __1.UserModel();
                     user.fromJson(e.data());
                     return user;
                 });
@@ -116,14 +116,14 @@ var DatabaseFunctions;
             });
         }
         /**
-         * Go to database payments collection and get all
-         * available documents
-         * @return {Promise<PaymentLinkRequest[]>} returns OrganisationData list.
-         */
+          * Go to database payments collection and get all
+          * available payment documents
+          * @return {Promise<PaymentRequest.Model[]>} returns OrganisationData list.
+          */
         static retrieveAllPayments() {
             return __awaiter(this, void 0, void 0, function* () {
                 const source = yield db.collection(__1.DocumentReference.payments).get();
-                return source.docs.map((e) => __1.PaymentLinkRequest.fromJson(e.data()));
+                return source.docs.map((e) => __1.PaymentRequest.Model.fromJson(e.data()));
             });
         }
         /**
@@ -146,6 +146,19 @@ var DatabaseFunctions;
      * Database management setters, updates and deletes
      */
     class management {
+        /**
+       * update stripe information for users
+       * @param {UserModel} user user model
+       * @return {Promise<void>} returns na
+       */
+        static updateStripeInformation(user) {
+            return __awaiter(this, void 0, void 0, function* () {
+                yield this.createOrUpdateFirebaseDocument(user.
+                    id.replace(__1.DocumentTypes.user, ""), __1.DocumentReference.users, {
+                    "stripe": user.stripe,
+                }, false);
+            });
+        }
         /**
          * Update payment document
          * @param {string} id the payment document id

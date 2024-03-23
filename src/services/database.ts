@@ -1,7 +1,7 @@
-import { CustomError, LocalNotification, UserModel } from "labs-sharable";
+import { CustomError, LocalNotification } from "labs-sharable";
 import serviceAccount = require("../../service-key.json");
 import * as admin from "firebase-admin";
-import { BookingData, Business, ConsoleUser, DocumentReference, PaymentLinkRequest, ReservationData } from "..";
+import { BookingData, Business, ConsoleUser, DocumentReference, DocumentTypes, ReservationData, UserModel, PaymentRequest } from "..";
 
 const cred: admin.ServiceAccount = {
   privateKey: serviceAccount.private_key,
@@ -19,7 +19,7 @@ admin.initializeApp({
 const db = admin.firestore();
 
 export namespace DatabaseFunctions {
-  
+
   /**
    * Database helper class
    */
@@ -82,14 +82,14 @@ export namespace DatabaseFunctions {
       return source.docs.map((e) => BookingData.fromJson(e.data()));
     }
 
-    /**
-     * Go to database payments collection and get all
-     * available documents
-     * @return {Promise<PaymentLinkRequest[]>} returns OrganisationData list.
-     */
-    public static async retrieveAllPayments(): Promise<PaymentLinkRequest[]> {
+  /**
+    * Go to database payments collection and get all
+    * available payment documents
+    * @return {Promise<PaymentRequest.Model[]>} returns OrganisationData list.
+    */
+    public static async retrieveAllPayments(): Promise<PaymentRequest.Model[]> {
       const source = await db.collection(DocumentReference.payments).get();
-      return source.docs.map((e) => PaymentLinkRequest.fromJson(e.data()));
+      return source.docs.map((e) => PaymentRequest.Model.fromJson(e.data()));
     }
 
 
@@ -113,6 +113,21 @@ export namespace DatabaseFunctions {
    * Database management setters, updates and deletes
    */
   export class management {
+    /**
+   * update stripe information for users
+   * @param {UserModel} user user model
+   * @return {Promise<void>} returns na
+   */
+    public static async updateStripeInformation(user:
+      UserModel): Promise<void> {
+      await this.createOrUpdateFirebaseDocument(user.
+        id.replace(DocumentTypes.user, ""),
+        DocumentReference.users, {
+        "stripe": user.stripe,
+      }, false,
+      );
+    }
+
     /**
      * Update payment document
      * @param {string} id the payment document id
@@ -142,7 +157,7 @@ export namespace DatabaseFunctions {
         collection(DocumentReference.booking).doc(booking.id)
         .update(data);
     }
-    
+
     /**
      * A power function used to communicate with firestore database
      * @param {string} docID reference id

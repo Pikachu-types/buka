@@ -5,7 +5,7 @@ export declare enum DocumentReference {
     /**
      * Collection reference for buka business
      */
-    clients = "clients",
+    clients = "businesses",
     /**
      * Collection reference for akub businesses
      */
@@ -14,6 +14,9 @@ export declare enum DocumentReference {
      * Collection reference for akub console users
      */
     consoleUsers = "console",
+    catalogue = "catalogues",
+    categories = "category",
+    services = "services",
     contacts = "contacts",
     /**
      * Collection reference for users could also be a sub-collection

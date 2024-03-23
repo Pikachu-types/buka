@@ -18,6 +18,7 @@ class Business {
         /* eslint new-cap: ["error", { "capIsNew": false }]*/
         this.id = ""; // uses the format org_{id}
         this.iat = 0;
+        this.test = false;
         this.team = {};
     }
     /**
@@ -137,6 +138,9 @@ __decorate([
 __decorate([
     (0, class_transformer_1.Expose)()
 ], Business.prototype, "iat", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], Business.prototype, "test", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
 ], Business.prototype, "lut", void 0);
