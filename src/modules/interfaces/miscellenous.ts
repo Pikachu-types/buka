@@ -117,7 +117,7 @@ export interface DefaultResponse {
   status: string;
   reason?: string;
   data?: Record<string, unknown>;
-};
+}
 
 export interface IReferral {
   source: string;

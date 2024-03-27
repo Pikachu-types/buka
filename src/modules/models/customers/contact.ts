@@ -1,6 +1,6 @@
 import { plainToInstance, Expose } from "class-transformer";
 import { DocumentTypes } from "../../enums/documents";
-import { v1 as uuidv1 } from 'uuid';
+import { v1 as uuidv1 } from "uuid";
 
 /**
  * Saved contacts for organisations on console

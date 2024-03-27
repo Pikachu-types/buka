@@ -107,10 +107,10 @@ export class Business {
     const res: string[] = [];
     const parm = [AccountPrivileges.admin.toString(),
     AccountPrivileges.owner.toString()];
-    for (let a in this.team) {
+    for (const a in this.team) {
       const role = ((this.team as Record<string,
         unknown>)[a]) as Record<string, unknown>;
-      if (parm.includes(role['role'] as string)) {
+      if (parm.includes(role["role"] as string)) {
         res.push(a);
       }
     }
@@ -123,10 +123,10 @@ export class Business {
    */
   public getOwner(): string | undefined {
     let res: string | undefined;
-    for (let a in this.team) {
+    for (const a in this.team) {
       const role = ((this.team as Record<string,
         unknown>)[a]) as Record<string, unknown>;
-      if (equalToIgnoreCase(role['role'] as string,
+      if (equalToIgnoreCase(role["role"] as string,
         AccountPrivileges.owner.toString())) {
         res = (a);
         break;

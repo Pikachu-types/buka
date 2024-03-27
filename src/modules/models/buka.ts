@@ -1,4 +1,4 @@
-import { DocumentTypes, Status } from "../enums/documents";
+import {Status } from "../enums/documents";
 
 /**
  * Buka class for lot of standard strings and whatnot
@@ -6,7 +6,7 @@ import { DocumentTypes, Status } from "../enums/documents";
 export class Buka {
   public static linklyEndpoint = "https://app.linklyhq.com/api/v1/link";
   public static linklyWorkspace = 111178;
-  public static charge: number = 0.1;
+  public static charge = 0.1;
   public static checkoutDomain = "checkout.buka.direct";
   public static console = "console.buka.direct";
   public static paysuccessUrl = "https://app.buka.direct/payments/successful";
@@ -88,7 +88,7 @@ export namespace AkubSpace {
      * @param {boolean} debug is payment ran in debug mode
      * @return {string} returns value.
      */
-    public static buildPaymentLink(token: string, debug: boolean = false): string {
+    public static buildPaymentLink(token: string, debug = false): string {
       return `${debug ? Links.debugPayUI : Links.payments}/${token.split("_")[1].trim()}`;
     }
     
@@ -98,7 +98,7 @@ export namespace AkubSpace {
      * @param {boolean} debug is payment ran in debug mode
      * @return {string} returns value.
      */
-    public static buildConsolePayView(id: string, debug: boolean = false): string {
+    public static buildConsolePayView(id: string, debug = false): string {
       return `${debug ? Links.debugPayUI : Links.console}/app/payments/${id}`;
     }
     
@@ -109,7 +109,7 @@ export namespace AkubSpace {
      * @param {boolean} debug is payment ran in debug mode
      * @return {string} returns value.
      */
-    public static buildPaymentRedirect(token: string, status: Status, debug:boolean = false): string {
+    public static buildPaymentRedirect(token: string, status: Status, debug = false): string {
       return `${debug ? Links.debugPayApiUri :
         Links.paymentApiUri}/payment/v1/?identifier=${token}&action=${status}`;
     }

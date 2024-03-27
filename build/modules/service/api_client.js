@@ -1,0 +1,192 @@
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ServerApiClient = void 0;
+const axios_1 = __importStar(require("axios"));
+const labs_sharable_1 = require("labs-sharable");
+const buka_1 = require("../models/buka");
+/**
+ * Api client helper
+ */
+class ServerApiClient {
+    /**
+     * Simple api call function for http calls
+     * @param {Record<string, unknown>} body payload
+     * @return {Promise<number>} returns 1 if device is active
+     * 0 if not registered
+     * -1 if not found.
+     */
+    static cloudMessage(body, key) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield fetch("https://fcm.googleapis.com/fcm/send", {
+                    method: "POST",
+                    body: JSON.stringify(body.toMap()),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Authorization": "key=" + key,
+                    },
+                });
+                if (!response.ok) {
+                    throw new labs_sharable_1.CustomError(`Error! status: ${response.status}`);
+                }
+                else {
+                    const result = (yield response.json());
+                    const data = {
+                        multicastId: result.multicast_id,
+                        success: result.success,
+                        failure: result.failure,
+                        canonicalIds: result.canonical_ids,
+                        results: result.results,
+                    };
+                    if (data.success == 1) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                }
+            }
+            catch (error) {
+                throw new labs_sharable_1.CustomError(`${error}`, -1);
+            }
+        });
+    }
+    /**
+     * create custom link
+     * @param {LinklyAPIRequest} request model
+     * @return {Promise<LinklyAPIResponse>} returns response.
+     */
+    static linklyLinkGenerator(request) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data, status } = yield axios_1.default.post(buka_1.Buka.linklyEndpoint, {
+                    "email": request.email,
+                    "url": request.url,
+                    "domain": request.domain,
+                    "slug": request.slug,
+                    "api_key": request.apiKey,
+                    "workspace_id": request.workspace
+                }, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                });
+                if (status == 200) {
+                    return data;
+                }
+                else {
+                    throw new labs_sharable_1.CustomError(JSON.stringify(data), status);
+                }
+            }
+            catch (error) {
+                if ((0, axios_1.isAxiosError)(error)) {
+                    console.log("error message: ", error.message);
+                    const response = error.response;
+                    if (response) {
+                        throw new labs_sharable_1.CustomError("", response.status, response.data);
+                    }
+                    else {
+                        throw new labs_sharable_1.CustomError(error.message, (_a = error.status) !== null && _a !== void 0 ? _a : 500);
+                    }
+                }
+                else {
+                    console.log("unexpected error: ", error);
+                    throw new labs_sharable_1.CustomError("An unexpected error occurred", 500);
+                }
+            }
+        });
+    }
+    /**
+     * Create dynamic link with http calls
+     * @param {DynamicLinkCreation} data payload
+     * @return {Promise<string>} returns f
+     */
+    static generateDynamicLink(data) {
+        var _a, _b, _c;
+        return __awaiter(this, void 0, void 0, function* () {
+            const body = {
+                dynamicLinkInfo: {
+                    domainUriPrefix: data.prefix,
+                    link: (_a = data.link) !== null && _a !== void 0 ? _a : buka_1.Buka.linkBuilder(data.header, data.param, (_b = data.console) !== null && _b !== void 0 ? _b : false),
+                    androidInfo: {
+                        androidMinPackageVersionCode: "1",
+                        androidPackageName: data.androidPackageName,
+                    },
+                    iosInfo: {
+                        iosAppStoreId: data.iosAppStoreID,
+                        iosIpadBundleId: (_c = data.iosIpadBundleID) !== null && _c !== void 0 ? _c : data.iosBundleID,
+                        iosBundleId: data.iosBundleID,
+                    },
+                    socialMetaTagInfo: data.social ? {
+                        socialDescription: data.social.description,
+                        socialImageLink: data.social.image,
+                        socialTitle: data.social.title,
+                    } : undefined
+                }
+            };
+            try {
+                const response = yield fetch("https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=" +
+                    data.apiKey, {
+                    method: "POST",
+                    body: JSON.stringify(body),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "key=" + data.apiKey,
+                    },
+                });
+                if (!response.ok) {
+                    throw new labs_sharable_1.CustomError(`Error! status: ${response.status}`);
+                }
+                else {
+                    const result = (yield response.json());
+                    if (result.shortLink !== undefined) {
+                        return result.shortLink;
+                    }
+                    else {
+                        return "";
+                    }
+                }
+            }
+            catch (error) {
+                throw new labs_sharable_1.CustomError(`Creation of dynamic link error: ${error}`);
+            }
+        });
+    }
+}
+exports.ServerApiClient = ServerApiClient;
+//# sourceMappingURL=api_client.js.map

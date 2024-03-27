@@ -6,7 +6,7 @@ import {
 } from "../../interfaces/documents";
 import { DocumentTypes, Status } from "../../enums/documents";
 import { OrganisationData } from "../clients";
-import { v1 as uuidv1 } from 'uuid';
+import { v1 as uuidv1 } from "uuid";
 
 export namespace PaymentRequest {
   /**
@@ -233,10 +233,10 @@ export namespace PaymentRequest {
     public toMap()
       : Record<string, unknown> {
       const res = JSON.parse(JSON.stringify(this));
-      const user = res['user'];
-      const customer = res['customer'];
+      const user = res["user"];
+      const customer = res["customer"];
       if (user && !customer) {
-        res['customer'] = user;
+        res["customer"] = user;
         delete res["user"];
       }
       delete res["clientData"];

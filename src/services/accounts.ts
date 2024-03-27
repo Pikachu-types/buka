@@ -7,13 +7,20 @@ import { DatabaseFunctions } from "./database";
  * with DB for accounts only
  */
 export class AkubAccounts {
+
+  readonly getter: DatabaseFunctions.getters;
+
+  constructor(getter: DatabaseFunctions.getters,) {
+    this.getter = getter;
+  }
+
   
   /**
    * Get an account
    * @param {string} id of account to be found
    * @return {Promise<Account>} value
    */
-  public static async retrieve(id: string):
+  public async retrieve(id: string):
     Promise<Account> {
     if (!id.includes("_")) {
       throw new CustomError("Invalid account identifier");
@@ -21,13 +28,13 @@ export class AkubAccounts {
     let accounts: Account[];
     switch (id.split("_")[0]) {
       case DocumentTypes.business.replace("_", ""):
-        accounts = await DatabaseFunctions.getters.retrieveBusinesses();
+        accounts = await this.getter.retrieveBusinesses();
         break;
       case DocumentTypes.clientUser.replace("_", ""):
-        accounts = await DatabaseFunctions.getters.retrieveConsoleUsers();
+        accounts = await this.getter.retrieveConsoleUsers();
         break;
       default:
-        accounts = await DatabaseFunctions.getters.retrieveUsers();
+        accounts = await this.getter.retrieveUsers();
         break;
     }
     const res = accounts.find(account => account?.id === id);
@@ -39,7 +46,7 @@ export class AkubAccounts {
    * @param {string} id user id
    * @return {Promise<OrganisationData> } value
    */
-  public static async user(id: string): Promise<UserModel> {
+  public async user(id: string): Promise<UserModel> {
     const val = await this.retrieve(id);
     if (val !== undefined && UserModel.isOfInstance(val)) {
       return val as UserModel;
@@ -52,7 +59,7 @@ export class AkubAccounts {
    * @param {string} id client id
    * @return {Promise<Business> } value
    */
-  public static async client(id: string): Promise<Business> {
+  public async client(id: string): Promise<Business> {
     if (!id.includes("_")) {
       id = `${DocumentTypes.business}${id}`;
     }

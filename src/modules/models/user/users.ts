@@ -36,7 +36,7 @@ export class UserModel {
 : void {
     this.email = obj.email as string;
     this.gender = obj.gender as string;
-    this.id = (obj.id ?? '') as string;
+    this.id = (obj.id ?? "") as string;
     this.testAccount = obj.testAccount as boolean;
     this.stripe = obj.stripe as IPayProviderData;
     this.credits = obj.credits as number | undefined;
@@ -87,12 +87,12 @@ export class UserModel {
   * @return {string} text
   */
   public pronoun(): string {
-    if (equalToIgnoreCase(this.gender, 'male')) {
-      return 'his';
-    }else if (equalToIgnoreCase(this.gender, 'female')) {
-      return 'her';
+    if (equalToIgnoreCase(this.gender, "male")) {
+      return "his";
+    }else if (equalToIgnoreCase(this.gender, "female")) {
+      return "her";
     } else {
-      return 'their';
+      return "their";
     }
   }
 

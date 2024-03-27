@@ -13,7 +13,7 @@ export class ConsoleUser {
   @Expose() contact: IConsoleContact | undefined;
   @Expose() login: IConsoleLogin | undefined;
   @Expose() fcm: IFCM | undefined;
-  @Expose() country: string = "";
+  @Expose() country = "";
 
   /**
    * Change record to this class
