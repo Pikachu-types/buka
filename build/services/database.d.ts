@@ -1,6 +1,7 @@
 import { LocalNotification } from "labs-sharable";
 import * as admin from "firebase-admin";
-import { BookingData, Business, ConsoleUser, ReservationData, UserModel, PaymentRequest } from "..";
+import { BookingData, Business, ConsoleUser, UserModel, PaymentRequest, Reservation } from "..";
+import { BookingNote } from "../modules/models/booking/shared";
 export declare namespace DatabaseFunctions {
     /**
      * Database helper class
@@ -27,9 +28,9 @@ export declare namespace DatabaseFunctions {
         /**
          * Go to database reservation collection and get all
          * available documents
-         * @return {Promise<ReservationData[]>} returns OrganisationData list.
+         * @return {Promise<Reservation[]>} returns OrganisationData list.
          */
-        retrieveReservations(): Promise<ReservationData[]>;
+        retrieveReservations(): Promise<Reservation[]>;
         /**
          * Go to database reservation's bookings and get all
          * available documents
@@ -37,6 +38,13 @@ export declare namespace DatabaseFunctions {
          * @return {Promise<BookingData[]>} returns OrganisationData list.
          */
         retrieveReservationBookings(reference: string): Promise<BookingData[]>;
+        /**
+         * Go to database reservation's bookings and get all
+         * available documents
+         * @param {string} reference document id for Reservation doc
+         * @return {Promise<BookingNote[]>} returns OrganisationData list.
+         */
+        retrieveBookingNotes(reference: string): Promise<BookingNote[]>;
         /**
           * Go to database payments collection and get all
           * available payment documents

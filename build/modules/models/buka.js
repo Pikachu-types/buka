@@ -62,7 +62,7 @@ var AkubSpace;
     (function (Links) {
         Links["mePrefix"] = "https://me.buka.direct";
         Links["mPrefix"] = "https://m.buka.direct";
-        Links["console"] = "https://partners.akub.co";
+        Links["console"] = "https://partners.withakub.com";
         Links["consoleDebug"] = "http://localhost:5000";
         Links["download"] = "https://getakub.com";
         Links["domain"] = "https://akub.co";
@@ -88,6 +88,15 @@ var AkubSpace;
          */
         static buildPaymentLink(token, debug = false) {
             return `${debug ? Links.debugPayUI : Links.payments}/${token.split("_")[1].trim()}`;
+        }
+        /**
+         * Create a swish pay link
+         * @param {string} identifier swish number
+         * @param {number} amount to be paid
+         * @return {string} returns value.
+         */
+        static buildSwishLink(identifier, amount) {
+            return `https://app.swish.nu/1/p/sw/?sw=${identifier}&amt=${amount}&cur=SEK&msg=Pay%20for%20service&src=qr`;
         }
         /**
          * Create payment view link for console

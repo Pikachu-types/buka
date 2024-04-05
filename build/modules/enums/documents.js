@@ -23,8 +23,9 @@ var DocumentReference;
     DocumentReference["catalogue"] = "catalogues";
     DocumentReference["categories"] = "category";
     DocumentReference["services"] = "services";
-    // new end
     DocumentReference["contacts"] = "contacts";
+    DocumentReference["notes"] = "notes";
+    // new end
     /**
      * Collection reference for users could also be a sub-collection
      */

@@ -47,7 +47,7 @@ export declare namespace AkubSpace {
     enum Links {
         mePrefix = "https://me.buka.direct",
         mPrefix = "https://m.buka.direct",
-        console = "https://partners.akub.co",
+        console = "https://partners.withakub.com",
         consoleDebug = "http://localhost:5000",
         download = "https://getakub.com",
         domain = "https://akub.co",
@@ -71,6 +71,13 @@ export declare namespace AkubSpace {
          * @return {string} returns value.
          */
         static buildPaymentLink(token: string, debug?: boolean): string;
+        /**
+         * Create a swish pay link
+         * @param {string} identifier swish number
+         * @param {number} amount to be paid
+         * @return {string} returns value.
+         */
+        static buildSwishLink(identifier: string, amount: number): string;
         /**
          * Create payment view link for console
          * @param {string} id payment identifier ie. payment_uuid

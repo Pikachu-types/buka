@@ -1,5 +1,5 @@
 import { TaxBehavior } from "labs-sharable";
-import { InvoiceAddress, InvoiceItems } from "../../interfaces/documents";
+import { InvoiceAddress, InvoiceItems, SMSRequest } from "../../interfaces/documents";
 import { Status } from "../../enums/documents";
 import { OrganisationData } from "../clients";
 export declare namespace PaymentRequest {
@@ -80,6 +80,10 @@ export declare namespace PaymentRequest {
          * Invoice currency
          */
         currency: string;
+        /**
+         * Send sms pay link
+         */
+        sms?: SMSRequest;
         test: boolean;
     }
     class Model {

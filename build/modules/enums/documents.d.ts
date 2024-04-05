@@ -18,6 +18,7 @@ export declare enum DocumentReference {
     categories = "category",
     services = "services",
     contacts = "contacts",
+    notes = "notes",
     /**
      * Collection reference for users could also be a sub-collection
      */

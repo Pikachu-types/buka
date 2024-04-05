@@ -3,6 +3,7 @@ import { TaxBehavior } from "labs-sharable";
 import {
   InvoiceAddress,
   InvoiceItems,
+  SMSRequest,
 } from "../../interfaces/documents";
 import { DocumentTypes, Status } from "../../enums/documents";
 import { OrganisationData } from "../clients";
@@ -91,6 +92,11 @@ export namespace PaymentRequest {
      * Invoice currency
      */
     currency: string;
+    
+    /**
+     * Send sms pay link
+     */
+    sms?: SMSRequest;
 
     test: boolean;
   }

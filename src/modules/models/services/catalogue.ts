@@ -1,43 +1,30 @@
 import { plainToInstance, Expose } from "class-transformer";
-import {
-  BookedItem, BookingStats,
-  IBookingActivity, IBookingPayment,
-  IBookingTime,
-  IDiscount, IPerson, IProfessional
-} from "./shared";
 
 /**
- * akub bookings model
+ * akub service categories model
 */
-export class Booking {
+export class ServiceCategory {
   /* eslint new-cap: ["error", { "capIsNew": false }]*/
-  @Expose() id = ""; // uses the format booking_{id}
-  @Expose() client = "";
-  @Expose() currency = "";
-  @Expose() status: BookingStats = "unknown";
+  @Expose() id = ""; // uses the format cat_{id}
+  /**
+   * client ID
+   */
+  @Expose() owner = "";
+  @Expose() name = "";
+  @Expose() description = "";
   @Expose() iat = 0;
-  @Expose() fee = 0;
+  @Expose() color = 0;
   @Expose() lut: number | undefined;
-  @Expose() time: IBookingTime | undefined;
-  @Expose() repetition: boolean | undefined;
-  @Expose() activity: IBookingActivity[] = [];
-  @Expose() discount: IDiscount | undefined;
-  @Expose() payments: IBookingPayment[] = [];
-  @Expose() people: IPerson[] = [];
-  @Expose() items: BookedItem[] = [];
-  @Expose() professional: IProfessional | undefined;
-
-
 
   /**
    * Change record to this class
    *
    * @param {Record<string, unknown>} obj  json object from db
-   * @return {Booking} this class
+   * @return {ServiceCategory} this class
    */
   public static fromJson(obj: Record<string, unknown>)
-    : Booking {
-    const result: Booking = plainToInstance(Booking, obj,
+    : ServiceCategory {
+    const result: ServiceCategory = plainToInstance(ServiceCategory, obj,
       { excludeExtraneousValues: true });
     return result;
   }
@@ -56,20 +43,20 @@ export class Booking {
    * @returns {boolean} returns true or false
    */
   public static isOfInstance(error: Object): boolean {
-    return error instanceof Booking;
+    return error instanceof ServiceCategory;
   }
 
 
   /**
    * Helper class function to find one specific id
    *
-   * @param {Booking[]} list an array of bankids to
+   * @param {ServiceCategory[]} list an array of bankids to
    *  sort from and find given
    * @param {string} id provide the needed id to match for
-   * @return {Booking | undefined} found object else undefined
+   * @return {ServiceCategory | undefined} found object else undefined
    */
-  public static findOne(list: Booking[], id: string)
-    : Booking | undefined {
+  public static findOne(list: ServiceCategory[], id: string)
+    : ServiceCategory | undefined {
     for (let i = 0; i < list.length; i++) {
       if (list[i].id === id) return list[i];
     }

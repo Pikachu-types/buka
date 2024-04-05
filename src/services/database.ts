@@ -3,8 +3,10 @@ import * as admin from "firebase-admin";
 import {
   BookingData, Business, ConsoleUser,
   DocumentReference, DocumentTypes,
-  ReservationData, UserModel, PaymentRequest
+  ReservationData, UserModel, PaymentRequest, Reservation, parseInterface
 } from "..";
+import { Booking } from "../modules/models/booking/model";
+import { BookingNote } from "../modules/models/booking/shared";
 
 // const cred: admin.ServiceAccount = {
 //   privateKey: serviceAccount.private_key,
@@ -71,11 +73,12 @@ export namespace DatabaseFunctions {
     /**
      * Go to database reservation collection and get all
      * available documents
-     * @return {Promise<ReservationData[]>} returns OrganisationData list.
+     * @return {Promise<Reservation[]>} returns OrganisationData list.
      */
-    public async retrieveReservations(): Promise<ReservationData[]> {
+    public async retrieveReservations(): Promise<Reservation[]> {
       const source = await this.db.collection(DocumentReference.reservation).get();
-      return source.docs.map((e) => ReservationData.fromJson(e.data()));
+      return source.docs.map((e) => e.data()['activity'] !== undefined ?
+        Booking.fromJson(e.data()) : ReservationData.fromJson(e.data()));
     }
 
     /**
@@ -90,6 +93,20 @@ export namespace DatabaseFunctions {
         reservation).doc(reference)
         .collection(DocumentReference.booking).get();
       return source.docs.map((e) => BookingData.fromJson(e.data()));
+    }
+
+    /**
+     * Go to database reservation's bookings and get all
+     * available documents
+     * @param {string} reference document id for Reservation doc
+     * @return {Promise<BookingNote[]>} returns OrganisationData list.
+     */
+    public async retrieveBookingNotes(reference: string):
+      Promise<BookingNote[]> {
+      const source = await this.db.collection(DocumentReference.
+        reservation).doc(reference)
+        .collection(DocumentReference.notes).get();
+      return source.docs.map((e) => (parseInterface((e.data() as Record<string, unknown>)) as BookingNote));
     }
 
   /**

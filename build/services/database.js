@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatabaseFunctions = void 0;
 const labs_sharable_1 = require("labs-sharable");
 const __1 = require("..");
+const model_1 = require("../modules/models/booking/model");
 // const cred: admin.ServiceAccount = {
 //   privateKey: serviceAccount.private_key,
 //   projectId: serviceAccount.project_id,
@@ -71,12 +72,13 @@ var DatabaseFunctions;
         /**
          * Go to database reservation collection and get all
          * available documents
-         * @return {Promise<ReservationData[]>} returns OrganisationData list.
+         * @return {Promise<Reservation[]>} returns OrganisationData list.
          */
         retrieveReservations() {
             return __awaiter(this, void 0, void 0, function* () {
                 const source = yield this.db.collection(__1.DocumentReference.reservation).get();
-                return source.docs.map((e) => __1.ReservationData.fromJson(e.data()));
+                return source.docs.map((e) => e.data()['activity'] !== undefined ?
+                    model_1.Booking.fromJson(e.data()) : __1.ReservationData.fromJson(e.data()));
             });
         }
         /**
@@ -91,6 +93,20 @@ var DatabaseFunctions;
                     reservation).doc(reference)
                     .collection(__1.DocumentReference.booking).get();
                 return source.docs.map((e) => __1.BookingData.fromJson(e.data()));
+            });
+        }
+        /**
+         * Go to database reservation's bookings and get all
+         * available documents
+         * @param {string} reference document id for Reservation doc
+         * @return {Promise<BookingNote[]>} returns OrganisationData list.
+         */
+        retrieveBookingNotes(reference) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const source = yield this.db.collection(__1.DocumentReference.
+                    reservation).doc(reference)
+                    .collection(__1.DocumentReference.notes).get();
+                return source.docs.map((e) => (0, __1.parseInterface)(e.data()));
             });
         }
         /**

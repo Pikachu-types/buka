@@ -91,6 +91,7 @@ export interface IMarketplace {
     location: ILocation;
     availability: string;
     published?: boolean;
+    recommended?: boolean;
     photos: string[];
     billing: MarketplaceBilling;
 }
@@ -135,6 +136,7 @@ export interface IBusinessServices {
 export interface IPaymentConnectors {
     stripe?: IPayProviderData;
     tink?: IPayProviderData;
+    swish?: IPayProviderData;
 }
 /**
  * Payment provider interface

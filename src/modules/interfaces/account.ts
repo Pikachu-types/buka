@@ -5,11 +5,18 @@ import { ExtraNotificationTrayData } from "labs-sharable/dist/modules/notificati
 import { UserModel } from "../models/user";
 import { Business } from "../models/console/business";
 import { ConsoleUser } from "../models/console/user";
+import { Booking } from "../models/booking/model";
+import { ReservationData } from "../models/booking";
 
 /**
  * Account type
  */
-export type Account = UserModel | OrganisationData | Business | ConsoleUser |  undefined
+export type Account = UserModel | OrganisationData | Business | ConsoleUser | undefined;
+
+/**
+ * To contain old document types and new ones for booking purposes
+ */
+export type Reservation = Booking | ReservationData | undefined;
 
 /**
  * Interface for BroadCastService compile function

@@ -22,6 +22,14 @@ export interface Invoice {
 }
 
 /**
+ * Text messages
+ */
+export interface SMSRequest {
+  to: string;
+  message: string;
+}
+
+/**
  * Compact Reservation Doc
 */
 export interface ShippingDetails  {

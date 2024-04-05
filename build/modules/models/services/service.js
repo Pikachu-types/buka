@@ -6,33 +6,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Booking = void 0;
+exports.SingleService = void 0;
 const class_transformer_1 = require("class-transformer");
 /**
- * akub bookings model
+ * akub single service model
 */
-class Booking {
+class SingleService {
     constructor() {
         /* eslint new-cap: ["error", { "capIsNew": false }]*/
-        this.id = ""; // uses the format booking_{id}
-        this.client = "";
-        this.currency = "";
-        this.status = "unknown";
+        this.id = ""; // uses the format service_{id}
         this.iat = 0;
-        this.fee = 0;
-        this.activity = [];
-        this.payments = [];
-        this.people = [];
-        this.items = [];
+        this.marketplace = false;
+        this.index = 0;
+        this.pricing = [];
     }
     /**
      * Change record to this class
      *
      * @param {Record<string, unknown>} obj  json object from db
-     * @return {Booking} this class
+     * @return {SingleService} this class
      */
     static fromJson(obj) {
-        const result = (0, class_transformer_1.plainToInstance)(Booking, obj, { excludeExtraneousValues: true });
+        const result = (0, class_transformer_1.plainToInstance)(SingleService, obj, { excludeExtraneousValues: true });
         return result;
     }
     /**
@@ -48,15 +43,15 @@ class Booking {
      * @returns {boolean} returns true or false
      */
     static isOfInstance(error) {
-        return error instanceof Booking;
+        return error instanceof SingleService;
     }
     /**
      * Helper class function to find one specific id
      *
-     * @param {Booking[]} list an array of bankids to
+     * @param {SingleService[]} list an array of bankids to
      *  sort from and find given
      * @param {string} id provide the needed id to match for
-     * @return {Booking | undefined} found object else undefined
+     * @return {SingleService | undefined} found object else undefined
      */
     static findOne(list, id) {
         for (let i = 0; i < list.length; i++) {
@@ -77,48 +72,30 @@ class Booking {
 }
 __decorate([
     (0, class_transformer_1.Expose)()
-], Booking.prototype, "id", void 0);
+], SingleService.prototype, "id", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], Booking.prototype, "client", void 0);
+], SingleService.prototype, "iat", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], Booking.prototype, "currency", void 0);
+], SingleService.prototype, "marketplace", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], Booking.prototype, "status", void 0);
+], SingleService.prototype, "index", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], Booking.prototype, "iat", void 0);
+], SingleService.prototype, "lut", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], Booking.prototype, "fee", void 0);
+], SingleService.prototype, "basic", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], Booking.prototype, "lut", void 0);
+], SingleService.prototype, "notification", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], Booking.prototype, "time", void 0);
+], SingleService.prototype, "saleSettings", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], Booking.prototype, "repetition", void 0);
-__decorate([
-    (0, class_transformer_1.Expose)()
-], Booking.prototype, "activity", void 0);
-__decorate([
-    (0, class_transformer_1.Expose)()
-], Booking.prototype, "discount", void 0);
-__decorate([
-    (0, class_transformer_1.Expose)()
-], Booking.prototype, "payments", void 0);
-__decorate([
-    (0, class_transformer_1.Expose)()
-], Booking.prototype, "people", void 0);
-__decorate([
-    (0, class_transformer_1.Expose)()
-], Booking.prototype, "items", void 0);
-__decorate([
-    (0, class_transformer_1.Expose)()
-], Booking.prototype, "professional", void 0);
-exports.Booking = Booking;
-//# sourceMappingURL=model.js.map
+], SingleService.prototype, "pricing", void 0);
+exports.SingleService = SingleService;
+//# sourceMappingURL=service.js.map
