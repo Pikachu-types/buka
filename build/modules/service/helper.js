@@ -134,6 +134,23 @@ class FunctionHelpers {
             return false;
         }
     }
+    /**
+    * Generates formatted currency string
+    * @param {number} amount to be formatted
+    * @param {number} currency value currency
+    * @return {string} value
+    */
+    static formatCurrency(amount, currency = 'SEK') {
+        return Intl.NumberFormat('en-US', { style: 'currency', currency: currency.toUpperCase() }).format(this.getAmount(amount));
+    }
+    /**
+    * Generates amount value
+    * @param {number} amount number value
+    * @return {number} value
+    */
+    static getAmount(amount) {
+        return amount * 100;
+    }
 }
 exports.FunctionHelpers = FunctionHelpers;
 //# sourceMappingURL=helper.js.map

@@ -1,3 +1,4 @@
+import { IFCM } from "../../interfaces/miscellenous";
 /**
  * User FCMDataModel class
 */
@@ -16,6 +17,11 @@ export declare class FCMDataModel {
      * @return {boolean} validate if user device is ios
      */
     isIOS(): boolean;
+    /**
+     * getter
+     * @return {boolean} validate if user device is ios
+     */
+    static isIOS(arg?: IFCM): boolean;
     /**
      * This class handler to json
      * @return {string} text

@@ -1,9 +1,10 @@
 export type BookingStats = "completed" | "confirmed" | "unconfirmed" | "unknown" | "cancelled" | "refunded" | "noshow" | "pending";
 export interface BookingNote {
     sender: string;
-    lut: number;
+    lut?: number;
     id: string;
     text: string;
+    booking?: string;
     media: string[];
     iat: number;
 }

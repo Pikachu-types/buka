@@ -23,7 +23,12 @@ export type Reservation = Booking | ReservationData | undefined;
  */
 export interface BroadcastCompileParm {
     receiver: Account;
-    sender: Account;
+    to: {
+        fcm: string,
+        ios: boolean,
+        id: string
+    }
+    sender?: Account;
     message: string;
     title: string;
     restriction: NotificationRestriction;

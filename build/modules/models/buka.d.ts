@@ -32,6 +32,19 @@ export declare class Buka {
      * @return {string} returns link
      */
     static linkBuilder(head: string, param: string, console?: boolean): string;
+    /**
+     * build link
+     * @param {string} booking id of document
+     * @param {number} date timestamp of start
+     * @return {string} returns link
+     */
+    static businessBookingLink(booking: string, date: number): string;
+    /**
+     * build link
+     * @param {string} booking id of document
+     * @return {string} returns link
+     */
+    static userBookingLink(booking: string): string;
 }
 export declare namespace AkubSpace {
     enum AppIdentifier {

@@ -1,6 +1,7 @@
 import { LocalNotification } from "labs-sharable";
 import * as admin from "firebase-admin";
 import { BookingData, Business, ConsoleUser, UserModel, PaymentRequest, Reservation } from "..";
+import { Booking } from "../modules/models/booking/model";
 import { BookingNote } from "../modules/models/booking/shared";
 export declare namespace DatabaseFunctions {
     /**
@@ -81,11 +82,11 @@ export declare namespace DatabaseFunctions {
         updatePaymentDoc(id: string, data: Record<string, unknown>): Promise<void>;
         /**
          * Update booking document
-         * @param {string} booking the booking model
-         * @param {string} data what to update
+         * @param {Booking} booking the booking model
+         * @param {Record<string, unknown>} data what to update
          * @return {Promise<void>} void.
          */
-        updateBooking(booking: BookingData, data: Record<string, unknown>): Promise<void>;
+        updateBooking(booking: Booking, data: Record<string, unknown>): Promise<void>;
         /**
          * A power function used to communicate with firestore database
          * @param {string} docID reference id

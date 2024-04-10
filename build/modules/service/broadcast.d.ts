@@ -3,11 +3,20 @@ import { BroadcastCompileParm } from "../interfaces/account";
 /**
  * Serverless Messaging broadcast service
  */
-export declare class BroadCastService {
+export declare namespace Broadcast {
     /**
-     * Create Broadcast notification object
-     * @param {BroadcastCompileParm} param parameters for compilation
-     * @returns {BroadCastANotification} BroadCastANotification value
+     * Send fcm
+     * @param compile
+     * @param {string} secret fcm delivery secret key
+     * @returns {Promise<number | undefined>}
      */
-    static compile(param: BroadcastCompileParm): BroadCastANotification;
+    function send(compile: BroadCastANotification, secret: string): Promise<number | undefined>;
+    class Service {
+        /**
+         * Create Broadcast notification object
+         * @param {BroadcastCompileParm} param parameters for compilation
+         * @returns {BroadCastANotification} BroadCastANotification value
+         */
+        static compile(param: BroadcastCompileParm): BroadCastANotification;
+    }
 }

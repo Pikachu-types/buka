@@ -25,6 +25,23 @@ class Buka {
         return `https://${console ?
             "app." : ""}buka.direct/${head}?${param}`;
     }
+    /**
+     * build link
+     * @param {string} booking id of document
+     * @param {number} date timestamp of start
+     * @return {string} returns link
+     */
+    static businessBookingLink(booking, date) {
+        return `https://partners.withakub.com/app/calendar/booking/${booking}?date=${date}`;
+    }
+    /**
+     * build link
+     * @param {string} booking id of document
+     * @return {string} returns link
+     */
+    static userBookingLink(booking) {
+        return `https://www.akub.co/app/activity/${booking}`;
+    }
 }
 exports.Buka = Buka;
 Buka.linklyEndpoint = "https://app.linklyhq.com/api/v1/link";
@@ -116,7 +133,7 @@ var AkubSpace;
          */
         static buildPaymentRedirect(token, status, debug = false) {
             return `${debug ? Links.debugPayApiUri :
-                Links.paymentApiUri}/payment/v1/?identifier=${token}&action=${status}`;
+                Links.paymentApiUri}/payment/v1/?identifier=${token}&action=${status}&checkout={CHECKOUT_SESSION_ID}`;
         }
     }
     AkubSpace.helpers = helpers;

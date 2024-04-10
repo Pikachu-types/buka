@@ -119,6 +119,7 @@ export interface IBusinessInfo {
     country: string;
     teamSize: string;
     mobile: string;
+    locale?: string;
     name: string;
     logo?: string;
     description: string;

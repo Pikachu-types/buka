@@ -1,10 +1,12 @@
 import { BookedItem, BookingStats, IBookingActivity, IBookingPayment, IBookingTime, IDiscount, IPerson, IProfessional } from "./shared";
+import { Reservation } from "../../interfaces/account";
 /**
  * akub bookings model
 */
 export declare class Booking {
     id: string;
     client: string;
+    bookedBy: string;
     currency: string;
     status: BookingStats;
     iat: number;
@@ -44,7 +46,7 @@ export declare class Booking {
      * @param {string} id provide the needed id to match for
      * @return {Booking | undefined} found object else undefined
      */
-    static findOne(list: Booking[], id: string): Booking | undefined;
+    static findOne(list: Reservation[], id: string): Booking | undefined;
     /**
     * get document in map format
     * @return { Record<string, unknown>} returns doc map .

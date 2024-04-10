@@ -5,6 +5,7 @@ import {
   IBookingTime,
   IDiscount, IPerson, IProfessional
 } from "./shared";
+import { Reservation } from "../../interfaces/account";
 
 /**
  * akub bookings model
@@ -13,6 +14,7 @@ export class Booking {
   /* eslint new-cap: ["error", { "capIsNew": false }]*/
   @Expose() id = ""; // uses the format booking_{id}
   @Expose() client = "";
+  @Expose() bookedBy = "";
   @Expose() currency = "";
   @Expose() status: BookingStats = "unknown";
   @Expose() iat = 0;
@@ -68,10 +70,12 @@ export class Booking {
    * @param {string} id provide the needed id to match for
    * @return {Booking | undefined} found object else undefined
    */
-  public static findOne(list: Booking[], id: string)
+  public static findOne(list: Reservation[], id: string)
     : Booking | undefined {
     for (let i = 0; i < list.length; i++) {
-      if (list[i].id === id) return list[i];
+      const item = list[i];
+      if (!item) continue;
+      if (item.id === id && this.isOfInstance(item)) return list[i] as Booking;
     }
     return;
   }

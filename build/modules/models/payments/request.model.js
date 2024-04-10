@@ -12,6 +12,15 @@ const documents_1 = require("../../enums/documents");
 const uuid_1 = require("uuid");
 var PaymentRequest;
 (function (PaymentRequest) {
+    /**
+     * payment type
+     */
+    let PaymentType;
+    (function (PaymentType) {
+        PaymentType["invoice"] = "invoice";
+        PaymentType["checkout"] = "checkout";
+        PaymentType["booking"] = "booking";
+    })(PaymentType = PaymentRequest.PaymentType || (PaymentRequest.PaymentType = {}));
     PaymentRequest.isPaymentRequest = (value) => !!(value === null || value === void 0 ? void 0 : value.client) && !!(value === null || value === void 0 ? void 0 : value.currency);
     class Model {
         constructor() {
@@ -118,6 +127,9 @@ var PaymentRequest;
     __decorate([
         (0, class_transformer_1.Expose)()
     ], Model.prototype, "client", void 0);
+    __decorate([
+        (0, class_transformer_1.Expose)()
+    ], Model.prototype, "type", void 0);
     __decorate([
         (0, class_transformer_1.Expose)()
     ], Model.prototype, "created", void 0);

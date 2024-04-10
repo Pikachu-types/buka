@@ -67,4 +67,17 @@ export declare class FunctionHelpers {
      * @return {boolean} returns state.
      */
     static verifyRequester(secretKey: string, source?: string): boolean;
+    /**
+    * Generates formatted currency string
+    * @param {number} amount to be formatted
+    * @param {number} currency value currency
+    * @return {string} value
+    */
+    static formatCurrency(amount: number, currency?: string): string;
+    /**
+    * Generates amount value
+    * @param {number} amount number value
+    * @return {number} value
+    */
+    static getAmount(amount: number): number;
 }

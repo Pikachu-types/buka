@@ -193,7 +193,7 @@ export class ContactData {
 }
 
 /**
- * BookingEmailNotify
+ * SMS stuff
 */
 export interface SMSTrial {
   active: boolean,

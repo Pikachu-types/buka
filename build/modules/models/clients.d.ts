@@ -123,7 +123,7 @@ export declare class ContactData {
     toMap(): Record<string, unknown>;
 }
 /**
- * BookingEmailNotify
+ * SMS stuff
 */
 export interface SMSTrial {
     active: boolean;

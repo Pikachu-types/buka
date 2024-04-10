@@ -46,6 +46,27 @@ export class Buka {
     return `https://${console ?
       "app." : ""}buka.direct/${head}?${param}`;
   }
+
+  /**
+   * build link
+   * @param {string} booking id of document
+   * @param {number} date timestamp of start
+   * @return {string} returns link
+   */
+  public static businessBookingLink(
+    booking: string, date: number): string {
+    return `https://partners.withakub.com/app/calendar/booking/${booking}?date=${date}`;
+  }
+  
+  /**
+   * build link
+   * @param {string} booking id of document
+   * @return {string} returns link
+   */
+  public static userBookingLink(
+    booking: string): string {
+    return `https://www.akub.co/app/activity/${booking}`;
+  }
 }
 
 export namespace AkubSpace {
@@ -121,7 +142,7 @@ export namespace AkubSpace {
      */
     public static buildPaymentRedirect(token: string, status: Status, debug = false): string {
       return `${debug ? Links.debugPayApiUri :
-        Links.paymentApiUri}/payment/v1/?identifier=${token}&action=${status}`;
+        Links.paymentApiUri}/payment/v1/?identifier=${token}&action=${status}&checkout={CHECKOUT_SESSION_ID}`;
     }
   }
 }

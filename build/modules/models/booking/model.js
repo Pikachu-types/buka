@@ -16,6 +16,7 @@ class Booking {
         /* eslint new-cap: ["error", { "capIsNew": false }]*/
         this.id = ""; // uses the format booking_{id}
         this.client = "";
+        this.bookedBy = "";
         this.currency = "";
         this.status = "unknown";
         this.iat = 0;
@@ -60,7 +61,10 @@ class Booking {
      */
     static findOne(list, id) {
         for (let i = 0; i < list.length; i++) {
-            if (list[i].id === id)
+            const item = list[i];
+            if (!item)
+                continue;
+            if (item.id === id && this.isOfInstance(item))
                 return list[i];
         }
         return;
@@ -81,6 +85,9 @@ __decorate([
 __decorate([
     (0, class_transformer_1.Expose)()
 ], Booking.prototype, "client", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], Booking.prototype, "bookedBy", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
 ], Booking.prototype, "currency", void 0);

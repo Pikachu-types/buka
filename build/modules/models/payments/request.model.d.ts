@@ -8,8 +8,17 @@ export declare namespace PaymentRequest {
      */
     interface PaymentProvider {
         identifier: string;
+        checkoutID?: string;
         link: string;
         provider: string;
+    }
+    /**
+     * payment type
+     */
+    enum PaymentType {
+        invoice = "invoice",
+        checkout = "checkout",
+        booking = "booking"
     }
     /**
      * user
@@ -95,6 +104,10 @@ export declare namespace PaymentRequest {
          * Client ID ie. client_{id}
          */
         client: string;
+        /**
+         * Payment type - invoice, booking, checkout
+         */
+        type: PaymentType | undefined;
         /**
          * Timestamp of creation
          */

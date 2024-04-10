@@ -171,16 +171,15 @@ var DatabaseFunctions;
         }
         /**
          * Update booking document
-         * @param {string} booking the booking model
-         * @param {string} data what to update
+         * @param {Booking} booking the booking model
+         * @param {Record<string, unknown>} data what to update
          * @return {Promise<void>} void.
          */
         updateBooking(booking, data) {
             return __awaiter(this, void 0, void 0, function* () {
                 yield this.db.
                     collection(__1.DocumentReference.reservation).
-                    doc(booking.reservationID).
-                    collection(__1.DocumentReference.booking).doc(booking.id)
+                    doc(booking.id)
                     .update(data);
             });
         }
@@ -224,10 +223,13 @@ var DatabaseFunctions;
                         .doc(tray.notification.to)
                         .collection(__1.DocumentReference.notifications);
                 }
-                else {
+                else if (tray.notification.to.startsWith("user")) {
                     source = this.db.collection(__1.DocumentReference.users)
                         .doc(tray.notification.to.split("_")[1])
                         .collection(__1.DocumentReference.notifications);
+                }
+                else {
+                    source = undefined;
                 }
                 if (!source)
                     return;

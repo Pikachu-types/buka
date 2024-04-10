@@ -33,6 +33,17 @@ class FCMDataModel {
         return (0, labs_sharable_1.equalToIgnoreCase)(this.device, labs_sharable_1.deviceComparator);
     }
     /**
+     * getter
+     * @return {boolean} validate if user device is ios
+     */
+    static isIOS(arg) {
+        if (!arg)
+            return false;
+        if (arg.device == undefined)
+            return false;
+        return (0, labs_sharable_1.equalToIgnoreCase)(arg.device, labs_sharable_1.deviceComparator);
+    }
+    /**
      * This class handler to json
      * @return {string} text
      */

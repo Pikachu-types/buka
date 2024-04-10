@@ -1,4 +1,4 @@
-import { CipherType, CustomError, LabsCipher } from "labs-sharable";
+import { CipherType, CustomError, LabsCipher, roundTo } from "labs-sharable";
 import { ApprovedClients } from "../models/approvedClients";
 
 /**
@@ -147,5 +147,26 @@ export class FunctionHelpers {
     } catch (err) {
       return false;
     }
+  }
+
+  /**
+  * Generates formatted currency string
+  * @param {number} amount to be formatted
+  * @param {number} currency value currency
+  * @return {string} value
+  */
+  public static formatCurrency(
+    amount: number, currency = 'SEK'): string {
+    return Intl.NumberFormat('en-US', { style: 'currency', currency: currency.toUpperCase() }).format(this.getAmount(amount))
+  }
+
+  /**
+  * Generates amount value
+  * @param {number} amount number value
+  * @return {number} value
+  */
+  public static getAmount(
+    amount: number): number {
+    return amount * 100;
   }
 }
