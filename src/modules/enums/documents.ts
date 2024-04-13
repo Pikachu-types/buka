@@ -275,4 +275,6 @@ export enum SendgridTemplates {
   SendReceiptPayment = "d-459cad44141e4f4183020bb543c06244",
   JustGotPaid = "d-9af5b37b8f304e9fbdc8a5593f14e835",
   Receipt = "d-9d5aabe3cd1f4259bd1b82370a3173f8",
+  AllOtherReceipts = "d-32e961765299403aa92e08b648a53b0d",
+  PaymentReminder = "d-e28655753b154fa4ac342682179b96a2",
 }

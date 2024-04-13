@@ -264,5 +264,7 @@ var SendgridTemplates;
     SendgridTemplates["SendReceiptPayment"] = "d-459cad44141e4f4183020bb543c06244";
     SendgridTemplates["JustGotPaid"] = "d-9af5b37b8f304e9fbdc8a5593f14e835";
     SendgridTemplates["Receipt"] = "d-9d5aabe3cd1f4259bd1b82370a3173f8";
+    SendgridTemplates["AllOtherReceipts"] = "d-32e961765299403aa92e08b648a53b0d";
+    SendgridTemplates["PaymentReminder"] = "d-e28655753b154fa4ac342682179b96a2";
 })(SendgridTemplates = exports.SendgridTemplates || (exports.SendgridTemplates = {}));
 //# sourceMappingURL=documents.js.map

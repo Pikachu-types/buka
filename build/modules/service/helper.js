@@ -141,7 +141,7 @@ class FunctionHelpers {
     * @return {string} value
     */
     static formatCurrency(amount, currency = 'SEK') {
-        return Intl.NumberFormat('en-US', { style: 'currency', currency: currency.toUpperCase() }).format(this.getAmount(amount));
+        return Intl.NumberFormat('en-US', { style: 'currency', currency: currency.toUpperCase() }).format(amount);
     }
     /**
     * Generates amount value
