@@ -103,6 +103,7 @@ export namespace AkubSpace {
   }
 
   export class helpers {
+    
     /**
      * Create a pay request identifier
      * @param {string} token payment identifier ie. payment_uuid
@@ -111,6 +112,16 @@ export namespace AkubSpace {
      */
     public static buildPaymentLink(token: string, debug = false): string {
       return `${debug ? Links.debugPayUI : Links.payments}/${token.split("_")[1].trim()}`;
+    }
+    
+    /**
+     * Create a invitation url
+     * @param {string} token payment identifier ie. payment_uuid
+     * @param {boolean} debug is payment ran in debug mode
+     * @return {string} returns value.
+     */
+    public static buildInvitationUrl(token: string, debug = false): string {
+      return `${debug ? Links.consoleDebug : Links.console}/invitation/${token}`;
     }
     
     /**

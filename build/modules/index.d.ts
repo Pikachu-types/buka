@@ -26,5 +26,6 @@ export * from "./models/booking/model";
 export * from "./models/booking/shared";
 export * from "./models/console/business";
 export * from "./models/console/user";
+export * from "./models/console/invitation:request";
 export * from "./models/payments/links";
 export * from "./models/review_request_model";

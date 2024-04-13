@@ -4,6 +4,9 @@
 export declare class ProfileData {
     first: string;
     last: string;
+    location: string;
+    mobile: string;
+    work: string;
     /**
      * Change record to ProfileData class
      *

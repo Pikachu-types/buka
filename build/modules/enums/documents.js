@@ -76,6 +76,7 @@ var DocumentReference;
      */
     DocumentReference["messages"] = "messages";
     DocumentReference["products"] = "products";
+    DocumentReference["invitation"] = "invitation";
     DocumentReference["items"] = "items";
     /**
      * On message collection listener path
@@ -95,8 +96,7 @@ var DocumentTypes;
      * Registered users
      */
     DocumentTypes["user"] = "user_";
-    DocumentTypes["contact"] = "contact_";
-    DocumentTypes["client"] = "client_";
+    DocumentTypes["contact"] = "customer_";
     DocumentTypes["business"] = "org_";
     DocumentTypes["clientUser"] = "ba_";
     DocumentTypes["notifications"] = "noti_";

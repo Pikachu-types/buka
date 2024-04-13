@@ -42,6 +42,7 @@ __exportStar(require("./models/booking/model"), exports);
 __exportStar(require("./models/booking/shared"), exports);
 __exportStar(require("./models/console/business"), exports);
 __exportStar(require("./models/console/user"), exports);
+__exportStar(require("./models/console/invitation:request"), exports);
 __exportStar(require("./models/payments/links"), exports);
 __exportStar(require("./models/review_request_model"), exports);
 //# sourceMappingURL=index.js.map

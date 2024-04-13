@@ -8,10 +8,6 @@ export declare class CustomerContact {
     mobile: string;
     email: string;
     iat: number;
-    /**
-     * Organisation id who registered this customer
-     */
-    owner: string;
     vat: string | undefined;
     country: string;
     /**
@@ -43,5 +39,5 @@ export declare class CustomerContact {
      * Create id
      * @return {string} text
      */
-    static generateID(): string;
+    static generateID(email: string): string;
 }

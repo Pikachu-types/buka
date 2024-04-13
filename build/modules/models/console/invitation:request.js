@@ -6,32 +6,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CustomerContact = void 0;
+exports.InvitationRequest = void 0;
 const class_transformer_1 = require("class-transformer");
-const documents_1 = require("../../enums/documents");
 const labs_sharable_1 = require("labs-sharable");
 /**
- * Saved contacts for organisations on console
+ * Console invitation request
 */
-class CustomerContact {
+class InvitationRequest {
     constructor() {
         /* eslint new-cap: ["error", { "capIsNew": false }]*/
-        this.id = "";
+        this.token = "";
         this.name = "";
-        this.address = "";
-        this.mobile = "";
-        this.email = "";
+        this.creator = "";
+        this.org = "";
         this.iat = 0;
-        this.country = "";
+        this.exp = 0;
+        this.invited = "";
+        this.role = "";
+        this.used = false;
     }
     /**
      * Change record to this class
      *
      * @param {Record<string, unknown>} obj  json object from db
-     * @return {CustomerContact} this class
+     * @return {InvitationRequest} this class
      */
     static fromJson(obj) {
-        const result = (0, class_transformer_1.plainToInstance)(CustomerContact, obj, { excludeExtraneousValues: true });
+        const result = (0, class_transformer_1.plainToInstance)(InvitationRequest, obj, { excludeExtraneousValues: true });
         return result;
     }
     /**
@@ -44,14 +45,14 @@ class CustomerContact {
     /**
      * Helper class function to find one specific object based on id
      *
-     * @param {CustomerContact[]} list an array to sort from and find given
+     * @param {InvitationRequest[]} list an array to sort from and find given
      * @param {string} id provide the needed id to match for
-     * @return {CustomerContact | undefined} found object else undefined
+     * @return {InvitationRequest | undefined} found object else undefined
      */
     static findOne(list, id) {
         for (let i = 0; i < list.length; i++) {
-            if (list[i].id === id ||
-                (0, labs_sharable_1.equalToIgnoreCase)(list[i].email, id))
+            if (list[i].token === id ||
+                (0, labs_sharable_1.equalToIgnoreCase)(list[i].invited, id))
                 return list[i];
         }
         return;
@@ -63,37 +64,33 @@ class CustomerContact {
     toMap() {
         return JSON.parse(this.toJsonString());
     }
-    /**
-     * Create id
-     * @return {string} text
-     */
-    static generateID(email) {
-        return `${documents_1.DocumentTypes.contact}${email}`;
-    }
 }
 __decorate([
     (0, class_transformer_1.Expose)()
-], CustomerContact.prototype, "id", void 0);
+], InvitationRequest.prototype, "token", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], CustomerContact.prototype, "name", void 0);
+], InvitationRequest.prototype, "name", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], CustomerContact.prototype, "address", void 0);
+], InvitationRequest.prototype, "creator", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], CustomerContact.prototype, "mobile", void 0);
+], InvitationRequest.prototype, "org", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], CustomerContact.prototype, "email", void 0);
+], InvitationRequest.prototype, "iat", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], CustomerContact.prototype, "iat", void 0);
+], InvitationRequest.prototype, "exp", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], CustomerContact.prototype, "vat", void 0);
+], InvitationRequest.prototype, "invited", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
-], CustomerContact.prototype, "country", void 0);
-exports.CustomerContact = CustomerContact;
-//# sourceMappingURL=contact.js.map
+], InvitationRequest.prototype, "role", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], InvitationRequest.prototype, "used", void 0);
+exports.InvitationRequest = InvitationRequest;
+//# sourceMappingURL=invitation:request.js.map

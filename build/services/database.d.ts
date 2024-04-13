@@ -1,6 +1,6 @@
 import { LocalNotification } from "labs-sharable";
 import * as admin from "firebase-admin";
-import { BookingData, Business, ConsoleUser, UserModel, PaymentRequest, Reservation } from "..";
+import { BookingData, Business, ConsoleUser, UserModel, PaymentRequest, Reservation, InvitationRequest, CustomerContact } from "..";
 import { Booking } from "../modules/models/booking/model";
 import { BookingNote } from "../modules/models/booking/shared";
 export declare namespace DatabaseFunctions {
@@ -33,12 +33,25 @@ export declare namespace DatabaseFunctions {
          */
         retrieveReservations(): Promise<Reservation[]>;
         /**
+         * Go to database invitation collection and get all
+         * available documents
+         * @return {Promise<InvitationRequest[]>} returns OrganisationData list.
+         */
+        retrieveInvitations(): Promise<InvitationRequest[]>;
+        /**
          * Go to database reservation's bookings and get all
          * available documents
          * @param {string} reference document id for Reservation doc
          * @return {Promise<BookingData[]>} returns OrganisationData list.
          */
         retrieveReservationBookings(reference: string): Promise<BookingData[]>;
+        /**
+         * Go to database business contacts and get all
+         * available documents
+         * @param {string} reference document id for Reservation doc
+         * @return {Promise<CustomerContact[]>} returns OrganisationData list.
+         */
+        retrieveBusinessContacts(reference: string): Promise<CustomerContact[]>;
         /**
          * Go to database reservation's bookings and get all
          * available documents
@@ -60,6 +73,15 @@ export declare namespace DatabaseFunctions {
          * @return {Promise<boolean>} nothing
          */
         doesDocumentExist(docID: string, collectionPath: string): Promise<boolean>;
+        /**
+         * A power function used to check if firestore sub document exist
+         * @param {string} docID reference id
+         * @param {string} subID reference sub id
+         * @param {string} collectionPathA string path of collection
+         * @param {string} collectionPathB string path of sub collection
+         * @return {Promise<boolean>} nothing
+         */
+        doesSubDocumentExist(docID: string, subID: string, collectionPathA: string, collectionPathB: string): Promise<boolean>;
     }
     /**
      * Database management setters, updates and deletes
@@ -80,6 +102,13 @@ export declare namespace DatabaseFunctions {
          * @return {Promise<void>} void.
          */
         updatePaymentDoc(id: string, data: Record<string, unknown>): Promise<void>;
+        /**
+         * Create business customer
+         * @param {string} id the business document id
+         * @param {Record<string, unknown>} data map to update with
+         * @return {Promise<void>} void.
+         */
+        createBusinessCustomer(id: string, data: CustomerContact): Promise<void>;
         /**
          * Update booking document
          * @param {Booking} booking the booking model

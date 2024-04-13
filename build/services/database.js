@@ -82,6 +82,17 @@ var DatabaseFunctions;
             });
         }
         /**
+         * Go to database invitation collection and get all
+         * available documents
+         * @return {Promise<InvitationRequest[]>} returns OrganisationData list.
+         */
+        retrieveInvitations() {
+            return __awaiter(this, void 0, void 0, function* () {
+                const source = yield this.db.collection(__1.DocumentReference.invitation).get();
+                return source.docs.map((e) => __1.InvitationRequest.fromJson(e.data()));
+            });
+        }
+        /**
          * Go to database reservation's bookings and get all
          * available documents
          * @param {string} reference document id for Reservation doc
@@ -93,6 +104,20 @@ var DatabaseFunctions;
                     reservation).doc(reference)
                     .collection(__1.DocumentReference.booking).get();
                 return source.docs.map((e) => __1.BookingData.fromJson(e.data()));
+            });
+        }
+        /**
+         * Go to database business contacts and get all
+         * available documents
+         * @param {string} reference document id for Reservation doc
+         * @return {Promise<CustomerContact[]>} returns OrganisationData list.
+         */
+        retrieveBusinessContacts(reference) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const source = yield this.db.collection(__1.DocumentReference.
+                    business).doc(reference)
+                    .collection(__1.DocumentReference.contacts).get();
+                return source.docs.map((e) => __1.CustomerContact.fromJson(e.data()));
             });
         }
         /**
@@ -134,6 +159,22 @@ var DatabaseFunctions;
                 return query.exists;
             });
         }
+        /**
+         * A power function used to check if firestore sub document exist
+         * @param {string} docID reference id
+         * @param {string} subID reference sub id
+         * @param {string} collectionPathA string path of collection
+         * @param {string} collectionPathB string path of sub collection
+         * @return {Promise<boolean>} nothing
+         */
+        doesSubDocumentExist(docID, subID, collectionPathA, collectionPathB) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const query = yield this.db.
+                    collection(collectionPathA).doc(docID)
+                    .collection(collectionPathB).doc(subID).get();
+                return query.exists;
+            });
+        }
     }
     DatabaseFunctions.getters = getters;
     /**
@@ -167,6 +208,20 @@ var DatabaseFunctions;
                 yield this.db.
                     collection(__1.DocumentReference.payments).doc(id)
                     .update(data);
+            });
+        }
+        /**
+         * Create business customer
+         * @param {string} id the business document id
+         * @param {Record<string, unknown>} data map to update with
+         * @return {Promise<void>} void.
+         */
+        createBusinessCustomer(id, data) {
+            return __awaiter(this, void 0, void 0, function* () {
+                yield this.db.
+                    collection(__1.DocumentReference.business).doc(id)
+                    .collection(__1.DocumentReference.contacts).doc(data.id)
+                    .update(data.toMap());
             });
         }
         /**

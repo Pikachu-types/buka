@@ -85,6 +85,8 @@ export enum DocumentReference {
 
   products = "products",
 
+  invitation = "invitation",
+
   items = "items",
 
   /**
@@ -106,8 +108,7 @@ export enum DocumentTypes {
    * Registered users
    */
   user = "user_",
-  contact = "contact_",
-  client = "client_", // depreciate
+  contact = "customer_",
   business = "org_",
   clientUser = "ba_",
   notifications = "noti_",

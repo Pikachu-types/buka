@@ -7,6 +7,9 @@ export class ProfileData {
     /* eslint new-cap: ["error", { "capIsNew": false }]*/
     @Expose() first = "";
     @Expose() last = "";
+    @Expose() location = "";
+    @Expose() mobile = "";
+    @Expose() work = "";
   
     /**
      * Change record to ProfileData class

@@ -16,6 +16,9 @@ class ProfileData {
         /* eslint new-cap: ["error", { "capIsNew": false }]*/
         this.first = "";
         this.last = "";
+        this.location = "";
+        this.mobile = "";
+        this.work = "";
     }
     /**
      * Change record to ProfileData class
@@ -55,6 +58,15 @@ __decorate([
 __decorate([
     (0, class_transformer_1.Expose)()
 ], ProfileData.prototype, "last", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], ProfileData.prototype, "location", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], ProfileData.prototype, "mobile", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
+], ProfileData.prototype, "work", void 0);
 exports.ProfileData = ProfileData;
 /**
  * User ReferralModel class

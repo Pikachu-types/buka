@@ -3,7 +3,9 @@ import * as admin from "firebase-admin";
 import {
   BookingData, Business, ConsoleUser,
   DocumentReference, DocumentTypes,
-  ReservationData, UserModel, PaymentRequest, Reservation, parseInterface
+  ReservationData, UserModel, PaymentRequest, Reservation, parseInterface,
+  InvitationRequest,
+  CustomerContact
 } from "..";
 import { Booking } from "../modules/models/booking/model";
 import { BookingNote } from "../modules/models/booking/shared";
@@ -82,6 +84,16 @@ export namespace DatabaseFunctions {
     }
 
     /**
+     * Go to database invitation collection and get all
+     * available documents
+     * @return {Promise<InvitationRequest[]>} returns OrganisationData list.
+     */
+    public async retrieveInvitations(): Promise<InvitationRequest[]> {
+      const source = await this.db.collection(DocumentReference.invitation).get();
+      return source.docs.map((e) => InvitationRequest.fromJson(e.data()));
+    }
+
+    /**
      * Go to database reservation's bookings and get all
      * available documents
      * @param {string} reference document id for Reservation doc
@@ -93,6 +105,20 @@ export namespace DatabaseFunctions {
         reservation).doc(reference)
         .collection(DocumentReference.booking).get();
       return source.docs.map((e) => BookingData.fromJson(e.data()));
+    }
+
+    /**
+     * Go to database business contacts and get all
+     * available documents
+     * @param {string} reference document id for Reservation doc
+     * @return {Promise<CustomerContact[]>} returns OrganisationData list.
+     */
+    public async retrieveBusinessContacts(reference: string):
+      Promise<CustomerContact[]> {
+      const source = await this.db.collection(DocumentReference.
+        business).doc(reference)
+        .collection(DocumentReference.contacts).get();
+      return source.docs.map((e) => CustomerContact.fromJson(e.data()));
     }
 
     /**
@@ -132,6 +158,23 @@ export namespace DatabaseFunctions {
       : Promise<boolean> {
       const query = await this.db.
         collection(collectionPath).doc(docID).get();
+      return query.exists;
+    }
+
+    /**
+     * A power function used to check if firestore sub document exist
+     * @param {string} docID reference id
+     * @param {string} subID reference sub id
+     * @param {string} collectionPathA string path of collection
+     * @param {string} collectionPathB string path of sub collection
+     * @return {Promise<boolean>} nothing
+     */
+    async doesSubDocumentExist(docID: string, subID: string,
+      collectionPathA: string, collectionPathB: string, )
+      : Promise<boolean> {
+      const query = await this.db.
+        collection(collectionPathA).doc(docID)
+        .collection(collectionPathB).doc(subID).get();
       return query.exists;
     }
   }
@@ -174,6 +217,21 @@ export namespace DatabaseFunctions {
       await this.db.
         collection(DocumentReference.payments).doc(id)
         .update(data);
+    }
+    
+    /**
+     * Create business customer
+     * @param {string} id the business document id
+     * @param {Record<string, unknown>} data map to update with
+     * @return {Promise<void>} void.
+     */
+    async createBusinessCustomer(id: string,
+      data: CustomerContact)
+      : Promise<void> {
+      await this.db.
+        collection(DocumentReference.business).doc(id)
+        .collection(DocumentReference.contacts).doc(data.id)
+        .update(data.toMap());
     }
 
     /**

@@ -1,30 +1,30 @@
 import { plainToInstance, Expose } from "class-transformer";
-import { DocumentTypes } from "../../enums/documents";
 import { equalToIgnoreCase } from "labs-sharable";
 
 /**
- * Saved contacts for organisations on console
+ * Console invitation request
 */
-export class CustomerContact {
+export class InvitationRequest {
   /* eslint new-cap: ["error", { "capIsNew": false }]*/
-  @Expose() id = "";
+  @Expose() token = "";
   @Expose() name = "";
-  @Expose() address = "";
-  @Expose() mobile = "";
-  @Expose() email = "";
+  @Expose() creator = "";
+  @Expose() org = "";
   @Expose() iat = 0;
-  @Expose() vat: string | undefined;
-  @Expose() country = "";
+  @Expose() exp = 0;
+  @Expose() invited = "";
+  @Expose() role = "";
+  @Expose() used = false;
 
   /**
    * Change record to this class
    *
    * @param {Record<string, unknown>} obj  json object from db
-   * @return {CustomerContact} this class
+   * @return {InvitationRequest} this class
    */
   public static fromJson(obj: Record<string, unknown>)
-    : CustomerContact {
-    const result: CustomerContact = plainToInstance(CustomerContact, obj,
+    : InvitationRequest {
+    const result: InvitationRequest = plainToInstance(InvitationRequest, obj,
       { excludeExtraneousValues: true });
     return result;
   }
@@ -40,15 +40,15 @@ export class CustomerContact {
   /**
    * Helper class function to find one specific object based on id
    *
-   * @param {CustomerContact[]} list an array to sort from and find given
+   * @param {InvitationRequest[]} list an array to sort from and find given
    * @param {string} id provide the needed id to match for
-   * @return {CustomerContact | undefined} found object else undefined
+   * @return {InvitationRequest | undefined} found object else undefined
    */
-  public static findOne(list: CustomerContact[], id: string)
-    : CustomerContact | undefined {
+  public static findOne(list: InvitationRequest[], id: string)
+    : InvitationRequest | undefined {
     for (let i = 0; i < list.length; i++) {
-      if (list[i].id === id ||
-        equalToIgnoreCase(list[i].email, id)) return list[i];
+      if (list[i].token === id ||
+        equalToIgnoreCase(list[i].invited, id)) return list[i];
     }
     return;
   }
@@ -62,11 +62,4 @@ export class CustomerContact {
     return JSON.parse(this.toJsonString());
   }
 
-  /**
-   * Create id
-   * @return {string} text
-   */
-  public static generateID(email:string): string {
-    return `${DocumentTypes.contact}${email}`;
-  }
 }

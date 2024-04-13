@@ -69,6 +69,7 @@ export declare enum DocumentReference {
      */
     messages = "messages",
     products = "products",
+    invitation = "invitation",
     items = "items",
     /**
      * On message collection listener path
@@ -87,8 +88,7 @@ export declare enum DocumentTypes {
      * Registered users
      */
     user = "user_",
-    contact = "contact_",
-    client = "client_",
+    contact = "customer_",
     business = "org_",
     clientUser = "ba_",
     notifications = "noti_",

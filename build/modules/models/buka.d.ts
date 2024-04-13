@@ -85,6 +85,13 @@ export declare namespace AkubSpace {
          */
         static buildPaymentLink(token: string, debug?: boolean): string;
         /**
+         * Create a invitation url
+         * @param {string} token payment identifier ie. payment_uuid
+         * @param {boolean} debug is payment ran in debug mode
+         * @return {string} returns value.
+         */
+        static buildInvitationUrl(token: string, debug?: boolean): string;
+        /**
          * Create a swish pay link
          * @param {string} identifier swish number
          * @param {number} amount to be paid
