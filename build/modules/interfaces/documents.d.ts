@@ -9,6 +9,9 @@ import { UserModel } from "../models/user";
 export interface Invoice {
     shipping: ShippingDetails;
     due: number;
+    paidAt?: number;
+    payMethod?: string;
+    payLink?: string;
     items: InvoiceItems[];
     subtotal: number;
     paid: number;

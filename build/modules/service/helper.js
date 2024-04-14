@@ -151,6 +151,19 @@ class FunctionHelpers {
     static getAmount(amount) {
         return amount * 100;
     }
+    /**
+      * Generates total amount spent from item list
+      * @param {InvoiceItems[]} items list of items
+      * @return {number} value
+      */
+    static getInvoiceItemsTotal(items) {
+        let sum = 0;
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            sum = (item.amount * item.quantity) + sum;
+        }
+        return sum;
+    }
 }
 exports.FunctionHelpers = FunctionHelpers;
 //# sourceMappingURL=helper.js.map

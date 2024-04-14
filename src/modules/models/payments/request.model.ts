@@ -63,6 +63,10 @@ export namespace PaymentRequest {
      */
     due: number;
     /**
+     * Date paid
+     */
+    paidAt?: number;
+    /**
      * VAT if applicable
      */
     vat: number;
@@ -143,6 +147,11 @@ export namespace PaymentRequest {
      * Charge currency
      */
     @Expose() currency = "";
+
+    /**
+     * Checkout method
+     */
+    @Expose() method = "";
     /**
      * Amount chargeable
      */

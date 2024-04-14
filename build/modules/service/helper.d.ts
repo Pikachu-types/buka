@@ -1,5 +1,6 @@
 /// <reference types="node" />
 import { CipherType } from "labs-sharable";
+import { InvoiceItems } from "..";
 /**
  * Callable Function Helper class
  */
@@ -80,4 +81,10 @@ export declare class FunctionHelpers {
     * @return {number} value
     */
     static getAmount(amount: number): number;
+    /**
+      * Generates total amount spent from item list
+      * @param {InvoiceItems[]} items list of items
+      * @return {number} value
+      */
+    static getInvoiceItemsTotal(items: InvoiceItems[]): number;
 }

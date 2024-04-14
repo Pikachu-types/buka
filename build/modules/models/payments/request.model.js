@@ -48,6 +48,10 @@ var PaymentRequest;
              */
             this.currency = "";
             /**
+             * Checkout method
+             */
+            this.method = "";
+            /**
              * Amount chargeable
              */
             this.amount = 0;
@@ -148,6 +152,9 @@ var PaymentRequest;
     __decorate([
         (0, class_transformer_1.Expose)()
     ], Model.prototype, "currency", void 0);
+    __decorate([
+        (0, class_transformer_1.Expose)()
+    ], Model.prototype, "method", void 0);
     __decorate([
         (0, class_transformer_1.Expose)()
     ], Model.prototype, "amount", void 0);

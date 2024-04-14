@@ -1,5 +1,6 @@
 import { CipherType, CustomError, LabsCipher, roundTo } from "labs-sharable";
 import { ApprovedClients } from "../models/approvedClients";
+import { InvoiceItems } from "..";
 
 /**
  * Callable Function Helper class
@@ -168,5 +169,20 @@ export class FunctionHelpers {
   public static getAmount(
     amount: number): number {
     return amount * 100;
+  }
+
+  /**
+    * Generates total amount spent from item list
+    * @param {InvoiceItems[]} items list of items
+    * @return {number} value
+    */
+  public static getInvoiceItemsTotal(
+    items: InvoiceItems[]): number {
+    let sum = 0;
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      sum = (item.amount * item.quantity) + sum;
+    }
+    return sum;
   }
 }
