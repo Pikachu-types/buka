@@ -1,3 +1,4 @@
+import { SingleService } from "./service";
 /**
  * akub service categories model
 */
@@ -12,6 +13,7 @@ export declare class ServiceCategory {
     iat: number;
     color: number;
     lut: number | undefined;
+    services: SingleService[];
     /**
      * Change record to this class
      *

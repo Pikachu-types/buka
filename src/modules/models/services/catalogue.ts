@@ -1,4 +1,5 @@
 import { plainToInstance, Expose } from "class-transformer";
+import { SingleService } from "./service";
 
 /**
  * akub service categories model
@@ -15,6 +16,8 @@ export class ServiceCategory {
   @Expose() iat = 0;
   @Expose() color = 0;
   @Expose() lut: number | undefined;
+
+  services: SingleService[] = [];
 
   /**
    * Change record to this class
@@ -74,4 +77,15 @@ export class ServiceCategory {
     /// delete any unwanted prints i.e., delete res["onboardingData"];
     return res;
   }
+
+  // /**
+  // * get document in json response format
+  // * @return { Record<string, unknown>} returns doc map .
+  // */
+  // public toJSON()
+  //   : Record<string, unknown> {
+  //   const res = JSON.parse(this.toJsonString());
+  //   res["services"] = JSON.parse(JSON.stringify(this.services));
+  //   return res;
+  // }
 }

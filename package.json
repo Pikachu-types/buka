@@ -1,6 +1,6 @@
 {
   "name": "@bukadirect/buka",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Backend helpers and functions for Buka Direct server end services",
   "main": "build/index.js",
   "types": "build/index.d.ts",

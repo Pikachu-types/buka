@@ -23,6 +23,17 @@ class ServiceCategory {
         this.description = "";
         this.iat = 0;
         this.color = 0;
+        this.services = [];
+        // /**
+        // * get document in json response format
+        // * @return { Record<string, unknown>} returns doc map .
+        // */
+        // public toJSON()
+        //   : Record<string, unknown> {
+        //   const res = JSON.parse(this.toJsonString());
+        //   res["services"] = JSON.parse(JSON.stringify(this.services));
+        //   return res;
+        // }
     }
     /**
      * Change record to this class

@@ -5,7 +5,9 @@ import {
   DocumentReference, DocumentTypes,
   ReservationData, UserModel, PaymentRequest, Reservation, parseInterface,
   InvitationRequest,
-  CustomerContact
+  CustomerContact,
+  ServiceCategory,
+  SingleService
 } from "..";
 import { Booking } from "../modules/models/booking/model";
 import { BookingNote } from "../modules/models/booking/shared";
@@ -81,6 +83,36 @@ export namespace DatabaseFunctions {
       const source = await this.db.collection(DocumentReference.reservation).get();
       return source.docs.map((e) => e.data()['activity'] !== undefined ?
         Booking.fromJson(e.data()) : ReservationData.fromJson(e.data()));
+    }
+
+    /**
+     * Go to database catalogue collection and get any related
+     * @param {string} orgID client identifier
+     * @return {Promise<ServiceCategory[]>} returns data.
+     */
+    public async retrieveServices(orgID: string): Promise<ServiceCategory[]> {
+      const source = await this.db.collection(DocumentReference.catalogue)
+        .where("owner", "==", orgID).get();
+      const items: ServiceCategory[] = [];
+      for (let i = 0; i < source.docs.length; i++){
+        const e = source.docs[i];
+        if (e.data()) {
+          const item = ServiceCategory.fromJson(e.data());
+          item.services = await this.getCategoryServices(item.id);
+          items.push(item);
+        }
+      }
+      return items;
+    }
+
+    /**
+     * Grab category services
+     * @param {string} cat category identifier
+     * @return {Promise<SingleService[]>} returns OrganisationData list.
+     */
+    public async getCategoryServices(cat: string): Promise<SingleService[]> {
+      const source = await this.db.collection(DocumentReference.catalogue).doc(cat).collection('services').get();
+      return source.docs.map((e) => SingleService.fromJson(e.data()));
     }
 
     /**

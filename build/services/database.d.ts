@@ -1,6 +1,6 @@
 import { LocalNotification } from "labs-sharable";
 import * as admin from "firebase-admin";
-import { BookingData, Business, ConsoleUser, UserModel, PaymentRequest, Reservation, InvitationRequest, CustomerContact } from "..";
+import { BookingData, Business, ConsoleUser, UserModel, PaymentRequest, Reservation, InvitationRequest, CustomerContact, ServiceCategory, SingleService } from "..";
 import { Booking } from "../modules/models/booking/model";
 import { BookingNote } from "../modules/models/booking/shared";
 export declare namespace DatabaseFunctions {
@@ -32,6 +32,18 @@ export declare namespace DatabaseFunctions {
          * @return {Promise<Reservation[]>} returns OrganisationData list.
          */
         retrieveReservations(): Promise<Reservation[]>;
+        /**
+         * Go to database catalogue collection and get any related
+         * @param {string} orgID client identifier
+         * @return {Promise<ServiceCategory[]>} returns data.
+         */
+        retrieveServices(orgID: string): Promise<ServiceCategory[]>;
+        /**
+         * Grab category services
+         * @param {string} cat category identifier
+         * @return {Promise<SingleService[]>} returns OrganisationData list.
+         */
+        getCategoryServices(cat: string): Promise<SingleService[]>;
         /**
          * Go to database invitation collection and get all
          * available documents

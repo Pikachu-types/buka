@@ -82,6 +82,38 @@ var DatabaseFunctions;
             });
         }
         /**
+         * Go to database catalogue collection and get any related
+         * @param {string} orgID client identifier
+         * @return {Promise<ServiceCategory[]>} returns data.
+         */
+        retrieveServices(orgID) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const source = yield this.db.collection(__1.DocumentReference.catalogue)
+                    .where("owner", "==", orgID).get();
+                const items = [];
+                for (let i = 0; i < source.docs.length; i++) {
+                    const e = source.docs[i];
+                    if (e.data()) {
+                        const item = __1.ServiceCategory.fromJson(e.data());
+                        item.services = yield this.getCategoryServices(item.id);
+                        items.push(item);
+                    }
+                }
+                return items;
+            });
+        }
+        /**
+         * Grab category services
+         * @param {string} cat category identifier
+         * @return {Promise<SingleService[]>} returns OrganisationData list.
+         */
+        getCategoryServices(cat) {
+            return __awaiter(this, void 0, void 0, function* () {
+                const source = yield this.db.collection(__1.DocumentReference.catalogue).doc(cat).collection('services').get();
+                return source.docs.map((e) => __1.SingleService.fromJson(e.data()));
+            });
+        }
+        /**
          * Go to database invitation collection and get all
          * available documents
          * @return {Promise<InvitationRequest[]>} returns OrganisationData list.
