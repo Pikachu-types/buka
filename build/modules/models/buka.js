@@ -96,6 +96,21 @@ var AkubSpace;
         PaymentProviders["tink"] = "tink";
         PaymentProviders["swish"] = "swish";
     })(PaymentProviders = AkubSpace.PaymentProviders || (AkubSpace.PaymentProviders = {}));
+    function refillAmount(credit) {
+        switch (credit) {
+            case "200":
+                return 20;
+            case "500":
+                return 50;
+            case "2000":
+                return 200;
+            case "1000":
+                return 100;
+            default:
+                return Number.parseInt(credit);
+        }
+    }
+    AkubSpace.refillAmount = refillAmount;
     class helpers {
         /**
          * Create a pay request identifier
@@ -132,6 +147,17 @@ var AkubSpace;
          */
         static buildConsolePayView(id, debug = false) {
             return `${debug ? Links.debugPayUI : Links.console}/app/payments/${id}`;
+        }
+        /**
+         * Create payment redirect for normal checkout
+         * @param {string} type checkout type i.e sms-refill | subscription
+         * @param {string} status what the status i.e success or fail
+         * @param {boolean} debug is payment ran in debug mode
+         * @return {string} returns value.
+         */
+        static buildCheckoutRedirect(type, status, debug = false) {
+            return `${debug ? Links.debugPayApiUri :
+                Links.paymentApiUri}/checkout/${type}/${status}`;
         }
         /**
          * Create a request identifier

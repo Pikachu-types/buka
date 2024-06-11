@@ -76,6 +76,7 @@ export declare namespace AkubSpace {
         tink = "tink",
         swish = "swish"
     }
+    function refillAmount(credit: string): number;
     class helpers {
         /**
          * Create a pay request identifier
@@ -105,6 +106,14 @@ export declare namespace AkubSpace {
          * @return {string} returns value.
          */
         static buildConsolePayView(id: string, debug?: boolean): string;
+        /**
+         * Create payment redirect for normal checkout
+         * @param {string} type checkout type i.e sms-refill | subscription
+         * @param {string} status what the status i.e success or fail
+         * @param {boolean} debug is payment ran in debug mode
+         * @return {string} returns value.
+         */
+        static buildCheckoutRedirect(type: string, status: string, debug?: boolean): string;
         /**
          * Create a request identifier
          * @param {string} token payment identifier ie. payment_uuid

@@ -18,6 +18,7 @@ export class Business {
   @Expose() billing: IBusinessBilling  | undefined;
   @Expose() legal: IBusinessLegal  | undefined;
   @Expose() links: IBusinessLinks  | undefined;
+  @Expose() sms: SMS  | undefined;
   @Expose() providers: IPaymentConnectors  | undefined;
   @Expose() location: ILocation  | undefined;
   @Expose() info: IBusinessInfo  | undefined;
@@ -234,6 +235,12 @@ export interface IPayProviderData {
   testID?: string,
   created?: number,
   completed: boolean,
+}
+
+export interface SMS {
+  active: boolean;
+  lut: number;
+  balance: number;
 }
 
 /**

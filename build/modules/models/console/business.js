@@ -161,6 +161,9 @@ __decorate([
 ], Business.prototype, "links", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()
+], Business.prototype, "sms", void 0);
+__decorate([
+    (0, class_transformer_1.Expose)()
 ], Business.prototype, "providers", void 0);
 __decorate([
     (0, class_transformer_1.Expose)()

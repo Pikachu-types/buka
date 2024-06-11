@@ -101,6 +101,21 @@ export namespace AkubSpace {
     tink = "tink",
     swish = "swish",
   }
+  
+  export function refillAmount(credit: string): number {
+    switch (credit) {
+      case "200":
+        return 20;
+      case "500":
+        return 50;
+      case "2000":
+        return 200;
+      case "1000":
+        return 100;
+      default:
+        return Number.parseInt(credit);
+    }
+  }
 
   export class helpers {
     
@@ -142,6 +157,18 @@ export namespace AkubSpace {
      */
     public static buildConsolePayView(id: string, debug = false): string {
       return `${debug ? Links.debugPayUI : Links.console}/app/payments/${id}`;
+    }   
+    
+    /**
+     * Create payment redirect for normal checkout
+     * @param {string} type checkout type i.e sms-refill | subscription
+     * @param {string} status what the status i.e success or fail
+     * @param {boolean} debug is payment ran in debug mode
+     * @return {string} returns value.
+     */
+    public static buildCheckoutRedirect(type: string, status: string, debug = false): string {
+      return `${debug ? Links.debugPayApiUri :
+        Links.paymentApiUri}/checkout/${type}/${status}`;
     }
     
     /**

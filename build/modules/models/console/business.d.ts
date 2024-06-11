@@ -13,6 +13,7 @@ export declare class Business {
     billing: IBusinessBilling | undefined;
     legal: IBusinessLegal | undefined;
     links: IBusinessLinks | undefined;
+    sms: SMS | undefined;
     providers: IPaymentConnectors | undefined;
     location: ILocation | undefined;
     info: IBusinessInfo | undefined;
@@ -147,6 +148,11 @@ export interface IPayProviderData {
     testID?: string;
     created?: number;
     completed: boolean;
+}
+export interface SMS {
+    active: boolean;
+    lut: number;
+    balance: number;
 }
 /**
  * business billing interface
