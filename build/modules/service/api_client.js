@@ -118,7 +118,11 @@ class ServerApiClient {
                     console.log("error message: ", error.message);
                     const response = error.response;
                     if (response) {
-                        throw new labs_sharable_1.CustomError("", response.status, response.data);
+                        throw new labs_sharable_1.CustomError({
+                            status: "failed",
+                            reason: "Linkly error" + error.message,
+                            type: "api_error"
+                        });
                     }
                     else {
                         throw new labs_sharable_1.CustomError(error.message, (_a = error.status) !== null && _a !== void 0 ? _a : 500);

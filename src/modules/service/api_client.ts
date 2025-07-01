@@ -88,7 +88,11 @@ export class ServerApiClient {
         console.log("error message: ", error.message);
         const response = error.response;
         if (response) {
-          throw new CustomError("", response.status, response.data);
+          throw new CustomError({
+            status: "failed",
+            reason: "Linkly error" + error.message,
+            type: "api_error"
+          });
         } else {
           throw new CustomError(error.message, error.status ?? 500);
         }
