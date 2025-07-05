@@ -13,10 +13,10 @@ export class StripeHandle {
    * Class main constructor
    * @param {string} apikey initialize with stripe keys
    */
-  constructor(apikey:string) {
+  constructor(apikey: string) {
     this.key = apikey;
     this.stripe = new Stripe(this.key, {
-      apiVersion: "2022-08-01",
+      apiVersion: "2025-06-30.basil",
     });
   }
 
@@ -307,6 +307,33 @@ export class StripeHandle {
     );
   }
 
+  public async createCheckoutWithProductPrices(options: {
+    currency?: string;
+    customer?: string;
+    email?: string;
+    product: string;
+    priceId: string;
+    redirects?: {
+      success: string;
+      cancel: string;
+    },
+  }): Promise<Stripe.Response<Stripe.Checkout.Session>> {
+    const session = await this.stripe.checkout.sessions.create({
+      currency: options?.currency,
+      customer: options?.customer,
+      line_items: [
+        {
+          price: options.priceId,
+          quantity: 1,
+        },
+      ],
+      mode: 'subscription',
+      success_url: options.redirects?.success,
+      cancel_url: options.redirects?.cancel,
+    });
+
+    return session;
+  }
 
 
   /**

@@ -27,7 +27,7 @@ class StripeHandle {
     constructor(apikey) {
         this.key = apikey;
         this.stripe = new stripe_1.default(this.key, {
-            apiVersion: "2022-08-01",
+            apiVersion: "2025-06-30.basil",
         });
     }
     /**
@@ -276,6 +276,25 @@ class StripeHandle {
     cancelPayLink(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.stripe.paymentLinks.update(id, { active: false });
+        });
+    }
+    createCheckoutWithProductPrices(options) {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function* () {
+            const session = yield this.stripe.checkout.sessions.create({
+                currency: options === null || options === void 0 ? void 0 : options.currency,
+                customer: options === null || options === void 0 ? void 0 : options.customer,
+                line_items: [
+                    {
+                        price: options.priceId,
+                        quantity: 1,
+                    },
+                ],
+                mode: 'subscription',
+                success_url: (_a = options.redirects) === null || _a === void 0 ? void 0 : _a.success,
+                cancel_url: (_b = options.redirects) === null || _b === void 0 ? void 0 : _b.cancel,
+            });
+            return session;
         });
     }
     /**

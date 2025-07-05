@@ -144,6 +144,17 @@ export declare class StripeHandle {
     * }returns stripe invoice
     */
     cancelPayLink(id: string): Promise<Stripe.Response<Stripe.PaymentLink>>;
+    createCheckoutWithProductPrices(options: {
+        currency?: string;
+        customer?: string;
+        email?: string;
+        product: string;
+        priceId: string;
+        redirects?: {
+            success: string;
+            cancel: string;
+        };
+    }): Promise<Stripe.Response<Stripe.Checkout.Session>>;
     /**
     * Refund a stripe payment
     * @param {string} checkout checkout ID from session
