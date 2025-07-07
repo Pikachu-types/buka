@@ -278,6 +278,15 @@ class StripeHandle {
             return yield this.stripe.paymentLinks.update(id, { active: false });
         });
     }
+    createPortalSession(customerId, return_url) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const session = yield this.stripe.billingPortal.sessions.create({
+                customer: customerId,
+                return_url: return_url,
+            });
+            return session;
+        });
+    }
     createCheckoutWithProductPrices(options) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {

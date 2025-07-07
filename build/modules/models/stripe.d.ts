@@ -144,6 +144,7 @@ export declare class StripeHandle {
     * }returns stripe invoice
     */
     cancelPayLink(id: string): Promise<Stripe.Response<Stripe.PaymentLink>>;
+    createPortalSession(customerId: string, return_url: string): Promise<Stripe.Response<Stripe.BillingPortal.Session>>;
     createCheckoutWithProductPrices(options: {
         currency?: string;
         customer?: string;

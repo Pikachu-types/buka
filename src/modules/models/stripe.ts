@@ -307,6 +307,15 @@ export class StripeHandle {
     );
   }
 
+  public async createPortalSession(customerId: string, return_url: string): Promise<Stripe.Response<Stripe.BillingPortal.Session>> {
+    const session = await this.stripe.billingPortal.sessions.create({
+      customer: customerId,
+      return_url: return_url,
+    });
+
+    return session;
+  }
+
   public async createCheckoutWithProductPrices(options: {
     currency?: string;
     customer?: string;
