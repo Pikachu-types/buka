@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Buka-Drect-AB/buka.git"
+    "url": "git+https://github.com/Pikachu-types/buka.git"
   },
   "author": "Jackmay Confidence Idala",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Buka-Drect-AB/buka/issues"
+    "url": "https://github.com/Pikachu-types/buka/issues"
   },
-  "homepage": "https://github.com/Buka-Drect-AB/buka#readme",
+  "homepage": "https://github.com/Pikachu-types/buka#readme",
   "dependencies": {
     "axios": "^1.4.0",
     "class-transformer": "^0.5.1",
